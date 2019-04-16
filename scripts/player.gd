@@ -1,32 +1,50 @@
 extends KinematicBody2D
 
 export var speed = 4
+export var animationSpeed = 200
+export(PackedScene) var weapon
+var lastPosition
 
-#func _ready():
-#	pass
+func _ready():
+	lastPosition = position
 
 func _physics_process(delta):
 	# detectamos los Input en cada frame, asi el jugador responde mas rapido
 	# dependiendo del Input (tecla), movemos el jugador con un Vector2(x, y) distinto
-	if(Input.is_action_pressed("ui_down")):
-		move_and_collide(Vector2(0, speed))
-	elif(Input.is_action_pressed("ui_up")):
-		move_and_collide(Vector2(0, -speed))
-		
-	if(Input.is_action_pressed("ui_left")):
-		move_and_collide(Vector2(-speed, 0))
-	elif(Input.is_action_pressed("ui_right")):
-		move_and_collide(Vector2(speed, 0))
-	
+	movePlayer()
+	animate()
 	# get_global_mouse_position() devuelve la posicion del raton en la pantalla
-	$spriteJugador.look_at(get_global_mouse_position())
+	look_at(get_global_mouse_position())
 	
 func _input(event):
-	if(Input.is_action_just_pressed("ui_accept")):
+	shoot()
+
+func movePlayer():
+	if(Input.is_action_pressed("event_s")):
+		move_and_collide(Vector2(0, speed))
+	elif(Input.is_action_pressed("event_w")):
+		move_and_collide(Vector2(0, -speed))
+		
+	if(Input.is_action_pressed("event_a")):
+		move_and_collide(Vector2(-speed, 0))
+	elif(Input.is_action_pressed("event_d")):
+		move_and_collide(Vector2(speed, 0))
+		
+func shoot():
+	if(Input.is_action_just_pressed("event_leftclick")):
 		# indicamos que escena se va a instanciar (la bala en este caso)
 		var bullet = load("res://scenes/beta/bullet.tscn")
 		# instanciamos la escena (la bala)
 		var bulletInstance = bullet.instance()
 		# metemos la escena instanciada (la bala) en la escena actual (el nivel en el que estamos)
 		get_parent().add_child(bulletInstance)
-		
+
+func animate():
+#	lastPosition es la ultima posicion en la que ha estado el jugador
+#	position es la posicion actual, por lo que sera distinta de lastPosition si se mueve
+#	cuando lastPosition y position son distintas, la animacion se ejecuta
+	if(lastPosition != position):
+		$AnimationPlayer.play("walking")
+	else:
+		$AnimationPlayer.play("idle")
+	lastPosition = position
