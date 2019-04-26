@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/redLights.gd" type="Script" id=1]
+[ext_resource path="res://textures/player/luz1.png" type="Texture" id=2]
+
+
+[node name="redLights" type="Node2D"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
+script = ExtResource( 1 )
+rotationSpeed = 0.035
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -0.185623, 0.0100327 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
+offset = Vector2( 0.618744, -128.28 )
+color = Color( 1, 0, 0, 1 )
+shadow_enabled = true
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( -0.185623, 0.0100327 )
+rotation = 3.14159
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
+offset = Vector2( 0.618744, -128.28 )
+color = Color( 1, 0, 0, 1 )
+shadow_enabled = true
+

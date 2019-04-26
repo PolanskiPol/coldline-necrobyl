@@ -12,7 +12,7 @@ func _physics_process(delta):
 	# detectamos los Input en cada frame, asi el jugador responde mas rapido
 	# dependiendo del Input (tecla), movemos el jugador con un Vector2(x, y) distinto
 	movePlayer()
-	animate()
+#	animate()
 	# get_global_mouse_position() devuelve la posicion del raton en la pantalla
 	look_at(get_global_mouse_position())
 	
@@ -38,13 +38,3 @@ func shoot():
 		var bulletInstance = bullet.instance()
 		# metemos la escena instanciada (la bala) en la escena actual (el nivel en el que estamos)
 		get_parent().add_child(bulletInstance)
-
-func animate():
-#	lastPosition es la ultima posicion en la que ha estado el jugador
-#	position es la posicion actual, por lo que sera distinta de lastPosition si se mueve
-#	cuando lastPosition y position son distintas, la animacion se ejecuta
-	if(lastPosition != position):
-		$AnimationPlayer.play("walking")
-	else:
-		$AnimationPlayer.play("idle")
-	lastPosition = position

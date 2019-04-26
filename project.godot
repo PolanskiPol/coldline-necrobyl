@@ -16,10 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="coldline-necrobyl"
-run/main_scene="res://scenes/levels/testingLevel.tscn"
-boot_splash/image="res://textures/necrobylMenu.jpg"
+run/main_scene="res://scenes/levels/testingLevel_heavyPerformance.tscn"
+boot_splash/image="res://textures/misc/banner.jpg"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://textures/icon.png"
+
+[autoload]
+
+gameController="*res://scripts/gameController.gd"
 
 [display]
 
@@ -68,6 +72,19 @@ event_rightclick={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="walls"
+2d_physics/layer_4="powerUps"
+2d_physics/layer_5="raycast"
+2d_physics/layer_6="enemyVision"
+2d_physics/layer_7="enemyAttack"
+2d_physics/layer_8="bullet"
+2d_physics/layer_9="floor"
+2d_physics/layer_10="decoration"
 
 [rendering]
 
