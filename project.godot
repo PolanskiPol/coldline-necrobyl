@@ -15,20 +15,26 @@ _global_script_class_icons={
 
 [application]
 
-config/name="coldline-necrobyl"
-run/main_scene="res://scenes/levels/testingLevel_heavyPerformance.tscn"
-boot_splash/image="res://textures/misc/banner.jpg"
-boot_splash/bg_color=Color( 1, 1, 1, 1 )
+config/name="proyecto_final_gorka"
+run/main_scene="res://scenes/levels/levelMakerTestLevel.tscn"
+boot_splash/image="res://textures/misc/banner.png"
+boot_splash/bg_color=Color( 1, 1, 1, 0 )
 config/icon="res://textures/icon.png"
 
 [autoload]
 
 gameController="*res://scripts/gameController.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1280
 window/size/height=720
+window/size/resizable=false
+window/size/borderless=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -85,6 +91,7 @@ event_rightclick={
 2d_physics/layer_8="bullet"
 2d_physics/layer_9="floor"
 2d_physics/layer_10="decoration"
+2d_physics/layer_11="tintChanger"
 
 [rendering]
 
