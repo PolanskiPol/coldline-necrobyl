@@ -13,6 +13,7 @@ use_filter = true
 font_data = ExtResource( 3 )
 
 [node name="dialog1" type="MarginContainer"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,8 +32,8 @@ __meta__ = {
 self_modulate = Color( 0.380392, 0.380392, 0.380392, 1 )
 margin_left = 20.0
 margin_top = 400.0
-margin_right = 1264.0
-margin_bottom = 552.0
+margin_right = 1260.0
+margin_bottom = 414.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
