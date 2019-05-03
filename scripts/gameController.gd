@@ -1,14 +1,10 @@
 extends Node
 
-var bullets
-var health
+# este script actua como intermediario entre la UI, el jugador, las armas, los...
+# ...enemigos y los niveles. cualquier valor que tenga que ser leido por dos o ...
+# ...mas de los anteriores, se cambia aqui
+
+var bullets = 0
+var health = 100
+var weapon = "res://scenes/player/weapons/pistol.tscn"
 var levelToGo
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

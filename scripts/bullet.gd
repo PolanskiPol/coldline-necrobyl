@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var speed = 28
+var damage
 var direction
 var playerPosition
 
@@ -17,4 +18,8 @@ func _ready():
 
 func _physics_process(delta):
 	# mover la bala en cada Frame
-	move_and_collide(direction*speed)
+	var collision = move_and_collide(direction*speed)
+	if(collision and collision.collider.collision_layer == 2):
+		collision.collider.damage(damage)
+	if(collision):
+		get_parent().remove_child(self)

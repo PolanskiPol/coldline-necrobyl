@@ -1,6 +1,6 @@
 extends Label
 
-#signal dialogOver
+# funcion decorativa para las texturas de personaje en dialogos
 
 export var rotationSpeed = 0.002
 export var maxRotation = 0.12

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hotline Miami 2 Wrong Number Soundtrack - Guided Meditation.wav-0d417d26cc8618d5e00bbd1a6e8c8895.sample"
+
+[deps]
+
+source_file="res://audio/music/Hotline Miami 2 Wrong Number Soundtrack - Guided Meditation.wav"
+dest_files=[ "res://.import/Hotline Miami 2 Wrong Number Soundtrack - Guided Meditation.wav-0d417d26cc8618d5e00bbd1a6e8c8895.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

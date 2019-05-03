@@ -1,12 +1,19 @@
 extends Control
 
-#signal dialogOver
+# este script es la base para los dialogos en si
+# los dialogos funcionan con este script y con "dialogs.gd"
+# "dialogs.gd" es el encargado de manejar todas las cajas de dialogo
+
+# textura para el personaje que habla
 export (Texture) var characterToDisplay
-#export (PackedScene) var nextDialog
+# array de strings con los dialogos
 export (Array, String) var dialogs
+# decoracion
 export var rotationSpeed = 0.002
 export var maxRotation = 0.12
-var maxDialogs
+# nº total de dialogos
+var totalDialogs
+# dialogo activo
 var currentDialog
 var character
 var dialogText
@@ -17,7 +24,7 @@ var rotater
 func _ready():
 	rotater = 0.01
 	rotationDirection = 1
-	maxDialogs = dialogs.size() -1
+	totalDialogs = dialogs.size() -1
 	currentDialog = 0
 	character = $PanelContainer/MarginContainer/HBoxContainer/MarginContainer/character
 	dialogText = $PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/PanelContainer/text
@@ -29,20 +36,16 @@ func _physics_process(delta):
 
 func _on_pressed():
 	advanceDialog()
-		
+
+# funcion para cambiar el texto del dialogo
 func advanceDialog():
-	if(currentDialog < maxDialogs):
+	if(currentDialog < totalDialogs):
 		currentDialog += 1
 		dialogText.text = dialogs[currentDialog]
 	else:
 		visible = false
-#		goToNextDialog()
-		
-#func goToNextDialog():
-#	if(nextDialog != null):
-#		var dialogInstance = nextDialog.instance()
-#		get_parent().add_child(dialogInstance)
-		
+
+# funcion para rotar la foto del personaje que habla
 func rotateCharacter():
 	if(character.get_rotation() > maxRotation or character.get_rotation() < -maxRotation):
 		rotationDirection *= -1

@@ -1,5 +1,7 @@
 extends Node2D
 
+# las luces rojas rotan, meramente decorativo
+
 export var rotationSpeed = 1.0
 
 # Called when the node enters the scene tree for the first time.
