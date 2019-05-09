@@ -1,14 +1,16 @@
 extends KinematicBody2D
 
 export var health = 100
-export var speed = 4
+export var speed = 4.0
 export var attackDamage = 25
-export var timeBetweenAttacks = 1
+export var timeBetweenAttacks = 1.0
+
 var followTarget
 var attackTarget
 var dead
 var canAttack
 var canDealDamage
+var isSeeingPlayer = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,9 +25,23 @@ func _physics_process(delta):
 	moveToPlayer()
 	dieWhen0Health()
 	attack()
+	raycastToPlayer()
 
+# funcion para detectar si hay una pared entre el jugador y el enemigo
+func raycastToPlayer():
+	var playerPosition = get_parent().get_parent().get_node("player").position
+	var space_state = get_world_2d().get_direct_space_state()
+	var result = space_state.intersect_ray(Vector2(position.x, position.y), Vector2(playerPosition.x, playerPosition.y), [self, get_parent().get_parent().get_node("tilesets").get_node("tileSetInterior"), get_parent().get_parent().get_node("tilesets").get_node("tileSetExterior")]) 
+	
+	if(result.size()):
+		if(result.collider.name == "player"):
+			isSeeingPlayer = true
+		else:
+			isSeeingPlayer = false
+
+# moverse en direccion al jugador
 func moveToPlayer():
-	if(followTarget and !dead):
+	if(followTarget and !dead and isSeeingPlayer):
 		$wallBetween.cast_to = (followTarget.position - position).normalized()
 		rotation = (followTarget.position - position).angle()
 		move_and_collide((followTarget.position - position).normalized()*speed)
@@ -61,6 +77,7 @@ func dieWhen0Health():
 		remove_child($zombiesound)
 		speed = 0
 		dead = true
+		gameController.enemies -= 1
 
 # nos encontramos con algunos problemas para hacer que el sonido de ...
 # ... del zombie fuera aleatorio, y esta es la solución que encontramos
@@ -101,9 +118,9 @@ func damage(dmg):
 # el zombie daña al jugador si este esta en su rango de ataque
 func attack():
 	if(canAttack and attackTarget and !dead):
+		waitBetweenAttacks(timeBetweenAttacks)
 		gameController.health -= attackDamage
 		print(gameController.health)
-		waitBetweenAttacks(timeBetweenAttacks)
 
 # esperar entre ataques
 func waitBetweenAttacks(wait):

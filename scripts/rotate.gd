@@ -1,6 +1,6 @@
 extends Label
 
-# funcion decorativa para las texturas de personaje en dialogos
+# decoracion para las texturas de personaje en dialogos
 
 export var rotationSpeed = 0.002
 export var maxRotation = 0.12
@@ -15,6 +15,7 @@ func _ready():
 func _physics_process(delta):
 	rotate()
 
+# las luces giran de un lado a otro
 func rotate():
 	if(get_rotation() > maxRotation or get_rotation() < -maxRotation):
 		rotationDirection *= -1

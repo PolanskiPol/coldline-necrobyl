@@ -1,20 +1,20 @@
 extends Node2D
 
+# variables de "configuracion" del arma
 export var weaponName = "Pistol"
 export var damage = 50
 export var mag = -1 #cuando mag es "-1", las balas son infinitas
-export var timeBetweenShoots = 0.3
+export var timeBetweenShots = 0.3
 export var timeToReload = 2
-var canShoot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	canShoot = true
+	$Timer.wait_time = timeBetweenShots
 	setupGameController()
 	
 func _physics_process(delta):
 	# "action_just_pressed" para semiautomatico. quitar el "just_" para automatico
-	if(Input.is_action_just_pressed("event_leftclick") and $Timer.time_left <= 0 and canShoot):
+	if(Input.is_action_just_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot):
 		shoot()
 
 # funcion para disparar
@@ -33,17 +33,18 @@ func shoot():
 	# gameController.bullets -= 1
 	
 	# ponemos un pequeño "delay" entre disparos
-	waitBetweenShots(timeBetweenShoots)
+	waitBetweenShots(timeBetweenShots)
 
 # prepara "gameController.gd" para que la UI saque bien la información
 func setupGameController():
-	gameController.weapon = weaponName
+	gameController.weaponName = weaponName
 	gameController.bullets = mag
 
 # funcion para que haya un tiempo despera entre acciones
 func waitBetweenShots(wait):
-	canShoot = false
+	gameController.canShoot = false
 	$Timer.start()
 	yield($Timer, "timeout")
 	$Timer.wait_time = wait
-	canShoot = true
+	if(!gameController.zoomedOut):
+		gameController.canShoot = true

@@ -6,5 +6,12 @@ extends Node
 
 var bullets = 0
 var health = 100
-var weapon = "res://scenes/player/weapons/pistol.tscn"
-var levelToGo
+var weaponPath = ""
+var weaponName = ""
+var canShoot = true
+var zoomedOut = false
+var currentLevelComplete = false
+var enemies = 0
+var secondLevelMusicWhenRestarted = 0.0
+var sceneToGoName = ""
+var sceneToGoNumber = 1

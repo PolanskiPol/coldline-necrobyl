@@ -16,7 +16,7 @@ func _on_tintChanger_entered(body):
 		$Tween.interpolate_property(tint, "color", white, tintOldColor, 1, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$Tween.start()
 
-# camviar tinte a claro cuando se entra en un espacio cerrado
+# cambiar tinte a claro cuando se entra en un espacio cerrado
 func _on_tintChanger_exited(body):
 	if(body.name == "player"): # solo si entra el jugador
 		$Tween.interpolate_property(tint, "color", tintOldColor, white, 1, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)

@@ -17,5 +17,5 @@ one_shot = true
 
 [node name="shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-volume_db = -3.0
+volume_db = -7.0
 
