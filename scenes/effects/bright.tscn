@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://textures/player/light.png" type="Texture" id=1]
+
+[node name="bright" type="Light2D"]
+position = Vector2( 0, -0.135273 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+shadow_enabled = true
+
