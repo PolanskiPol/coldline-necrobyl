@@ -29,6 +29,7 @@ weaponController="*res://scripts/weaponController.gd"
 [debug]
 
 settings/fps/force_fps=60
+settings/stdout/print_fps=true
 
 [display]
 
@@ -37,7 +38,7 @@ window/size/height=720
 window/size/resizable=false
 window/size/borderless=true
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -79,6 +80,16 @@ event_rightclick={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+event_shift={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
+event_r={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -94,13 +105,24 @@ event_rightclick={
 2d_physics/layer_10="decoration"
 2d_physics/layer_11="tintChanger"
 
+[memory]
+
+limits/stdout/print_fps=false
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
+quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation.mobile=1
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0, 0, 0, 1 )
-quality/filters/msaa=2
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/shading/force_vertex_shading=true
+quality/shading/force_lambert_over_burley=true
+quality/shading/force_blinn_over_ggx=true
+quality/filters/use_nearest_mipmap_filter=true
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
