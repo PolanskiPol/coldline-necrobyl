@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/enemy_normal.gd" type="Script" id=1]
+[ext_resource path="res://textures/enemies/sprWorkerWalk_strip8.png" type="Texture" id=2]
+[ext_resource path="res://scripts/animations.gd" type="Script" id=3]
+[ext_resource path="res://textures/player/light.png" type="Texture" id=4]
+[ext_resource path="res://audio/fx/zombie1.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../enemy_normal/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "walking"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("../enemy_normal/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 5.71845
+height = 14.8848
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 153.068
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 30.6653
+
+[node name="enemy_normal" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 645
+script = ExtResource( 1 )
+health = 500
+speed = 2
+attackDamage = 50
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 1 )
+anims/walking = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.833916, 0 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+hframes = 8
+frame = 7
+script = ExtResource( 3 )
+
+[node name="bright" type="Light2D" parent="."]
+position = Vector2( 0, -0.135273 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+color = Color( 0, 1, 0.0156863, 1 )
+shadow_enabled = true
+
+[node name="npcVision" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npcVision"]
+shape = SubResource( 4 )
+
+[node name="npcAttack" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npcAttack"]
+shape = SubResource( 5 )
+
+[node name="wallBetween" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 0 )
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="zombiesound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 0.64
+autoplay = true
+max_distance = 250.0
+
+[connection signal="body_entered" from="npcVision" to="." method="_on_vision_entered"]
+[connection signal="body_exited" from="npcVision" to="." method="_on_vision_exited"]
+[connection signal="body_entered" from="npcAttack" to="." method="_on_attack_entered"]
+[connection signal="body_exited" from="npcAttack" to="." method="_on_attack_exited"]
