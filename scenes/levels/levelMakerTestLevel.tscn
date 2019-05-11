@@ -1,17 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/levels/levelMaker.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/levelMaker.gd" type="Script" id=2]
-[ext_resource path="res://audio/music/Hotline Miami 2 Wrong Number Soundtrack - Roller Mobster.wav" type="AudioStream" id=3]
-[ext_resource path="res://scenes/props/tintChanger.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://audio/music/Hotline Miami 2 Wrong Number Soundtrack - Roller Mobster.wav" type="AudioStream" id=2]
+[ext_resource path="res://scenes/props/tintChanger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=5]
 
 [node name="levelMaker" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
 
 [node name="levelMusic" parent="." index="1"]
-stream = ExtResource( 3 )
+stream = ExtResource( 2 )
 
 [node name="tint" parent="." index="2"]
 visible = false
@@ -28,22 +26,19 @@ tile_data = PoolIntArray( 327685, 0, 0, 393218, 5, 0, 393219, 2, 0, 393220, 2, 0
 [node name="tileSetInterior2" parent="tilesets" index="3"]
 tile_data = PoolIntArray( -196605, 29, 0, -196604, 29, 0, -196603, 29, 0, -196602, 29, 0, -196601, 29, 0, -196600, 29, 0, -196599, 29, 0, -196598, 29, 0, -131069, 29, 0, -131062, 29, 0, -65533, 29, 0, -65526, 29, 0, 3, 29, 0, 10, 29, 0, 65539, 29, 0, 65546, 29, 0, 131075, 29, 0, 131082, 29, 0, 262143, 29, 0, 196608, 29, 0, 196609, 29, 0, 196610, 29, 0, 196611, 29, 0, 196612, 29, 0, 196613, 29, 0, 196616, 29, 0, 196617, 29, 0, 196618, 29, 0, 327679, 29, 0, 262154, 29, 0, 393215, 29, 0, 327690, 29, 0, 458751, 29, 0, 393226, 29, 0, 524287, 29, 0, 458762, 29, 0, 589823, 29, 0, 524296, 29, 0, 524297, 29, 0, 524298, 29, 0, 655359, 29, 0, 589832, 29, 0, 720895, 29, 0, 655368, 29, 0, 786431, 29, 0, 720896, 29, 0, 720897, 29, 0, 720898, 29, 0, 720899, 29, 0, 720902, 29, 0, 720903, 29, 0, 720904, 29, 0 )
 
-[node name="tintChanger" parent="lightModifiers" index="0" instance=ExtResource( 4 )]
+[node name="tintChanger" parent="lightModifiers" index="0" instance=ExtResource( 3 )]
 position = Vector2( -15.3426, 112.813 )
 
 [node name="CollisionShape2D" parent="lightModifiers/tintChanger" index="0"]
 polygon = PoolVector2Array( 125.394, -3.17218, 128.334, -188.416, 351.067, -191.356, 351.067, 155.608, 286.653, 156.465, 287.467, 255.835, -3.31224, 255.835, -1.68323, 0.0796509 )
 
-[node name="enemies" parent="." index="5"]
-editor/display_folded = true
-
-[node name="enemy_normal2" parent="enemies" index="0" instance=ExtResource( 5 )]
+[node name="enemy_normal2" parent="enemies" index="0" instance=ExtResource( 4 )]
 position = Vector2( 354.373, 459.075 )
 
 [node name="props" parent="." index="6"]
 editor/display_folded = true
 
-[node name="healthPickup" parent="props" index="0" instance=ExtResource( 6 )]
+[node name="healthPickup" parent="props" index="0" instance=ExtResource( 5 )]
 position = Vector2( 263.859, 461.947 )
 
 [node name="player" parent="." index="7"]

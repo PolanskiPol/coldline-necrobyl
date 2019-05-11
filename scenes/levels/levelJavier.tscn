@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/levelJavier.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/levelUI.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/tilesets/tileSetInteriorWalls.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/enemies/enemy_fat.tscn" type="PackedScene" id=11]
 
 [node name="levelMaker" type="Node2D"]
 script = ExtResource( 1 )
@@ -124,4 +125,19 @@ __meta__ = {
 [node name="player" parent="." instance=ExtResource( 10 )]
 position = Vector2( 20.168, 23.9495 )
 scale = Vector2( 0.835433, 1.10425 )
+
+[node name="enemy_normal" parent="." instance=ExtResource( 11 )]
+position = Vector2( 175.713, 853.724 )
+
+[node name="enemy_normal2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 86.0885, 722.356 )
+
+[node name="enemy_normal3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 78.7221, 962.993 )
+
+[node name="enemy_normal4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 86.0885, 836.536 )
+
+[node name="enemy_normal5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 165.892, 764.099 )
 
