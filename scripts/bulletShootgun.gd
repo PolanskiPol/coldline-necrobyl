@@ -15,8 +15,8 @@ func _ready():
 	rotation_degrees += 90
 	hit = false
 	randomize()
-	var random1 = randf()*0.5
-	var random2 = randf()*0.5
+	var random1 = rand_range(-0.25, 0.25)
+	var random2 = rand_range(-0.25, 0.25)
 	
 	# la variable "dir" es la direccion a la que va a ir la bala
 	# "playerPosition" es la posicion inicial (donde esta el jugador)
