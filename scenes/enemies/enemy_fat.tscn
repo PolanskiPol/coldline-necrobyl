@@ -80,6 +80,8 @@ color = Color( 0, 1, 0.0156863, 1 )
 shadow_enabled = true
 
 [node name="npcVision" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcVision"]
