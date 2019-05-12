@@ -8,7 +8,7 @@ var dead
 func _ready():
 	dead = false
 	lastPosition = position
-	addPlayerWeapon("res://scenes/player/weapons/pistol.tscn")
+	addPlayerWeapon("res://scenes/player/weapons/shootgun.tscn")
 	
 
 func _physics_process(delta):
