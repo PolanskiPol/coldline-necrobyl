@@ -1,11 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/pistol.gd" type="Script" id=1]
+[ext_resource path="res://scripts/generalWeaponScript.gd" type="Script" id=1]
 [ext_resource path="res://textures/topdownweapons/pistol.png" type="Texture" id=2]
 [ext_resource path="res://audio/fx/pistol.wav" type="AudioStream" id=3]
 
-[node name="pistol" type="Node2D"]
+[node name="weapon" type="Node2D"]
 script = ExtResource( 1 )
+weaponName = "Pistol"
+damage = 50
+timeBetweenShots = 0.3
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
