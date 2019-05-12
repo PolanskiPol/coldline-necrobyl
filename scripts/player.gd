@@ -8,7 +8,7 @@ var dead
 func _ready():
 	dead = false
 	lastPosition = position
-	addPlayerWeapon("res://scenes/player/weapons/shootgun.tscn")
+	addPlayerWeapon("res://scenes/player/weapons/pistol.tscn")
 	
 
 func _physics_process(delta):
@@ -20,6 +20,7 @@ func _physics_process(delta):
 		look_at(get_global_mouse_position())
 		playerDie()
 		cameraZoom()
+		removeWeaponWhenMagEmpty()
 
 func _input(event):
 	restartLevel(event)
@@ -27,9 +28,22 @@ func _input(event):
 
 # funcion para hacer los cambios de armas del jugador
 func addPlayerWeapon(weaponPath):
+	removePreviousWeapon()
 	var instancedWeapon = load(weaponPath).instance()
 	add_child(instancedWeapon)
 	instancedWeapon.position = Vector2(5, 8)
+	print("ADDED")
+	print(weaponPath)
+	
+func removePreviousWeapon():
+	if(has_node("weapon")):
+		remove_child($weapon)
+
+func removeWeaponWhenMagEmpty():
+	if(gameController.bullets == 0):
+		addPlayerWeapon("res://scenes/player/weapons/pistol.tscn")
+		gameController.canShoot = true
+		remove_child($weapon)
 
 # mueve al jugador con WASD
 func movePlayer():
@@ -80,4 +94,5 @@ func goToNextLevel(event):
 		gameController.health = 100
 		gameController.canShoot = true
 		gameController.sceneToGoNumber += 1
+		gameController.secondLevelMusicWhenRestarted = 0
 		get_tree().change_scene("res://scenes/levels/intermission" + str(gameController.sceneToGoNumber) + ".tscn")
