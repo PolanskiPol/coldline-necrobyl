@@ -13,7 +13,7 @@ script = ExtResource( 1 )
 weaponToPick = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 0.968627, 1, 0, 1 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
@@ -21,6 +21,6 @@ texture = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="bright" parent="." instance=ExtResource( 4 )]
-color = Color( 1, 0, 0, 1 )
+color = Color( 1, 0.827451, 0, 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_healthPickup_body_entered"]
