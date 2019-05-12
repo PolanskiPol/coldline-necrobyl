@@ -9,12 +9,14 @@
 [ext_resource path="res://scenes/tilesets/tileSetInteriorWalls.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/enemies/enemy_fat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=12]
 
 [node name="levelMaker" type="Node2D"]
 script = ExtResource( 1 )
+startLevelMusicAt = 7.0
+startEnabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -49,7 +51,6 @@ tile_data = PoolIntArray( -1, 29, 0, -65536, 29, 0, -65535, 29, 0, -65534, 29, 0
 [node name="lightModifiers" type="Node2D" parent="."]
 
 [node name="enemies" type="Node2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -128,19 +129,19 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="redLights" parent="props" instance=ExtResource( 10 )]
+[node name="shootgunPickup" parent="props" instance=ExtResource( 10 )]
+position = Vector2( 85.4704, 200.565 )
+
+[node name="redLights" parent="props" instance=ExtResource( 11 )]
 position = Vector2( 654.305, 432.885 )
 
-[node name="redLights2" parent="props" instance=ExtResource( 10 )]
+[node name="redLights2" parent="props" instance=ExtResource( 11 )]
 position = Vector2( 1033.98, 150.038 )
 
-[node name="redLights3" parent="props" instance=ExtResource( 10 )]
+[node name="redLights3" parent="props" instance=ExtResource( 11 )]
 position = Vector2( 808.773, 685.524 )
 
-[node name="player" parent="." instance=ExtResource( 11 )]
+[node name="player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 15.2489, 17.9957 )
 scale = Vector2( 0.835433, 1.10425 )
-
-[node name="shootgunPickup" parent="." instance=ExtResource( 12 )]
-position = Vector2( 85.4704, 200.565 )
 
