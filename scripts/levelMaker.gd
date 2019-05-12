@@ -15,7 +15,7 @@ func _process(delta):
 	gameController.secondLevelMusicWhenRestarted = $levelMusic.get_playback_position()
 
 func setupLevelMusic():
-	if(startLevelMusicAt == 0.0):
+	if(gameController.secondLevelMusicWhenRestarted == 0.0):
 		$levelMusic.seek(startLevelMusicAt)
 	else:
 		$levelMusic.seek(gameController.secondLevelMusicWhenRestarted)
