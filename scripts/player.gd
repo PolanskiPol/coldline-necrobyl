@@ -86,6 +86,7 @@ func restartLevel(event):
 	if(gameController.health < 0 and event.is_action_pressed("event_r")):
 		gameController.health = 100
 		gameController.canShoot = true
+		get_parent().get_node("tint").visible = false
 		get_tree().reload_current_scene()
 		
 # pasar al siguiente nivel
@@ -95,4 +96,5 @@ func goToNextLevel(event):
 		gameController.canShoot = true
 		gameController.sceneToGoNumber += 1
 		gameController.secondLevelMusicWhenRestarted = 0
+		get_parent().get_node("tint").visible = false
 		get_tree().change_scene("res://scenes/levels/intermission" + str(gameController.sceneToGoNumber) + ".tscn")
