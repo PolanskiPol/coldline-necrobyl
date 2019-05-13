@@ -4,12 +4,9 @@
 [ext_resource path="res://scenes/ui/dialogs/maker/dialog1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/dialogs/sprBiker.png" type="Texture" id=3]
 
-[node name="intermission1" index="0" instance=ExtResource( 1 )]
+[node name="level2" instance=ExtResource( 1 )]
 
 [node name="dialog1" parent="UI/dialogs" index="0" instance=ExtResource( 2 )]
 characterToDisplay = ExtResource( 3 )
-dialogs = [ "Hey tio", "Deberias destruir una central nuclear", "Seguro que es super divertido" ]
-
-[node name="tilesets" parent="." index="2"]
-editor/display_folded = false
+dialogs = [ "Bien hecho Dimitri", "Aunque he escuchado que ahora hay zombies", "¿por que no vas a comprobarlo?", "seria una ****** que vieneran aqui, ¿no crees?" ]
 
