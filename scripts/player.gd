@@ -32,8 +32,13 @@ func addPlayerWeapon(weaponPath):
 	var instancedWeapon = load(weaponPath).instance()
 	add_child(instancedWeapon)
 	instancedWeapon.position = Vector2(5, 8)
-	print("ADDED")
-	print(weaponPath)
+	gameController.canShoot = true
+	
+func addPistol():
+	var instancedWeapon = load("res://scenes/player/weapons/pistol.tscn").instance()
+	add_child(instancedWeapon)
+	instancedWeapon.position = Vector2(5, 8)
+	gameController.canShoot = true
 	
 func removePreviousWeapon():
 	if(has_node("weapon")):
@@ -41,9 +46,9 @@ func removePreviousWeapon():
 
 func removeWeaponWhenMagEmpty():
 	if(gameController.bullets == 0):
+		remove_child($weapon)
 		addPlayerWeapon("res://scenes/player/weapons/pistol.tscn")
 		gameController.canShoot = true
-		remove_child($weapon)
 
 # mueve al jugador con WASD
 func movePlayer():
@@ -89,6 +94,11 @@ func restartLevel(event):
 		get_parent().get_node("tint").visible = false
 		get_tree().reload_current_scene()
 		
+func nextLevelTransition():
+	var transition = load("res://scenes/effects/transition.tscn").instance()
+	transition.intro = false
+	get_parent().get_node("UI").add_child(transition)
+
 # pasar al siguiente nivel
 func goToNextLevel(event):
 	if(gameController.health >= 0 and event.is_action_pressed("event_r") and gameController.enemies <= 0):
@@ -96,5 +106,7 @@ func goToNextLevel(event):
 		gameController.canShoot = true
 		gameController.sceneToGoNumber += 1
 		gameController.secondLevelMusicWhenRestarted = 0
-		get_parent().get_node("tint").visible = false
+		nextLevelTransition()
+		$Timer.start()
+		yield($Timer, "timeout")
 		get_tree().change_scene("res://scenes/levels/intermission" + str(gameController.sceneToGoNumber) + ".tscn")

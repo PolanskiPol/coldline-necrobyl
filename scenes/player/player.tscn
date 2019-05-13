@@ -130,3 +130,5 @@ texture = ExtResource( 4 )
 hframes = 4
 script = ExtResource( 5 )
 
+[node name="Timer" type="Timer" parent="."]
+

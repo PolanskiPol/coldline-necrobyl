@@ -10,3 +10,9 @@
 characterToDisplay = ExtResource( 3 )
 dialogs = [ "Bien hecho Dimitri", "Aunque he escuchado que ahora hay zombies", "¿por que no vas a comprobarlo?", "seria una ****** que vieneran aqui, ¿no crees?" ]
 
+[node name="lightModifiers" parent="." index="3"]
+editor/display_folded = false
+
+[node name="tintChanger" parent="lightModifiers" index="0"]
+editor/display_folded = true
+
