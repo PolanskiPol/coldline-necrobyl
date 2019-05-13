@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/levels/levelMaker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://audio/music/Hotline Miami 2 Wrong Number Soundtrack - Roller Mobster.wav" type="AudioStream" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://scenes/enemies/enemy_fat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/props/machinegunPickup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=11]
 
 [node name="levelMaker" index="0" instance=ExtResource( 1 )]
 
@@ -55,7 +56,10 @@ position = Vector2( 295.592, 554.751 )
 [node name="shootgunPickup" parent="props" index="1" instance=ExtResource( 9 )]
 position = Vector2( 295.585, 603.14 )
 
-[node name="redLights" parent="props" index="2" instance=ExtResource( 10 )]
+[node name="machinegunPickup" parent="props" index="2" instance=ExtResource( 10 )]
+position = Vector2( -72.987, 106.836 )
+
+[node name="redLights" parent="props" index="3" instance=ExtResource( 11 )]
 position = Vector2( 118.898, 304.999 )
 
 [node name="player" parent="." index="7"]
