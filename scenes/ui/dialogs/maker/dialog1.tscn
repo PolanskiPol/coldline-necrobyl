@@ -1,19 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/dialog.gd" type="Script" id=1]
 [ext_resource path="res://textures/scenery/icon.png" type="Texture" id=2]
-[ext_resource path="res://themes/KarmaFuture.ttf" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
+[ext_resource path="res://themes/fontKremlin_24.tres" type="DynamicFont" id=3]
 
 [node name="dialog1" type="MarginContainer"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,8 +23,8 @@ __meta__ = {
 self_modulate = Color( 0.380392, 0.380392, 0.380392, 1 )
 margin_left = 20.0
 margin_top = 400.0
-margin_right = 1260.0
-margin_bottom = 414.0
+margin_right = 1264.0
+margin_bottom = 552.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -104,12 +95,13 @@ margin_bottom = 92.0
 rect_min_size = Vector2( 974, 53 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "2000
 "
 align = 1
 valign = 1
 autowrap = true
+uppercase = true
 
 [node name="continue" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_left = 484.0
