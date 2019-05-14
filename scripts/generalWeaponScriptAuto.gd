@@ -35,7 +35,6 @@ func shoot():
 	
 	# ponemos un pequeño "delay" entre disparos
 	waitBetweenShots(timeBetweenShots)
-	gameController.canShoot = true
 
 # prepara "gameController.gd" para que la UI saque bien la información
 func setupGameController():
