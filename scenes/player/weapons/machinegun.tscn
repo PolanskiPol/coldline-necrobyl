@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/machinegunWeapon.gd" type="Script" id=1]
+[ext_resource path="res://scripts/generalWeaponScriptAuto.gd" type="Script" id=1]
 [ext_resource path="res://textures/topdownweapons/machinegun.png" type="Texture" id=2]
 
 [sub_resource type="AudioStreamOGGVorbis" id=1]
@@ -9,6 +9,11 @@ loop = true
 
 [node name="weapon" type="Node2D"]
 script = ExtResource( 1 )
+weaponName = "machinegun"
+damage = 25
+mag = 30
+timeBetweenShots = 0.2
+usesAmmo = true
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708

@@ -5,7 +5,6 @@ export var weaponName = ""
 export var damage = 0
 export var mag = -1 #cuando mag es "-1", las balas son infinitas
 export var timeBetweenShots = 0.0
-export var automatic = false
 export var usesAmmo = false
 
 # Called when the node enters the scene tree for the first time.
@@ -15,10 +14,9 @@ func _ready():
 	
 func _physics_process(delta):
 	# "action_just_pressed" para semiautomatico. quitar el "just_" para automatico
-	if(Input.is_action_just_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot and !automatic):
+	if(Input.is_action_just_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot):
 		shoot()
-	if(Input.is_action_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot and automatic):
-		shoot()
+
 
 # funcion para disparar
 func shoot():
