@@ -21,6 +21,7 @@ scale = Vector2( 0.075, 0.075 )
 texture = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 
 [node name="shoot" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 1 )

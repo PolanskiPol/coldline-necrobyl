@@ -13,6 +13,8 @@ func _ready():
 	setupGameController()
 	
 func _physics_process(delta):
+	if(Input.is_action_pressed("event_leftclick")):
+		print("A")
 	# "action_just_pressed" para semiautomatico. quitar el "just_" para automatico
 	if(Input.is_action_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot):
 		shoot()
@@ -33,6 +35,7 @@ func shoot():
 	
 	# ponemos un pequeño "delay" entre disparos
 	waitBetweenShots(timeBetweenShots)
+	gameController.canShoot = true
 
 # prepara "gameController.gd" para que la UI saque bien la información
 func setupGameController():
