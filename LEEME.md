@@ -14,7 +14,7 @@ En el comienzo del desarrollo, queriamos implementar un gran número de mecánic
     ✓ En los "Intermission": desarrollo de la historia mediante dialogos.
     ✓ En los niveles: acción.
     ✓ Varios tipos de zombies (normal, rapido y debil, lento y fuerte, normal que dispara).
-    ✓ Aumento de visión.
+    ✓ Aumento de visión (no puedes disparar cuando lo haces).
     ✓ Un jefe cada cada tercer nivel normal.
     ✓ Reinicio rápido de nivel (como en Hotline Miami).
     ✓ Cambios de iluminación entre zonas abiertas y cerradas.
@@ -53,7 +53,8 @@ Durante el desarrollo tuvimos varios problemas:
     - Los sprites de arma eran muy pequeños. Usamos la propiedad "Scale" en Godot para aumentar el tamaño.
     - Al acabar el nivel, no se cambiaba de escena. Esto se debia a los nombres de las escenas.
       Tiene que haber siempre un "intermissionX" y un "levelX" para que el juego reconozca la siguiente.
-    - La UI no se actualizaba con los cambios del juego. Tuvimos que crear un script en "Autoload" que actuara de intermediario entre el juego y la UI.
+    - La UI no se actualizaba con los cambios del juego. 
+      Tuvimos que crear un script en "Autoload" que actuara de intermediario entre el juego y la UI.
     - La escopeta tenia un sistema de disparo distinto al que teniamos de standar.
       Tuvimos que hacer un script propio y unas balas propias para hacer la escopeta.
     - Habia cambios fundamentales que haciamos en un nivel que no se aplicaban en el resto.
@@ -62,3 +63,29 @@ Durante el desarrollo tuvimos varios problemas:
       Metimos funciones para randomizar los sonidos de los zombies y que manchas dejaban en el suelo.
     - Los enemigos te seguian aunque hubiera una pared en medio.
       Metimos un raycast para detectar si habia una pared. Si el raycast da positivo, el zombie no te sigue.
+    - La bala tenía una rotación erronea. Para arreglar esto, le cambiamos la rotación en su escena dedicada.
+    - Los enemigos seguian persiguiendote aun despues de matarlo.
+      Añadimos un bool "dead" a los enemigos para que bajara la velocidad a 0 cuando era true.
+    - Los enemigos seguian atacando aun muertos. Despues de hacer que se quedaran estáticos, pusimos que tambien dejaran de hacer daño.
+    - Podias disparar con el aumento de vision. Arreglando la lógica de canShoot entre elementos arreglamos el error.
+    - La pistola necesitaba balas infinitas. Para poner balas infinitas, metimos la propiedad "usesAmmo" para que no gastara.
+    - No se veian las balas infinitas en el contador.
+      Para esto, metimos una condicion en la UI para que sacara "INF" en el contador si el cargador de balas estaba a -1.
+    - El jugador se desplazaba más rapido en diagonal. 
+      Con la función de Godot "normalized()" sacamos la dirección del vector y lo multiplicamos por la velocidad para arreglarlo.
+    - El cambio de arma estaba roto.
+      Hicimos el método "removePreviousWeapon()" para borrar el arma anterior al meter una nueva.
+    - La nueva arma cogida del suelo no disparaba. Solo necesitaba que al cambiar de arma, "canShoot" estuviera en true.
+
+# Que hemos aprendido
+Con este proyecto, hemos aprendido:
+
+    - Como utilizar una nueva tecnología no vista en clase (en este caso Godot Engine).
+    - Como se desarrollan los videojuegos en 2D.
+    - Como se crean los escenarios de los videojuegos 2D.
+    - Como funcionan las interfaces dentro de los videojuegos.
+    - Un nuevo lenguaje de programación (GDScript).
+    - Como aplicar los conocimientos de programación adquiridos en clase a un lenguaje nuevo.
+    - A utilizar Git y GitHub con proyectos reales.
+    - A optimizar recursos para mejorar el espacio y el rendimiento de un proyecto.
+      
