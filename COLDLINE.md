@@ -58,3 +58,7 @@ Durante el desarrollo tuvimos varios problemas:
       Tuvimos que hacer un script propio y unas balas propias para hacer la escopeta.
     - Habia cambios fundamentales que haciamos en un nivel que no se aplicaban en el resto.
       Para arreglar esto, hicimos la escena "levelMaker" e "intermissionMaker", que serian la base de todos los niveles e intermissions.
+    - Todos los zombies dejaban la misma sangre al morir y tenian el mismo sonido.
+      Metimos funciones para randomizar los sonidos de los zombies y que manchas dejaban en el suelo.
+    - Los enemigos te seguian aunque hubiera una pared en medio.
+      Metimos un raycast para detectar si habia una pared. Si el raycast da positivo, el zombie no te sigue.
