@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/levels/levelMaker.tscn" type="PackedScene" id=1]
-[ext_resource path="res://audio/music/Hotline Miami 2 Wrong Number Soundtrack - Roller Mobster.wav" type="AudioStream" id=2]
+[ext_resource path="res://audio/music/1-Mission.ogg" type="AudioStream" id=2]
 [ext_resource path="res://scenes/tilesets/treeTiles.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/props/tintChanger.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=5]
@@ -10,16 +10,9 @@
 [ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=8]
 
 [node name="level1" instance=ExtResource( 1 )]
-startLevelMusicAt = 36.72
 
-[node name="UI" parent="." index="0"]
-editor/display_folded = false
-
-[node name="levelMusic" parent="." index="1"]
+[node name="levelMusic" parent="." index="2"]
 stream = ExtResource( 2 )
-
-[node name="tint" parent="." index="2"]
-visible = false
 
 [node name="tilesets" parent="." index="3"]
 editor/display_folded = false

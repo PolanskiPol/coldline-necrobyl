@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/levelMaker.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/levelUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/effects/transition.tscn" type="PackedScene" id=3]
-[ext_resource path="res://audio/music/Perturbator - Technoir (feat. Noir Deco).wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/music/2-Mission.ogg" type="AudioStream" id=4]
 [ext_resource path="res://scenes/tilesets/tileSetExteriorFloor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/tilesets/tileSetInteriorFloor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/tilesets/tileSetDeco.tscn" type="PackedScene" id=7]
@@ -16,7 +16,6 @@
 
 [node name="levelMaker" type="Node2D"]
 script = ExtResource( 1 )
-startLevelMusicAt = 62.4
 startEnabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]

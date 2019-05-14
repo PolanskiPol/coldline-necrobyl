@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5-Intermission-Power.ogg-65323eb5b5148b863d99bf736b45488c.oggstr"
+
+[deps]
+
+source_file="res://audio/music/5-Intermission-Power.ogg"
+dest_files=[ "res://.import/5-Intermission-Power.ogg-65323eb5b5148b863d99bf736b45488c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

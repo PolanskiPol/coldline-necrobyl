@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/levels/intermissionMaker.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/ui/dialogs/maker/dialog1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://textures/dialogs/sprBiker.png" type="Texture" id=3]
+[ext_resource path="res://audio/music/1-Intermission.ogg" type="AudioStream" id=2]
+[ext_resource path="res://scenes/ui/dialogs/maker/dialog1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/dialogs/sprBiker.png" type="Texture" id=4]
 
 [node name="intermission1" instance=ExtResource( 1 )]
-editor/display_folded = true
+
+[node name="levelMusic" parent="." index="0"]
+stream = ExtResource( 2 )
 
 [node name="UI" parent="." index="2"]
 editor/display_folded = true
@@ -13,7 +16,7 @@ editor/display_folded = true
 [node name="dialogs" parent="UI" index="3"]
 editor/display_folded = true
 
-[node name="dialog1" parent="UI/dialogs" index="0" instance=ExtResource( 2 )]
-characterToDisplay = ExtResource( 3 )
+[node name="dialog1" parent="UI/dialogs" index="0" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 4 )
 dialogs = [ "Hey tio", "Deberias destruir una central nuclear", "Seguro que es super divertido" ]
 

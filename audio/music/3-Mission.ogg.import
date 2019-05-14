@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/3-Mission.ogg-b7977430488492f43d97e88b5fbc756d.oggstr"
+
+[deps]
+
+source_file="res://audio/music/3-Mission.ogg"
+dest_files=[ "res://.import/3-Mission.ogg-b7977430488492f43d97e88b5fbc756d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

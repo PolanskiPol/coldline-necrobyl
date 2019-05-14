@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5-Mission-01.ogg-d89490c3722b505caea2035f74546158.oggstr"
+
+[deps]
+
+source_file="res://audio/music/5-Mission-01.ogg"
+dest_files=[ "res://.import/5-Mission-01.ogg-d89490c3722b505caea2035f74546158.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
