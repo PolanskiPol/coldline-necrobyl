@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/enemies/sprBoss2WalkCleaver_strip8.png" type="Texture" id=2]
+
+[node name="enemy_normal" index="0" instance=ExtResource( 1 )]
+health = 50
+speed = 7.0
+attackDamage = 10
+timeBetweenAttacks = 0.4
+
+[node name="Timer" parent="." index="1"]
+wait_time = 0.7
+
+[node name="Sprite" parent="." index="3"]
+texture = ExtResource( 2 )
+frame = 0
