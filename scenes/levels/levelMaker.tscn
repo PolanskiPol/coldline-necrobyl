@@ -1,29 +1,29 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/levelMaker.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/levelUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/tilesets/tileSetExteriorFloor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/tilesets/tileSetInteriorFloor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/tilesets/tileSetDeco.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/tilesets/tileSetInteriorWalls.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/effects/transition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/effects/tint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/tilesets/tileSetExteriorFloor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/tilesets/tileSetInteriorFloor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/tilesets/tileSetDeco.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/tilesets/tileSetInteriorWalls.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=9]
 
 [node name="levelMaker" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="UI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="levelUI" parent="UI" instance=ExtResource( 2 )]
 
+[node name="transition" parent="UI" instance=ExtResource( 3 )]
+
+[node name="tint" parent="." instance=ExtResource( 4 )]
+visible = false
+
 [node name="levelMusic" type="AudioStreamPlayer" parent="."]
 autoplay = true
-
-[node name="tint" type="CanvasModulate" parent="."]
-color = Color( 0.105882, 0.105882, 0.105882, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="tilesets" type="Node2D" parent="."]
 editor/display_folded = true
@@ -31,13 +31,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="tileSetExterior" parent="tilesets" instance=ExtResource( 3 )]
+[node name="tileSetExterior" parent="tilesets" instance=ExtResource( 5 )]
 
-[node name="tileSetInterior" parent="tilesets" instance=ExtResource( 4 )]
+[node name="tileSetInterior" parent="tilesets" instance=ExtResource( 6 )]
 
-[node name="tileSetDeco" parent="tilesets" instance=ExtResource( 5 )]
+[node name="tileSetDeco" parent="tilesets" instance=ExtResource( 7 )]
 
-[node name="tileSetInterior2" parent="tilesets" instance=ExtResource( 6 )]
+[node name="tileSetInterior2" parent="tilesets" instance=ExtResource( 8 )]
 
 [node name="lightModifiers" type="Node2D" parent="."]
 
@@ -51,5 +51,5 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="player" parent="." instance=ExtResource( 7 )]
+[node name="player" parent="." instance=ExtResource( 9 )]
 

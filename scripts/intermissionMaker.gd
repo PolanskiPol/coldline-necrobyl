@@ -7,12 +7,10 @@ export(Color) var tint = Color(0.13, 0.13, 0.13)
 export var startEnabled = false
 
 func _ready():
+	$tint.color = Color(1, 1, 1)
 	setupLevelMusic()
 	gameController.enemies = 0
 	gameController.currentLevelComplete = true
 
 func setupLevelMusic():
-	if(gameController.secondLevelMusicWhenRestarted == 0.0):
 		$levelMusic.seek(startLevelMusicAt)
-	else:
-		$levelMusic.seek(gameController.secondLevelMusicWhenRestarted)

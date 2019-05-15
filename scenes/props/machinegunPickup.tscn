@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/weaponPickup.gd" type="Script" id=1]
+[ext_resource path="res://scenes/player/weapons/machinegun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/scenery/icon.png" type="Texture" id=3]
+[ext_resource path="res://scenes/effects/bright.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 19.5287
+
+[node name="shootgunPickup" type="Area2D"]
+script = ExtResource( 1 )
+weaponToPick = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.968627, 1, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="bright" parent="." instance=ExtResource( 4 )]
+color = Color( 1, 0.827451, 0, 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_healthPickup_body_entered"]

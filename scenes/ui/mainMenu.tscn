@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://themes/buttonDisabled.tres" type="StyleBox" id=1]
 [ext_resource path="res://themes/buttonFocus.tres" type="StyleBox" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://textures/scenery/necrobylMenu.jpg" type="Texture" id=7]
 [ext_resource path="res://themes/fontKremlin_96.tres" type="DynamicFont" id=8]
 [ext_resource path="res://scripts/rotate.gd" type="Script" id=9]
+[ext_resource path="res://scenes/effects/transition.tscn" type="PackedScene" id=10]
+[ext_resource path="res://audio/music/Ghost.wav" type="AudioStream" id=11]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 6 )
@@ -109,4 +111,10 @@ margin_bottom = 124.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
 text = "Exit"
+
+[node name="transition" parent="." instance=ExtResource( 10 )]
+
+[node name="menuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
 

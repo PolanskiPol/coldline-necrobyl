@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/8-Intermission-Long.ogg-8e7ea87be5a8ff875188cdf5ec07cc7e.oggstr"
+
+[deps]
+
+source_file="res://audio/music/8-Intermission-Long.ogg"
+dest_files=[ "res://.import/8-Intermission-Long.ogg-8e7ea87be5a8ff875188cdf5ec07cc7e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
