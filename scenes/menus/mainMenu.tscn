@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://themes/buttonDisabled.tres" type="StyleBox" id=1]
 [ext_resource path="res://themes/buttonFocus.tres" type="StyleBox" id=2]
@@ -6,11 +6,13 @@
 [ext_resource path="res://themes/buttonNormal.tres" type="StyleBox" id=4]
 [ext_resource path="res://themes/buttonPressed.tres" type="StyleBox" id=5]
 [ext_resource path="res://themes/fontKremlin_24.tres" type="DynamicFont" id=6]
-[ext_resource path="res://textures/scenery/necrobylMenu.jpg" type="Texture" id=7]
-[ext_resource path="res://themes/fontKremlin_96.tres" type="DynamicFont" id=8]
-[ext_resource path="res://scripts/rotate.gd" type="Script" id=9]
-[ext_resource path="res://scenes/effects/transition.tscn" type="PackedScene" id=10]
-[ext_resource path="res://audio/music/Ghost.wav" type="AudioStream" id=11]
+[ext_resource path="res://scripts/mainMenu.gd" type="Script" id=7]
+[ext_resource path="res://textures/scenery/necrobylMenu.jpg" type="Texture" id=8]
+[ext_resource path="res://themes/fontKremlin_96.tres" type="DynamicFont" id=9]
+[ext_resource path="res://scripts/rotate.gd" type="Script" id=10]
+[ext_resource path="res://scripts/UIPlay.gd" type="Script" id=11]
+[ext_resource path="res://scenes/ui/exitButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://audio/music/3-Intermission-Hard.ogg" type="AudioStream" id=13]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 6 )
@@ -30,6 +32,7 @@ Button/styles/pressed = ExtResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 1 )
+script = ExtResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -37,7 +40,7 @@ anchor_bottom = 1.0
 margin_right = -480.0
 margin_bottom = -220.0
 rect_scale = Vector2( 1.6, 1.44 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -66,11 +69,11 @@ rect_min_size = Vector2( 1080, 328 )
 rect_pivot_offset = Vector2( 540, 164 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 9 )
 text = "Coldline necrobyl"
 align = 1
 valign = 1
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 332.0
@@ -95,8 +98,10 @@ margin_bottom = 28.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
 text = "Play"
+script = ExtResource( 11 )
 
 [node name="settings" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
 margin_top = 48.0
 margin_right = 180.0
 margin_bottom = 76.0
@@ -104,17 +109,12 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
 text = "Settings"
 
-[node name="exit" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 96.0
-margin_right = 180.0
-margin_bottom = 124.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 6 )
-text = "Exit"
+[node name="exit" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource( 12 )]
 
-[node name="transition" parent="." instance=ExtResource( 10 )]
+[node name="Timer" type="Timer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 
 [node name="menuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 13 )
 autoplay = true
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/play" to="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/play" method="_on_play_pressed"]
