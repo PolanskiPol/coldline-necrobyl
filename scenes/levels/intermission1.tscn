@@ -5,13 +5,10 @@
 [ext_resource path="res://scenes/ui/dialogs/maker/dialog1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://textures/dialogs/sprBiker.png" type="Texture" id=4]
 
-[node name="intermission1" instance=ExtResource( 1 )]
+[node name="intermission1" index="0" instance=ExtResource( 1 )]
 
 [node name="levelMusic" parent="." index="0"]
 stream = ExtResource( 2 )
-
-[node name="UI" parent="." index="2"]
-editor/display_folded = true
 
 [node name="dialogs" parent="UI" index="3"]
 editor/display_folded = true
