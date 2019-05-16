@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://themes/fontKremlin_12.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/levelUI.gd" type="Script" id=2]
 [ext_resource path="res://themes/fontKremlin_24.tres" type="DynamicFont" id=3]
 [ext_resource path="res://themes/fontKremlin_96.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/ui/exitButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://themes/buttonHover.tres" type="StyleBox" id=6]
+[ext_resource path="res://themes/buttonPressed.tres" type="StyleBox" id=7]
+[ext_resource path="res://themes/buttonFocus.tres" type="StyleBox" id=8]
+[ext_resource path="res://themes/buttonDisabled.tres" type="StyleBox" id=9]
+[ext_resource path="res://themes/buttonNormal.tres" type="StyleBox" id=10]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
@@ -74,6 +80,7 @@ text = "\"R\" TO CONTINUE"
 uppercase = true
 
 [node name="playerUI" type="MarginContainer" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 425.0
@@ -125,6 +132,7 @@ rounded = true
 percent_visible = false
 
 [node name="pauseMenu" type="Panel" parent="."]
+pause_mode = 2
 visible = false
 self_modulate = Color( 1, 1, 1, 0.443137 )
 anchor_right = 1.0
@@ -132,14 +140,32 @@ anchor_bottom = 1.0
 theme = SubResource( 6 )
 
 [node name="CenterContainer" type="CenterContainer" parent="pauseMenu"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="pauseMenu/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="pauseMenu/CenterContainer"]
+pause_mode = 2
 margin_left = 439.0
-margin_top = 306.0
+margin_top = 290.0
 margin_right = 841.0
-margin_bottom = 414.0
+margin_bottom = 430.0
+
+[node name="Label" type="Label" parent="pauseMenu/CenterContainer/VBoxContainer"]
+pause_mode = 2
+margin_right = 402.0
+margin_bottom = 108.0
 text = "PAUSED"
 uppercase = true
+
+[node name="exit" parent="pauseMenu/CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
+pause_mode = 2
+margin_top = 112.0
+margin_right = 402.0
+margin_bottom = 140.0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 10 )
 
