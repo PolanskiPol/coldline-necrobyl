@@ -15,3 +15,5 @@ anchor_bottom = 1.0
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+

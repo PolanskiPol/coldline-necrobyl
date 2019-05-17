@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://themes/fontKremlin_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/UIExit.gd" type="Script" id=2]
+
+[node name="exit" type="Button"]
+margin_top = 48.0
+margin_right = 180.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Exit"
+script = ExtResource( 2 )
+
+[connection signal="pressed" from="." to="." method="_on_exit_pressed"]

@@ -1,5 +1,5 @@
 # Coldline Necrobyl
-Coldline Necrobyl es un juego de disparos con vista cenital con una fuerte inspiración de juegos como "Hotline Miami" y "Counter-Strike 2D".
+Coldline Necrobyl es un juego de disparos con vista cenital con una fuerte inspiración de juegos como "Hotline Miami", "Counter-Strike 2D" y "DOOM".
 
 # Mecanicas que queriamos implementar
 En el comienzo del desarrollo, queriamos implementar un gran número de mecánicas jugables:

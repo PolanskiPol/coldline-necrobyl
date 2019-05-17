@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="proyecto_final_gorka"
-run/main_scene="res://scenes/levels/levelMakerTestLevel.tscn"
+run/main_scene="res://scenes/menus/mainMenu.tscn"
 boot_splash/image="res://textures/misc/banner.png"
 boot_splash/bg_color=Color( 1, 1, 1, 0 )
 config/icon="res://textures/icon.png"
@@ -25,6 +25,7 @@ config/icon="res://textures/icon.png"
 
 gameController="*res://scripts/gameController.gd"
 weaponController="*res://scripts/weaponController.gd"
+save="*res://scripts/save.gd"
 
 [debug]
 
