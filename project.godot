@@ -19,7 +19,7 @@ config/name="proyecto_final_gorka"
 run/main_scene="res://scenes/menus/mainMenu.tscn"
 boot_splash/image="res://textures/misc/banner.png"
 boot_splash/bg_color=Color( 1, 1, 1, 0 )
-config/icon="res://textures/icon.png"
+config/icon="res://textures/ui/pngicon.png"
 
 [autoload]
 
@@ -38,6 +38,8 @@ window/size/width=1280
 window/size/height=720
 window/size/resizable=false
 window/size/borderless=true
+mouse_cursor/custom_image="res://textures/player/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 5, 5 )
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
@@ -126,5 +128,5 @@ quality/shading/force_lambert_over_burley=true
 quality/shading/force_blinn_over_ggx=true
 quality/filters/use_nearest_mipmap_filter=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-quality/depth/hdr=false
+quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
