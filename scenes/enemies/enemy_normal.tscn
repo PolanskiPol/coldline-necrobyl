@@ -38,8 +38,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 5.71845
-height = 14.8848
+radius = 6.69614
+height = 12.7757
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 184.428
@@ -102,7 +102,6 @@ stream = ExtResource( 5 )
 pitch_scale = 0.64
 autoplay = true
 max_distance = 250.0
-
 [connection signal="body_entered" from="npcVision" to="." method="_on_vision_entered"]
 [connection signal="body_exited" from="npcVision" to="." method="_on_vision_exited"]
 [connection signal="body_entered" from="npcAttack" to="." method="_on_attack_entered"]
