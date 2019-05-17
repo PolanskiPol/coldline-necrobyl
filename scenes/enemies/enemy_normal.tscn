@@ -52,7 +52,7 @@ radius = 20.483
 collision_layer = 2
 collision_mask = 645
 script = ExtResource( 1 )
-speed = 5.5
+speed = 4.5
 timeBetweenAttacks = 1.2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -102,6 +102,7 @@ stream = ExtResource( 5 )
 pitch_scale = 0.64
 autoplay = true
 max_distance = 250.0
+
 [connection signal="body_entered" from="npcVision" to="." method="_on_vision_entered"]
 [connection signal="body_exited" from="npcVision" to="." method="_on_vision_exited"]
 [connection signal="body_entered" from="npcAttack" to="." method="_on_attack_entered"]
