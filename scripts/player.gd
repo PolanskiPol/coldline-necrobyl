@@ -105,7 +105,7 @@ func goToNextLevel(event):
 		gameController.health = 100
 		gameController.canShoot = true
 		gameController.sceneToGoNumber += 1
-		save.saveGame("Values", "sceneToGoNumber", gameController.sceneToGoNumber)
+		save.saveGame()
 		gameController.secondLevelMusicWhenRestarted = 0
 		nextLevelTransition()
 		$Timer.start()
