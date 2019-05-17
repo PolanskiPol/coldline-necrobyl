@@ -9,11 +9,11 @@
 [ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=8]
 
-[node name="level1" index="0" instance=ExtResource( 1 )]
+[node name="level1" instance=ExtResource( 1 )]
 
 [node name="levelMusic" parent="." index="2"]
 stream = ExtResource( 2 )
-volume_db = 0.5
+volume_db = 2.0
 
 [node name="tilesets" parent="." index="3"]
 editor/display_folded = false

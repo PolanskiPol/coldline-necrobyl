@@ -56,7 +56,6 @@ tile_data = PoolIntArray( -1, 29, 0, -65536, 29, 0, -65535, 29, 0, -65534, 29, 0
 [node name="lightModifiers" type="Node2D" parent="."]
 
 [node name="enemies" type="Node2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
