@@ -37,7 +37,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=3]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 184.428
@@ -51,8 +51,8 @@ collision_layer = 2
 collision_mask = 645
 script = ExtResource( 1 )
 health = 200
-speed = 3.75
-timeBetweenAttacks = 0.75
+speed = 3.0
+timeBetweenAttacks = 0.325
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 1 )
@@ -62,7 +62,7 @@ anims/walking = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.833916, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

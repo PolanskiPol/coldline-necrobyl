@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/weaponPickup.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/weapons/shootgun.tscn" type="PackedScene" id=2]
-[ext_resource path="res://textures/scenery/icon.png" type="Texture" id=3]
+[ext_resource path="res://textures/topdownweapons/shotgun.png" type="Texture" id=3]
 [ext_resource path="res://scenes/effects/bright.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -14,7 +14,8 @@ weaponToPick = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.968627, 1, 0, 1 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 0, 8 )
+scale = Vector2( 0.12, 0.15 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

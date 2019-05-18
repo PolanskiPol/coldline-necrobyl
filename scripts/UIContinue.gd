@@ -14,7 +14,6 @@ func _ready():
 
 
 func _on_play_pressed():
-	gameController.sceneToGoNumber = 1
 	var transition = load("res://scenes/effects/transition.tscn").instance()
 	transition.intro = false
 	get_parent().get_parent().get_parent().get_parent().get_parent().add_child(transition)

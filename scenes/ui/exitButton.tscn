@@ -9,7 +9,7 @@ margin_right = 180.0
 margin_bottom = 76.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Exit"
+text = "SaliR"
 script = ExtResource( 2 )
 
 [connection signal="pressed" from="." to="." method="_on_exit_pressed"]

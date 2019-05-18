@@ -51,7 +51,8 @@ radius = 30.6653
 collision_layer = 2
 collision_mask = 645
 script = ExtResource( 1 )
-health = 500
+health = 700
+speed = 2.0
 attackDamage = 50
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

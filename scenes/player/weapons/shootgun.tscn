@@ -6,7 +6,7 @@
 
 [node name="weapon" type="Node2D"]
 script = ExtResource( 1 )
-weaponName = "Shootgun"
+weaponName = "ESCOPETA"
 mag = 8
 timeBetweenShots = 0.6
 

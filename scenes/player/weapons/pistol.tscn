@@ -6,7 +6,7 @@
 
 [node name="weapon" type="Node2D"]
 script = ExtResource( 1 )
-weaponName = "Pistol"
+weaponName = "PISTOLA"
 damage = 50
 timeBetweenShots = 0.3
 
