@@ -14,3 +14,6 @@ func _ready():
 
 func setupLevelMusic():
 		$levelMusic.seek(startLevelMusicAt)
+
+func _on_hide():
+	pass # Replace with function body.

@@ -43,12 +43,12 @@ anchor_bottom = 1.0
 margin_bottom = -500.0
 
 [node name="Label" type="Label" parent="enemies"]
-margin_left = 580.0
+margin_left = 572.0
 margin_top = 96.0
-margin_right = 700.0
+margin_right = 708.0
 margin_bottom = 124.0
 theme = SubResource( 2 )
-text = "ENEMIES:"
+text = "ENEMIGOS:"
 uppercase = true
 
 [node name="restart" type="CenterContainer" parent="."]
@@ -58,11 +58,11 @@ anchor_bottom = 1.0
 theme = SubResource( 3 )
 
 [node name="Label" type="Label" parent="restart"]
-margin_left = 535.0
+margin_left = 452.0
 margin_top = 346.0
-margin_right = 744.0
+margin_right = 827.0
 margin_bottom = 374.0
-text = "\"R\" TO RESTART"
+text = "\"R\" PARA VOLVER A EMPEZAR"
 uppercase = true
 
 [node name="nextLevel" type="CenterContainer" parent="."]
@@ -72,15 +72,15 @@ anchor_bottom = 1.0
 theme = SubResource( 3 )
 
 [node name="Label" type="Label" parent="nextLevel"]
-margin_left = 531.0
-margin_top = 346.0
-margin_right = 749.0
-margin_bottom = 374.0
-text = "\"R\" TO CONTINUE"
+margin_left = 506.0
+margin_top = 330.0
+margin_right = 774.0
+margin_bottom = 389.0
+text = "\"R\" PARA CONTINUAR
+"
 uppercase = true
 
 [node name="playerUI" type="MarginContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 425.0
@@ -105,7 +105,7 @@ margin_right = 213.0
 margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-text = "WEAPON:"
+text = "ARMA:"
 uppercase = true
 
 [node name="ammo" type="Label" parent="playerUI/VBoxContainer/HBoxContainer"]
@@ -115,7 +115,7 @@ margin_right = 430.0
 margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-text = "AMMO:"
+text = "MUNICION:"
 uppercase = true
 
 [node name="health" type="ProgressBar" parent="playerUI/VBoxContainer"]
@@ -146,16 +146,16 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="pauseMenu/CenterContainer"]
 pause_mode = 2
-margin_left = 439.0
+margin_left = 472.0
 margin_top = 290.0
-margin_right = 841.0
+margin_right = 807.0
 margin_bottom = 430.0
 
 [node name="Label" type="Label" parent="pauseMenu/CenterContainer/VBoxContainer"]
 pause_mode = 2
 margin_right = 402.0
 margin_bottom = 108.0
-text = "PAUSED"
+text = "PAUSA"
 uppercase = true
 
 [node name="exit" parent="pauseMenu/CenterContainer/VBoxContainer" instance=ExtResource( 5 )]

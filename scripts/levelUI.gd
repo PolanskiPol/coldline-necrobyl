@@ -23,7 +23,7 @@ func _input(event):
 
 func _process(delta):
 	health.value = gameController.health
-	weapon.text = "WEAPON: " + str(gameController.weaponName)
+	weapon.text = "ARMA: " + str(gameController.weaponName)
 	ammoText()
 	enemiesText()
 	restartText()
@@ -31,9 +31,9 @@ func _process(delta):
 # mostrar numero de balas
 func ammoText():
 	if(gameController.bullets < 0):
-		ammo.text = "AMMO: INF"
+		ammo.text = "MUNICION: INFINITA"
 	else:
-		ammo.text = "AMMO: " + str(gameController.bullets)
+		ammo.text = "MUNICION: " + str(gameController.bullets)
 
 # pausar el juego y mostrar interfaz
 func pause():
@@ -52,7 +52,7 @@ func restartText():
 # mostrar numero de enemigos vivos
 func enemiesText():
 	if(gameController.enemies > 0):
-		enemies.text = "ENEMIES: " + str(gameController.enemies)
+		enemies.text = "ENEMIGOS: " + str(gameController.enemies)
 	else:
-		enemies.text = "LEVEL COMPLETE"
+		enemies.text = "NIVEL COMPLETADO"
 		$nextLevel.visible = true
