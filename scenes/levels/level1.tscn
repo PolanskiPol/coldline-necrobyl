@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=8]
 
-[node name="level1" index="0" instance=ExtResource( 1 )]
+[node name="level1" instance=ExtResource( 1 )]
 
 [node name="levelMusic" parent="." index="2"]
 stream = ExtResource( 2 )
@@ -40,6 +40,9 @@ position = Vector2( 1860.18, 1405.25 )
 
 [node name="CollisionShape2D" parent="lightModifiers/tintChanger" index="0"]
 polygon = PoolVector2Array( 43.066, 276.483, 234.879, 275.123, 234.879, 114.598, 717.813, 113.238, 719.173, -369.696, 1578.93, -366.975, 1577.57, 306.411, 1838.76, 306.411, 1840.12, 529.513, 1577.57, 525.432, 1580.29, 782.543, 1931.27, 786.624, 1935.35, 1488.58, 1584.37, 1489.94, 1578.93, 1556.6, 1357.19, 1552.52, 1354.47, 1462.73, 807.596, 1458.65, 811.678, 846.48, 232.157, 846.48, 237.599, 563.522, 41.7043, 562.161 )
+
+[node name="enemies" parent="." index="5"]
+editor/display_folded = true
 
 [node name="enemy_normal" parent="enemies" index="0" instance=ExtResource( 5 )]
 position = Vector2( 2138.88, 1822.33 )

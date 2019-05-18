@@ -20,7 +20,6 @@
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=18]
 
 [node name="levelMaker" type="Node2D"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="UI" type="CanvasLayer" parent="."]
