@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/levels/intermissionMaker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://audio/music/3-Intermission.ogg" type="AudioStream" id=2]
 [ext_resource path="res://scenes/ui/dialogs/maker/dialog1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://textures/dialogs/sprBiker.png" type="Texture" id=4]
+[ext_resource path="res://textures/dialogs/NILATS.png" type="Texture" id=4]
+[ext_resource path="res://textures/dialogs/dimitri.png" type="Texture" id=5]
+[ext_resource path="res://scenes/effects/NILATS.tscn" type="PackedScene" id=6]
 
 [node name="level2" instance=ExtResource( 1 )]
 
@@ -12,11 +14,42 @@ stream = ExtResource( 2 )
 
 [node name="dialog1" parent="UI/dialogs" index="0" instance=ExtResource( 3 )]
 characterToDisplay = ExtResource( 4 )
-dialogs = [ "Bien hecho Dimitri", "Aunque he escuchado que ahora hay zombies", "¿por que no vas a comprobarlo?", "seria una ****** que vieneran aqui, ¿no crees?" ]
+dialogs = [ "NILATS: PRIVIET.", "NILATS: HE VENIDO A AYUDARTE, CAMARADA DIMITRI." ]
 
-[node name="lightModifiers" parent="." index="3"]
-editor/display_folded = false
+[node name="dialog2" parent="UI/dialogs" index="1" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 5 )
+dialogs = [ "DIMITRI: PAPA?" ]
+
+[node name="dialog3" parent="UI/dialogs" index="2" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 4 )
+dialogs = [ "NILATS: NO SUBNORMAL.", "NILATS: SOY NILATS." ]
+
+[node name="dialog4" parent="UI/dialogs" index="3" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 5 )
+dialogs = [ "DIMITRI: OH GRAN LIDER!", "DIMITRI: GUIAME HACIA LA VICTORIA DE LOS ESTADOS TIVOSICOS." ]
+
+[node name="dialog5" parent="UI/dialogs" index="4" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 4 )
+dialogs = [ "NILATS: DA.", "NILATS: PARA QUE TE AYUDE, MUESTRAME TU VALIA, CAMARADA DIMITRI.", "NILATS: HAY UN JEFAZO ESCONDIDO EN LA SIGUIENTE PLANTA DE LA CENTRAL.", "NILATS: MATALO Y TE AYUDARE." ]
+
+[node name="dialog6" parent="UI/dialogs" index="5" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 5 )
+dialogs = [ "DIMITRI: OKI.", "DIMITRI: ALLEVOY." ]
 
 [node name="tintChanger" parent="lightModifiers" index="0"]
 editor/display_folded = true
 
+[node name="props" parent="." index="5"]
+editor/display_folded = true
+
+[node name="collisions" parent="props" index="20"]
+editor/display_folded = true
+
+[node name="NILATS" parent="props" index="21" instance=ExtResource( 6 )]
+
+[connection signal="hide" from="UI/dialogs/dialog1" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog2" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog3" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog4" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog5" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog6" to="UI/dialogs" method="_on_hide"]
