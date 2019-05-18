@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="proyecto_final_gorka"
+config/name="coldlineNecrobyl"
 run/main_scene="res://scenes/menus/mainMenu.tscn"
 boot_splash/image="res://textures/misc/banner.png"
 boot_splash/bg_color=Color( 1, 1, 1, 0 )
@@ -107,6 +107,7 @@ event_r={
 2d_physics/layer_9="floor"
 2d_physics/layer_10="decoration"
 2d_physics/layer_11="tintChanger"
+2d_physics/layer_12="bulletEnemy"
 
 [memory]
 
