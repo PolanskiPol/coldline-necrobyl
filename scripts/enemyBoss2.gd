@@ -11,21 +11,33 @@ var dead
 var canAttack
 var canDealDamage
 var isSeeingPlayer = false
+var laughCounter
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	laughCounter = 0
 	dead = false
 	canAttack = true
 	canDealDamage = false
 	# los zombies tienen dos sonidos que se eligen aleatoriamente
-	$zombiesound.stream = randomZombieSound()
+	$zombiesound.stream = randomLaughSound()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	moveToPlayer()
+#	moveToPlayer()
 	dieWhen0Health()
 	attack()
 	raycastToPlayer()
+	
+	if(!dead):
+		laugh(5, delta)
+
+func laugh(time, delta):
+	laughCounter += delta
+	if(laughCounter >= time):
+		$zombiesound.stream = randomLaughSound()
+		$zombiesound.play()
+		laughCounter = 0
 
 # funcion para detectar si hay una pared entre el jugador y el enemigo
 func raycastToPlayer():
@@ -83,14 +95,14 @@ func dieWhen0Health():
 # ... del zombie fuera aleatorio, y esta es la solución que encontramos
 # al concatenar "randomSound" en "load(...)" daba errores
 
-func randomZombieSound():
+func randomLaughSound():
 	randomize()
 	var sound
 	var randomSound = randi()%2
 	if(randomSound == 1):
-		sound = load("res://audio/fx/zombie1.wav")
+		sound = load("res://audio/fx/evilLuagh1.wav")
 	else:
-		sound = load("res://audio/fx/zombie2.wav")
+		sound = load("res://audio/fx/evilLuagh2.wav")
 	
 	# return de sound, que es la textura elegida
 	return sound
@@ -123,7 +135,7 @@ func attack():
 		bullet.position = position
 		get_parent().add_child(bullet)
 		bullet.selfEnemyPosition = position
-#		bullet.speed = 22
+		bullet.speed = 24
 		print("ENEMYBULLET")
 
 # esperar entre ataques

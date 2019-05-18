@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/evilLuagh1.wav-ff0bf4f37073a745decd3d9504bcaca1.sample"
+
+[deps]
+
+source_file="res://audio/fx/evilLuagh1.wav"
+dest_files=[ "res://.import/evilLuagh1.wav-ff0bf4f37073a745decd3d9504bcaca1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
