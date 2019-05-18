@@ -1,9 +1,10 @@
 extends KinematicBody2D
 
-export var health = 100
-export var speed = 4.0
-export var attackDamage = 25
-export var timeBetweenAttacks = 1.0
+export var health = 0
+export var normalSpeed = 0.0
+export var chargeSpeed = 0.0
+export var attackDamage = 0.0
+export var timeBetweenAttacks = 0.0
 
 var followTarget
 var attackTarget
@@ -11,12 +12,19 @@ var dead
 var canAttack
 var canDealDamage
 var isSeeingPlayer = false
+var chargeCounter
+var reloadCounter
+var charging
+var speed = normalSpeed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	chargeCounter = 0
+	reloadCounter = 0
 	dead = false
 	canAttack = true
 	canDealDamage = false
+	charging = false
 	# los zombies tienen dos sonidos que se eligen aleatoriamente
 	$zombiesound.stream = randomZombieSound()
 
@@ -26,6 +34,28 @@ func _physics_process(delta):
 	dieWhen0Health()
 	attack()
 	raycastToPlayer()
+	specialAttack(0.35, 1, delta)
+	doCharge()
+
+func doCharge():
+	if(charging):
+		speed = chargeSpeed
+#		print("charge")
+	else:
+		speed = normalSpeed
+#		print("no charge")
+
+func specialAttack(charge, reload, delta):
+	if(!charging):
+		reloadCounter += delta
+		if(reloadCounter >= reload):
+			reloadCounter = 0
+			charging = true
+	else:
+		chargeCounter += delta
+		if(chargeCounter >= charge):
+			chargeCounter = 0
+			charging = false
 
 # funcion para detectar si hay una pared entre el jugador y el enemigo
 func raycastToPlayer():
@@ -114,17 +144,16 @@ func selectRandomBlood():
 # esta funcion la utiliza la escena "bullet.tscn" para hacer daño con la colision
 func damage(dmg):
 	health -= dmg
+	
+func getHealth():
+	return health
 
 # el zombie daña al jugador si este esta en su rango de ataque
 func attack():
 	if(canAttack and attackTarget and !dead and isSeeingPlayer):
 		waitBetweenAttacks(timeBetweenAttacks)
-		var bullet = load("res://scenes/enemies/bulletEnemy.tscn").instance()
-		bullet.position = position
-		get_parent().add_child(bullet)
-		bullet.selfEnemyPosition = position
-#		bullet.speed = 22
-		print("ENEMYBULLET")
+		gameController.health -= attackDamage
+		print(gameController.health)
 
 # esperar entre ataques
 func waitBetweenAttacks(wait):
