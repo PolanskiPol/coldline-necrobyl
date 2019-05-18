@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/bulletEnemy.gd" type="Script" id=1]
+[ext_resource path="res://textures/player/light.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.9618
+
+[node name="bulletEnemy" type="KinematicBody2D"]
+collision_layer = 2048
+collision_mask = 5
+script = ExtResource( 1 )
+speed = 8
+damage = 25
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.0901961, 1, 0, 1 )
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="hitParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 0.101597, -4.13161 )
+rotation = 1.5708
+emitting = false
+amount = 30
+lifetime = 0.3
+spread = 24.57
+gravity = Vector2( 0, 0 )
+initial_velocity = 8.09
+linear_accel = 100.0
+angle = 91.9
+color = Color( 0.14902, 1, 0, 1 )
+
+[node name="particlesTimer" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 2 )
+color = Color( 0.12549, 1, 0, 1 )
+
