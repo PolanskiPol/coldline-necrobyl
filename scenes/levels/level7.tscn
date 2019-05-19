@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=10]
 
-[node name="levelMaker" instance=ExtResource( 1 )]
+[node name="levelMaker" index="0" instance=ExtResource( 1 )]
 
 [node name="bossUI" parent="UI" index="2" instance=ExtResource( 2 )]
 
@@ -34,11 +34,12 @@ editor/display_folded = true
 polygon = PoolVector2Array( 818.963, 2869.37, 3435.37, 2873.36, 3379.44, 496.632, 739.073, 440.709 )
 
 [node name="boss" parent="enemies" index="0" instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 2073.99, 1109.31 )
 scale = Vector2( 12, 12 )
 script = ExtResource( 6 )
 health = 16000
-speed = 0.0
+speed = 1.5
 attackDamage = 15
 timeBetweenAttacks = 0.25
 

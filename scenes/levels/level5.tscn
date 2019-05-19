@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/levelMaker.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/levelUI.tscn" type="PackedScene" id=2]
@@ -13,11 +13,12 @@
 [ext_resource path="res://scripts/tintChanger.gd" type="Script" id=11]
 [ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/enemies/enemy_fat.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/props/machinegunPickup.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/enemies/enemy_shoot.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/props/machinegunPickup.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=19]
 
 [node name="levelMaker" type="Node2D"]
 script = ExtResource( 1 )
@@ -88,7 +89,7 @@ __meta__ = {
 }
 
 [node name="enemy_normal4" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( -564.882, -435.626 )
+position = Vector2( -581.054, -465.765 )
 
 [node name="enemy_normal2" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -1538.17, -640.048 )
@@ -112,7 +113,7 @@ position = Vector2( -1760.93, 37.2226 )
 position = Vector2( -1754.87, 955.434 )
 
 [node name="enemy_normal3" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( -839.775, -559.716 )
+position = Vector2( -581.241, -607.135 )
 
 [node name="enemy_normal13" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -1582, 495 )
@@ -124,16 +125,13 @@ position = Vector2( -1921.73, 1364.18 )
 position = Vector2( -1919.88, 1178.17 )
 
 [node name="enemy_normal18" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( -1464.3, 1222.54 )
+position = Vector2( -1474.8, 1271.53 )
 
 [node name="enemy_normal21" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -943.096, 1146.9 )
 
 [node name="enemy_normal23" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -950.187, 1613.5 )
-
-[node name="enemy_normal24" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( -1238.7, 1341.44 )
 
 [node name="enemy_normal25" parent="enemies" instance=ExtResource( 13 )]
 position = Vector2( -756.227, 2443.42 )
@@ -153,14 +151,26 @@ position = Vector2( -4.27121, 2271.42 )
 [node name="enemy_normal34" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -111.412, 2542.19 )
 
-[node name="enemy_normal35" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( 247.857, 2248.78 )
-
 [node name="enemy_normal37" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -1615.44, 1912.35 )
 
 [node name="enemy_normal" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -1861.16, -171.718 )
+
+[node name="enemy_shoot" parent="enemies" instance=ExtResource( 14 )]
+position = Vector2( 0.0646362, -614.446 )
+
+[node name="enemy_shoot2" parent="enemies" instance=ExtResource( 14 )]
+position = Vector2( -646.036, -545.923 )
+
+[node name="enemy_shoot3" parent="enemies" instance=ExtResource( 14 )]
+position = Vector2( -1278.63, 1289.79 )
+
+[node name="enemy_shoot4" parent="enemies" instance=ExtResource( 14 )]
+position = Vector2( -1290.29, 1681.69 )
+
+[node name="enemy_shoot5" parent="enemies" instance=ExtResource( 14 )]
+position = Vector2( 270.951, 2213.05 )
 
 [node name="props" type="Node2D" parent="."]
 editor/display_folded = true
@@ -168,169 +178,169 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="redLights" parent="props" instance=ExtResource( 14 )]
+[node name="redLights" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -81.4594, 38.8666 )
 
-[node name="redLights2" parent="props" instance=ExtResource( 14 )]
+[node name="redLights2" parent="props" instance=ExtResource( 15 )]
 position = Vector2( 79.7621, 39.6176 )
 
-[node name="redLights4" parent="props" instance=ExtResource( 14 )]
+[node name="redLights4" parent="props" instance=ExtResource( 15 )]
 position = Vector2( 87.0707, -109.56 )
 
-[node name="redLights3" parent="props" instance=ExtResource( 14 )]
+[node name="redLights3" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1926.19, -191.555 )
 
-[node name="redLights5" parent="props" instance=ExtResource( 14 )]
+[node name="redLights5" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1473.87, -188.97 )
 
-[node name="redLights6" parent="props" instance=ExtResource( 14 )]
+[node name="redLights6" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1712.96, -181.216 )
 
-[node name="redLights7" parent="props" instance=ExtResource( 14 )]
+[node name="redLights7" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1762.19, 161.051 )
 
-[node name="redLights8" parent="props" instance=ExtResource( 14 )]
+[node name="redLights8" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1759.97, 375.771 )
 
-[node name="redLights9" parent="props" instance=ExtResource( 14 )]
+[node name="redLights9" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1759.97, 579.649 )
 
-[node name="redLights10" parent="props" instance=ExtResource( 14 )]
+[node name="redLights10" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1762, 791.6 )
 
-[node name="redLights11" parent="props" instance=ExtResource( 14 )]
+[node name="redLights11" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1546.59, -728.012 )
 
-[node name="redLights12" parent="props" instance=ExtResource( 14 )]
+[node name="redLights12" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1542.59, -367.652 )
 
-[node name="redLights13" parent="props" instance=ExtResource( 14 )]
+[node name="redLights13" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -88.4968, -108.975 )
 
-[node name="redLights14" parent="props" instance=ExtResource( 14 )]
+[node name="redLights14" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1204.84, -664.279 )
 
-[node name="redLights15" parent="props" instance=ExtResource( 14 )]
+[node name="redLights15" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1204.84, -452.279 )
 
-[node name="redLights16" parent="props" instance=ExtResource( 14 )]
+[node name="redLights16" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1198.84, -254.975 )
 
-[node name="healthPickup" parent="props" instance=ExtResource( 15 )]
+[node name="healthPickup" parent="props" instance=ExtResource( 16 )]
 position = Vector2( -1902.47, -752.079 )
 
-[node name="healthPickup2" parent="props" instance=ExtResource( 15 )]
+[node name="healthPickup2" parent="props" instance=ExtResource( 16 )]
 position = Vector2( -2629.27, 1913.97 )
 
-[node name="shootgunPickup" parent="props" instance=ExtResource( 16 )]
+[node name="shootgunPickup" parent="props" instance=ExtResource( 17 )]
 position = Vector2( -2627.51, 1752.23 )
 
-[node name="shootgunPickup2" parent="props" instance=ExtResource( 16 )]
+[node name="shootgunPickup2" parent="props" instance=ExtResource( 17 )]
 position = Vector2( 407.106, -734.899 )
 
-[node name="redLights17" parent="props" instance=ExtResource( 14 )]
+[node name="redLights17" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -2084.32, 1160.96 )
 
-[node name="redLights18" parent="props" instance=ExtResource( 14 )]
+[node name="redLights18" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1775.24, 1160.96 )
 
-[node name="redLights19" parent="props" instance=ExtResource( 14 )]
+[node name="redLights19" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1466.76, 1154.61 )
 
-[node name="redLights20" parent="props" instance=ExtResource( 14 )]
+[node name="redLights20" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -2087.41, 1383.5 )
 
-[node name="redLights21" parent="props" instance=ExtResource( 14 )]
+[node name="redLights21" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1781.42, 1380.41 )
 
-[node name="redLights22" parent="props" instance=ExtResource( 14 )]
+[node name="redLights22" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1459.97, 1389.69 )
 
-[node name="redLights23" parent="props" instance=ExtResource( 14 )]
+[node name="redLights23" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1135.43, 1383.5 )
 
-[node name="redLights24" parent="props" instance=ExtResource( 14 )]
+[node name="redLights24" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1153.97, 1164.05 )
 
-[node name="redLights25" parent="props" instance=ExtResource( 14 )]
+[node name="redLights25" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1144.7, 1649.32 )
 
-[node name="redLights26" parent="props" instance=ExtResource( 14 )]
+[node name="redLights26" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -2102.87, 1837.86 )
 
-[node name="redLights27" parent="props" instance=ExtResource( 14 )]
+[node name="redLights27" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1719.6, 1837.86 )
 
-[node name="redLights28" parent="props" instance=ExtResource( 14 )]
+[node name="redLights28" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1320.88, 1831.68 )
 
-[node name="redLights29" parent="props" instance=ExtResource( 14 )]
+[node name="redLights29" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -2624.12, 1831.68 )
 
-[node name="redLights30" parent="props" instance=ExtResource( 14 )]
+[node name="redLights30" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1730.86, 2124.09 )
 
-[node name="redLights31" parent="props" instance=ExtResource( 14 )]
+[node name="redLights31" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1301.23, 2117.91 )
 
-[node name="redLights32" parent="props" instance=ExtResource( 14 )]
+[node name="redLights32" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -819.058, 2111.73 )
 
-[node name="redLights33" parent="props" instance=ExtResource( 14 )]
+[node name="redLights33" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1185.8, 2325 )
 
-[node name="redLights34" parent="props" instance=ExtResource( 14 )]
+[node name="redLights34" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -885.988, 2328.09 )
 
-[node name="redLights35" parent="props" instance=ExtResource( 14 )]
+[node name="redLights35" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -607.81, 2340.45 )
 
-[node name="redLights36" parent="props" instance=ExtResource( 14 )]
+[node name="redLights36" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -348.178, 2346.64 )
 
-[node name="redLights37" parent="props" instance=ExtResource( 14 )]
+[node name="redLights37" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1185.8, 2519.72 )
 
-[node name="redLights38" parent="props" instance=ExtResource( 14 )]
+[node name="redLights38" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -885.988, 2535.18 )
 
-[node name="redLights39" parent="props" instance=ExtResource( 14 )]
+[node name="redLights39" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -601.629, 2519.72 )
 
-[node name="redLights40" parent="props" instance=ExtResource( 14 )]
+[node name="redLights40" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -345.087, 2516.63 )
 
-[node name="redLights41" parent="props" instance=ExtResource( 14 )]
+[node name="redLights41" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -911.573, 1233.19 )
 
-[node name="redLights42" parent="props" instance=ExtResource( 14 )]
+[node name="redLights42" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -912.243, 1470.93 )
 
-[node name="redLights43" parent="props" instance=ExtResource( 14 )]
+[node name="redLights43" parent="props" instance=ExtResource( 15 )]
 position = Vector2( -1546.41, -545.159 )
 
-[node name="healthPickup4" parent="props" instance=ExtResource( 15 )]
+[node name="healthPickup4" parent="props" instance=ExtResource( 16 )]
 position = Vector2( -1015.12, 1365.34 )
 
-[node name="healthPickup6" parent="props" instance=ExtResource( 15 )]
+[node name="healthPickup6" parent="props" instance=ExtResource( 16 )]
 position = Vector2( -1940.49, 548.617 )
 
-[node name="shootgunPickup4" parent="props" instance=ExtResource( 16 )]
+[node name="shootgunPickup4" parent="props" instance=ExtResource( 17 )]
 position = Vector2( -752.021, 2317.74 )
 
-[node name="healthPickup7" parent="props" instance=ExtResource( 15 )]
+[node name="healthPickup7" parent="props" instance=ExtResource( 16 )]
 position = Vector2( -932.077, 2112.81 )
 
-[node name="healthPickup8" parent="props" instance=ExtResource( 15 )]
+[node name="healthPickup8" parent="props" instance=ExtResource( 16 )]
 position = Vector2( 265.31, 2356.67 )
 
-[node name="shootgunPickup5" parent="props" instance=ExtResource( 16 )]
+[node name="shootgunPickup5" parent="props" instance=ExtResource( 17 )]
 position = Vector2( -1937.1, 443.367 )
 
-[node name="machinegunPickup2" parent="props" instance=ExtResource( 17 )]
+[node name="machinegunPickup2" parent="props" instance=ExtResource( 18 )]
 position = Vector2( -1015.01, 1308.48 )
 
-[node name="player" parent="." instance=ExtResource( 18 )]
+[node name="player" parent="." instance=ExtResource( 19 )]
 position = Vector2( 1.29968, 35.7717 )
 
 [connection signal="body_entered" from="lightModifiers/tintChanger" to="lightModifiers/tintChanger" method="_on_tintChanger_entered"]

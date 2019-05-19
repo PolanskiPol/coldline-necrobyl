@@ -24,7 +24,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-#	moveToPlayer()
+	moveToPlayer()
 	dieWhen0Health()
 	attack()
 	raycastToPlayer()
@@ -55,7 +55,7 @@ func raycastToPlayer():
 func moveToPlayer():
 	if(followTarget and !dead and isSeeingPlayer):
 		$wallBetween.cast_to = (followTarget.position - position).normalized()
-		rotation = (followTarget.position - position).angle()
+#		rotation = (followTarget.position - position).angle()
 		move_and_collide((followTarget.position - position).normalized()*speed)
 
 # cuando el jugador entra en el rango de ataque, se vuelve el "followTarget"
