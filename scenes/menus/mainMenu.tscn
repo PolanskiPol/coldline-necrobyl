@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://themes/buttonDisabled.tres" type="StyleBox" id=1]
 [ext_resource path="res://themes/buttonFocus.tres" type="StyleBox" id=2]
@@ -7,13 +7,16 @@
 [ext_resource path="res://themes/buttonPressed.tres" type="StyleBox" id=5]
 [ext_resource path="res://themes/fontKremlin_24.tres" type="DynamicFont" id=6]
 [ext_resource path="res://scripts/mainMenu.gd" type="Script" id=7]
-[ext_resource path="res://textures/scenery/necrobylMenu.jpg" type="Texture" id=8]
+[ext_resource path="res://textures/ui/back.jpg" type="Texture" id=8]
 [ext_resource path="res://themes/fontKremlin_96.tres" type="DynamicFont" id=9]
 [ext_resource path="res://scripts/rotate.gd" type="Script" id=10]
 [ext_resource path="res://scripts/UIPlay.gd" type="Script" id=11]
 [ext_resource path="res://scripts/UIContinue.gd" type="Script" id=12]
-[ext_resource path="res://scenes/ui/exitButton.tscn" type="PackedScene" id=13]
-[ext_resource path="res://audio/music/3-Intermission-Hard.ogg" type="AudioStream" id=14]
+[ext_resource path="res://scripts/fullscreen.gd" type="Script" id=13]
+[ext_resource path="res://scenes/ui/exitButton.tscn" type="PackedScene" id=14]
+[ext_resource path="res://audio/music/7-Intermission-Long.ogg" type="AudioStream" id=15]
+[ext_resource path="res://scripts/fullscreenController.gd" type="Script" id=16]
+[ext_resource path="res://scripts/audioController.gd" type="Script" id=17]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 6 )
@@ -38,10 +41,11 @@ script = ExtResource( 7 )
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -480.0
-margin_bottom = -220.0
-rect_scale = Vector2( 1.6, 1.44 )
+margin_right = 640.0
+margin_bottom = 360.0
+rect_scale = Vector2( 0.67, 0.67 )
 texture = ExtResource( 8 )
+stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -52,6 +56,7 @@ custom_constants/margin_left = 100
 custom_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+editor/display_folded = true
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 1180.0
@@ -86,6 +91,7 @@ custom_constants/margin_right = 825
 custom_constants/margin_left = 75
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+editor/display_folded = true
 margin_left = 75.0
 margin_right = 255.0
 margin_bottom = 328.0
@@ -111,23 +117,80 @@ text = "CONTINUAR"
 script = ExtResource( 12 )
 
 [node name="settings" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-visible = false
-margin_top = 48.0
+margin_top = 96.0
 margin_right = 180.0
-margin_bottom = 76.0
+margin_bottom = 124.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
-text = "Settings"
+text = "AJUSTES"
+script = ExtResource( 13 )
 
-[node name="exit" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource( 13 )]
-margin_top = 96.0
-margin_bottom = 124.0
+[node name="exit" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource( 14 )]
+margin_top = 144.0
+margin_bottom = 172.0
 
 [node name="Timer" type="Timer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 
 [node name="menuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 autoplay = true
+
+[node name="options" type="MarginContainer" parent="."]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 500.0
+margin_top = 300.0
+margin_right = -500.0
+margin_bottom = -100.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options"]
+editor/display_folded = true
+margin_right = 282.0
+margin_bottom = 320.0
+
+[node name="pantalla" type="Label" parent="options/VBoxContainer"]
+margin_right = 282.0
+margin_bottom = 28.0
+text = "PANTALLA"
+
+[node name="HSeparator" type="HSeparator" parent="options/VBoxContainer"]
+margin_top = 32.0
+margin_right = 282.0
+margin_bottom = 32.0
+custom_constants/separation = 0
+
+[node name="fullscreen" type="Button" parent="options/VBoxContainer"]
+margin_top = 36.0
+margin_right = 282.0
+margin_bottom = 64.0
+text = "PANTALLA COMPLETA"
+script = ExtResource( 16 )
+
+[node name="HSeparator2" type="HSeparator" parent="options/VBoxContainer"]
+margin_top = 68.0
+margin_right = 282.0
+margin_bottom = 68.0
+custom_constants/separation = 0
+
+[node name="sonido" type="Label" parent="options/VBoxContainer"]
+margin_top = 72.0
+margin_right = 282.0
+margin_bottom = 100.0
+text = "SONIDO"
+
+[node name="soundSlider" type="HSlider" parent="options/VBoxContainer"]
+margin_top = 104.0
+margin_right = 282.0
+margin_bottom = 120.0
+min_value = -60.0
+max_value = 0.0
+step = 6.0
+script = ExtResource( 17 )
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/play" to="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/play" method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/continue" to="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/continue" method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="options/VBoxContainer/fullscreen" to="options/VBoxContainer/fullscreen" method="_on_fullscreen_pressed"]
+[connection signal="value_changed" from="options/VBoxContainer/soundSlider" to="options/VBoxContainer/soundSlider" method="_on_HSlider_value_changed"]
