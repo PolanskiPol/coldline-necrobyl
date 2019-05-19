@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=10]
 
-[node name="levelMaker" index="0" instance=ExtResource( 1 )]
+[node name="levelMaker" instance=ExtResource( 1 )]
 
 [node name="bossUI" parent="UI" index="2" instance=ExtResource( 2 )]
 

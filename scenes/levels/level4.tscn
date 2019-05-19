@@ -57,6 +57,9 @@ position = Vector2( 152.689, -60.1692 )
 [node name="CollisionShape2D" parent="lightModifiers/tintChanger2" index="0"]
 polygon = PoolVector2Array( -1201.19, -402.824, -1201.19, -24.2946, -725.329, -24.2946, -721.724, -402.824 )
 
+[node name="enemies" parent="." index="5"]
+editor/display_folded = true
+
 [node name="enemy_normal3" parent="enemies" index="0" instance=ExtResource( 5 )]
 position = Vector2( -322.565, 222.126 )
 
@@ -111,6 +114,12 @@ position = Vector2( 418.641, -303.158 )
 [node name="enemy_shoot" parent="enemies" index="17" instance=ExtResource( 8 )]
 position = Vector2( -1343.26, 260.986 )
 
+[node name="enemy_shoot2" parent="enemies" index="18" instance=ExtResource( 8 )]
+position = Vector2( 1037.32, -491.618 )
+
+[node name="enemy_shoot3" parent="enemies" index="19" instance=ExtResource( 8 )]
+position = Vector2( 457.83, -122.069 )
+
 [node name="props" parent="." index="6"]
 editor/display_folded = true
 
@@ -149,12 +158,6 @@ position = Vector2( -769.319, 352.36 )
 
 [node name="player" parent="." index="7"]
 position = Vector2( 599.89, 808.925 )
-
-[node name="enemy_shoot" parent="." index="8" instance=ExtResource( 8 )]
-position = Vector2( 1037.32, -491.618 )
-
-[node name="enemy_shoot2" parent="." index="9" instance=ExtResource( 8 )]
-position = Vector2( 457.83, -122.069 )
 
 
 [editable path="lightModifiers/tintChanger"]
