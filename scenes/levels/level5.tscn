@@ -101,7 +101,7 @@ position = Vector2( -1409.88, -480.707 )
 position = Vector2( -1048.09, -289.132 )
 
 [node name="enemy_normal9" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( -1594.25, -177.854 )
+position = Vector2( -1553.43, -173.189 )
 
 [node name="enemy_normal10" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -1764.11, 310.214 )
@@ -110,7 +110,7 @@ position = Vector2( -1764.11, 310.214 )
 position = Vector2( -1760.93, 37.2226 )
 
 [node name="enemy_normal12" parent="enemies" instance=ExtResource( 13 )]
-position = Vector2( -1754.87, 955.434 )
+position = Vector2( -1758.04, 703.153 )
 
 [node name="enemy_normal3" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( -581.241, -607.135 )
@@ -161,7 +161,7 @@ position = Vector2( -1861.16, -171.718 )
 position = Vector2( 0.0646362, -614.446 )
 
 [node name="enemy_shoot2" parent="enemies" instance=ExtResource( 14 )]
-position = Vector2( -646.036, -545.923 )
+position = Vector2( -748.036, -546.923 )
 
 [node name="enemy_shoot3" parent="enemies" instance=ExtResource( 14 )]
 position = Vector2( -1278.63, 1289.79 )
@@ -173,7 +173,6 @@ position = Vector2( -1290.29, 1681.69 )
 position = Vector2( 270.951, 2213.05 )
 
 [node name="props" type="Node2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -227,7 +226,7 @@ position = Vector2( -1204.84, -452.279 )
 position = Vector2( -1198.84, -254.975 )
 
 [node name="healthPickup" parent="props" instance=ExtResource( 16 )]
-position = Vector2( -1902.47, -752.079 )
+position = Vector2( -2052.47, -340.079 )
 
 [node name="healthPickup2" parent="props" instance=ExtResource( 16 )]
 position = Vector2( -2629.27, 1913.97 )
