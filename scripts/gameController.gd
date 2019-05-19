@@ -13,5 +13,6 @@ var zoomedOut = false
 var currentLevelComplete = false
 var enemies = 0
 var secondLevelMusicWhenRestarted = 0.0
-var sceneToGoName = ""
 var sceneToGoNumber = 1
+var volume = 0
+var fullscreen = false

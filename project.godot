@@ -26,6 +26,7 @@ config/icon="res://textures/ui/pngicon.png"
 gameController="*res://scripts/gameController.gd"
 weaponController="*res://scripts/weaponController.gd"
 save="*res://scripts/save.gd"
+configSave="*res://scripts/configSave.gd"
 
 [debug]
 
