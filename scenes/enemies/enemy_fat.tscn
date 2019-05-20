@@ -104,6 +104,7 @@ collide_with_bodies = false
 
 [node name="zombiesound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+volume_db = 8.0
 pitch_scale = 0.64
 autoplay = true
 max_distance = 250.0

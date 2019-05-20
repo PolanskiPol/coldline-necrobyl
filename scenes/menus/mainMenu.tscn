@@ -133,6 +133,7 @@ margin_bottom = 172.0
 
 [node name="menuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+volume_db = -12.0
 autoplay = true
 
 [node name="options" type="MarginContainer" parent="."]

@@ -9,6 +9,7 @@
 
 [node name="levelMusic" parent="." index="0"]
 stream = ExtResource( 2 )
+volume_db = -12.0
 
 [node name="interUI" parent="UI" index="1"]
 editor/display_folded = true
