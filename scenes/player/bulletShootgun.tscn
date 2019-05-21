@@ -9,6 +9,7 @@ extents = Vector2( 1.46168, 4.74808 )
 [node name="bullets" type="Node2D"]
 
 [node name="bullet1" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 128
 collision_mask = 6
 script = ExtResource( 1 )
@@ -38,6 +39,7 @@ color = Color( 0.658824, 0.658824, 0.658824, 1 )
 wait_time = 0.15
 
 [node name="bullet2" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 128
 collision_mask = 6
 script = ExtResource( 1 )
@@ -67,6 +69,7 @@ color = Color( 0.658824, 0.658824, 0.658824, 1 )
 wait_time = 0.15
 
 [node name="bullet3" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 128
 collision_mask = 6
 script = ExtResource( 1 )
@@ -96,6 +99,7 @@ color = Color( 0.658824, 0.658824, 0.658824, 1 )
 wait_time = 0.15
 
 [node name="bullet4" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 128
 collision_mask = 6
 script = ExtResource( 1 )
@@ -125,6 +129,7 @@ color = Color( 0.658824, 0.658824, 0.658824, 1 )
 wait_time = 0.15
 
 [node name="bullet5" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 128
 collision_mask = 6
 script = ExtResource( 1 )
@@ -154,6 +159,7 @@ color = Color( 0.658824, 0.658824, 0.658824, 1 )
 wait_time = 0.15
 
 [node name="bullet6" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 128
 collision_mask = 6
 script = ExtResource( 1 )
@@ -183,6 +189,7 @@ color = Color( 0.658824, 0.658824, 0.658824, 1 )
 wait_time = 0.15
 
 [node name="bullet7" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 128
 collision_mask = 6
 script = ExtResource( 1 )
@@ -212,6 +219,7 @@ color = Color( 0.658824, 0.658824, 0.658824, 1 )
 wait_time = 0.15
 
 [node name="bullet8" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 128
 collision_mask = 6
 script = ExtResource( 1 )
