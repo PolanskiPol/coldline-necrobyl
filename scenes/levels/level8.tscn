@@ -30,6 +30,7 @@ rect_min_size = Vector2( 1280, 0 )
 
 [node name="Label" type="Label" parent="CenterContainer"]
 margin_left = 150.0
+margin_top = 58.0
 margin_right = 1129.0
 margin_bottom = 10495.0
 theme = SubResource( 1 )
@@ -119,6 +120,7 @@ Javier borraz
 Adrian cachay
 pablo romero
 guillermo plou
+lorena
 
 
 consultores tecnicos:
@@ -150,7 +152,7 @@ Adrian cachay
 pablo romero
 guillermo plou
 gorka sanz
-agustin sole
+lorena
 
 
 
@@ -164,8 +166,6 @@ agustin sole
 
 
 basado en hechos reales
-
-
 
 
 
