@@ -5,6 +5,7 @@ var saveFile
 var loadResponse
 
 # Called when the node enters the scene tree for the first time.
+#Para que guarde configuración y cargue configuración
 func _ready():
 	savePath = "user://config.cfg"
 	saveFile = ConfigFile.new()

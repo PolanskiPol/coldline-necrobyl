@@ -1,6 +1,6 @@
 extends Node2D
 
-# script para preparar el nivel
+# script para preparar el intermission
 
 export var startLevelMusicAt = 0.0
 export(Color) var tint = Color(0.13, 0.13, 0.13)

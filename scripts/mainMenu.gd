@@ -4,7 +4,7 @@ extends Control
 # var a = 2
 # var b = "text"
 
-# Called when the node enters the scene tree for the first time.
+# cargar pantalla completa
 func _ready():
 	save.loadGame()
 	configSave.loadVolume()

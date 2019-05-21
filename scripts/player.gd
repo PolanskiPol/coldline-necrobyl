@@ -21,6 +21,7 @@ func _physics_process(delta):
 		playerDie()
 		cameraZoom()
 		removeWeaponWhenMagEmpty()
+		lastChance()
 
 func _input(event):
 	restartLevel(event)
@@ -85,7 +86,11 @@ func playerDie():
 	if(gameController.health < 0):
 		gameController.canShoot = false
 		dead = true
-
+		
+func lastChance():
+	if(gameController.health == 0):
+		gameController.health = 1
+		
 # reempezar nivel
 func restartLevel(event):
 	if(gameController.health < 0 and event.is_action_pressed("event_r")):
@@ -94,6 +99,7 @@ func restartLevel(event):
 		get_parent().get_node("tint").visible = false
 		get_tree().reload_current_scene()
 		
+#La siguiente función vale para poner un difuminado en negro.
 func nextLevelTransition():
 	var transition = load("res://scenes/effects/transition.tscn").instance()
 	transition.intro = false
@@ -108,6 +114,7 @@ func goToNextLevel(event):
 		save.saveGame()
 		gameController.secondLevelMusicWhenRestarted = 0
 		nextLevelTransition()
+# El Timer es para que haga bien el difuminado y que despues cambie de nivel
 		$Timer.start()
 		yield($Timer, "timeout")
 		get_tree().change_scene("res://scenes/levels/intermission" + str(gameController.sceneToGoNumber) + ".tscn")

@@ -4,6 +4,7 @@ var transiting
 var transitingCounter
 
 # Called when the node enters the scene tree for the first time.
+# Efecto de transición al principio, y luego el texto sube.
 func _ready():
 	var transition = load("res://scenes/effects/transition.tscn").instance()
 	transition.intro = false

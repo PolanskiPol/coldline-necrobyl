@@ -4,11 +4,11 @@ extends Control
 # los dialogos funcionan con este script y con "dialogs.gd"
 # "dialogs.gd" es el encargado de manejar todas las cajas de dialogo
 
-# textura para el personaje que habla
+# textura para el personaje que habla (personaje)
 export (Texture) var characterToDisplay
 # array de strings con los dialogos
 export (Array, String) var dialogs
-# decoracion
+# Animación de rotación de los moñacos que hablan.
 export var rotationSpeed = 0.002
 export var maxRotation = 0.12
 # nº total de dialogos
@@ -21,6 +21,7 @@ var rotationDirection
 var rotater
 
 # Called when the node enters the scene tree for the first time.
+# Establece el texto y texturas necesarios para el dialogo.
 func _ready():
 	rotater = 0.01
 	rotationDirection = 1
@@ -34,14 +35,17 @@ func _ready():
 func _physics_process(delta):
 	rotateCharacter()
 
+# Cuando pulsemos el boton de la flechica, pasa al siguiente dialogo.
 func _on_pressed():
 	advanceDialog()
 
 # funcion para cambiar el texto del dialogo
 func advanceDialog():
+	# Si aun hay dialogos, pasará al siguiente.
 	if(currentDialog < totalDialogs):
 		currentDialog += 1
 		dialogText.text = dialogs[currentDialog]
+	# Si no hay, desaparece la caja de dialogo.
 	else:
 		visible = false
 

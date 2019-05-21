@@ -4,6 +4,7 @@ var lastPosition
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	lastPosition es la ultima posicion del sprite
 	lastPosition = get_parent().position
 	
 func _physics_process(delta):

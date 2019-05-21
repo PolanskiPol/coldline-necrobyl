@@ -7,11 +7,12 @@ var playerPosition
 var hit
 
 func _ready():
+	# la bala aparece en la posicion del jugador con la rotacion adecuada
 	playerPosition = get_parent().get_node("player").position
-	# la bala aparece en la posicion del jugador
 	position = playerPosition
 	look_at(get_global_mouse_position())
 	rotation_degrees += 90
+#	boolean para comprobar si la bala ha impactado
 	hit = false
 	
 	# la variable "dir" es la direccion a la que va a ir la bala
@@ -23,8 +24,10 @@ func _ready():
 func _physics_process(delta):
 	# mover la bala en cada Frame
 	var collision = move_and_collide(direction*speed)
+#	hacer daño si impacta enemigo
 	if(collision and collision.collider.collision_layer == 2):
 		collision.collider.damage(damage)
+#	sacar particulas en todos los impactos
 	if(collision):
 		particles(collision)
 		waitAndRemoveBullet(0.15)
