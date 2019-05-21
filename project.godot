@@ -39,10 +39,11 @@ window/size/width=1280
 window/size/height=720
 window/size/resizable=false
 window/size/borderless=true
+window/size/always_on_top=true
 mouse_cursor/custom_image="res://textures/player/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 5, 5 )
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [input]
 
