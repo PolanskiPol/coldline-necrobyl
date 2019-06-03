@@ -8,7 +8,7 @@ var dead
 func _ready():
 	dead = false
 	lastPosition = position
-	addPlayerWeapon("res://scenes/player/weapons/pistol.tscn")
+	addPlayerWeapon("res://scenes/weapons/pistol.tscn")
 	
 
 func _physics_process(delta):
@@ -36,7 +36,7 @@ func addPlayerWeapon(weaponPath):
 	gameController.canShoot = true
 	
 func addPistol():
-	var instancedWeapon = load("res://scenes/player/weapons/pistol.tscn").instance()
+	var instancedWeapon = load("res://scenes/weapons/pistol.tscn").instance()
 	add_child(instancedWeapon)
 	instancedWeapon.position = Vector2(5, 8)
 	gameController.canShoot = true
@@ -48,7 +48,7 @@ func removePreviousWeapon():
 func removeWeaponWhenMagEmpty():
 	if(gameController.bullets == 0):
 		remove_child($weapon)
-		addPlayerWeapon("res://scenes/player/weapons/pistol.tscn")
+		addPlayerWeapon("res://scenes/weapons/pistol.tscn")
 		gameController.canShoot = true
 
 # mueve al jugador con WASD
@@ -65,8 +65,8 @@ func movePlayer():
 		motion.x = 1
 	
 	motion = motion.normalized() # con esto el jugador se mueve a la velocidad correcta en diagonales
-	motion *= speed
-	move_and_collide(motion)
+	motion *= speed * 50
+	move_and_slide(motion)
 
 # acercar la camara. al hacer zoom, no puedes disparar
 func cameraZoom():
