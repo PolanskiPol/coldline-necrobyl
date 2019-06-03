@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rifle.png-e8912851557a198e5c24664c96a59f41.stex"
+path.s3tc="res://.import/rifle.png-e8912851557a198e5c24664c96a59f41.s3tc.stex"
+path.etc="res://.import/rifle.png-e8912851557a198e5c24664c96a59f41.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/topdownweapons/rifle.png"
-dest_files=[ "res://.import/rifle.png-e8912851557a198e5c24664c96a59f41.stex" ]
+dest_files=[ "res://.import/rifle.png-e8912851557a198e5c24664c96a59f41.s3tc.stex", "res://.import/rifle.png-e8912851557a198e5c24664c96a59f41.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

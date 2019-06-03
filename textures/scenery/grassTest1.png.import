@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grassTest1.png-e32bc7219fce86ba900fb7cb18b69eea.stex"
+path.s3tc="res://.import/grassTest1.png-e32bc7219fce86ba900fb7cb18b69eea.s3tc.stex"
+path.etc="res://.import/grassTest1.png-e32bc7219fce86ba900fb7cb18b69eea.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/scenery/grassTest1.png"
-dest_files=[ "res://.import/grassTest1.png-e32bc7219fce86ba900fb7cb18b69eea.stex" ]
+dest_files=[ "res://.import/grassTest1.png-e32bc7219fce86ba900fb7cb18b69eea.s3tc.stex", "res://.import/grassTest1.png-e32bc7219fce86ba900fb7cb18b69eea.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.2
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

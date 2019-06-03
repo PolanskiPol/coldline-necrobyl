@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruins_tileset.png-4f38b2f4730aaeaa03cf5194499f3a04.stex"
+path.s3tc="res://.import/ruins_tileset.png-4f38b2f4730aaeaa03cf5194499f3a04.s3tc.stex"
+path.etc="res://.import/ruins_tileset.png-4f38b2f4730aaeaa03cf5194499f3a04.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/scenery/ruins_tileset.png"
-dest_files=[ "res://.import/ruins_tileset.png-4f38b2f4730aaeaa03cf5194499f3a04.stex" ]
+dest_files=[ "res://.import/ruins_tileset.png-4f38b2f4730aaeaa03cf5194499f3a04.s3tc.stex", "res://.import/ruins_tileset.png-4f38b2f4730aaeaa03cf5194499f3a04.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.2
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boulder.png-620d846a095f85ac5e4bfd25877455ff.stex"
+path.s3tc="res://.import/boulder.png-620d846a095f85ac5e4bfd25877455ff.s3tc.stex"
+path.etc="res://.import/boulder.png-620d846a095f85ac5e4bfd25877455ff.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/scenery/boulder.png"
-dest_files=[ "res://.import/boulder.png-620d846a095f85ac5e4bfd25877455ff.stex" ]
+dest_files=[ "res://.import/boulder.png-620d846a095f85ac5e4bfd25877455ff.s3tc.stex", "res://.import/boulder.png-620d846a095f85ac5e4bfd25877455ff.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.2
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -15,7 +15,7 @@ dest_files=[ "res://.import/cursor.png-df16151c9da771dd59110933d0684c21.stex" ]
 [params]
 
 compress/mode=0
-compress/lossy_quality=0.7
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

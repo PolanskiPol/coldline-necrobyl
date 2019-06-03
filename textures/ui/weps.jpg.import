@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weps.jpg-2b07878e3934b9f509b81f19eae9e811.stex"
+path.s3tc="res://.import/weps.jpg-2b07878e3934b9f509b81f19eae9e811.s3tc.stex"
+path.etc="res://.import/weps.jpg-2b07878e3934b9f509b81f19eae9e811.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/ui/weps.jpg"
-dest_files=[ "res://.import/weps.jpg-2b07878e3934b9f509b81f19eae9e811.stex" ]
+dest_files=[ "res://.import/weps.jpg-2b07878e3934b9f509b81f19eae9e811.s3tc.stex", "res://.import/weps.jpg-2b07878e3934b9f509b81f19eae9e811.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

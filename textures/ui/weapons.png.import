@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weapons.png-e40fe6b8696cf4b43a3eb5f97aeb6c1d.stex"
+path.s3tc="res://.import/weapons.png-e40fe6b8696cf4b43a3eb5f97aeb6c1d.s3tc.stex"
+path.etc="res://.import/weapons.png-e40fe6b8696cf4b43a3eb5f97aeb6c1d.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/ui/weapons.png"
-dest_files=[ "res://.import/weapons.png-e40fe6b8696cf4b43a3eb5f97aeb6c1d.stex" ]
+dest_files=[ "res://.import/weapons.png-e40fe6b8696cf4b43a3eb5f97aeb6c1d.s3tc.stex", "res://.import/weapons.png-e40fe6b8696cf4b43a3eb5f97aeb6c1d.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/vodka_PNG73915.png-86525693125132c5e5344ffef3d5d958.stex"
+path.s3tc="res://.import/vodka_PNG73915.png-86525693125132c5e5344ffef3d5d958.s3tc.stex"
+path.etc="res://.import/vodka_PNG73915.png-86525693125132c5e5344ffef3d5d958.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/misc/vodka_PNG73915.png"
-dest_files=[ "res://.import/vodka_PNG73915.png-86525693125132c5e5344ffef3d5d958.stex" ]
+dest_files=[ "res://.import/vodka_PNG73915.png-86525693125132c5e5344ffef3d5d958.s3tc.stex", "res://.import/vodka_PNG73915.png-86525693125132c5e5344ffef3d5d958.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

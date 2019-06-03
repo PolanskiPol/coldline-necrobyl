@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/NILATS.png-28166107087053b939773f19999061ab.stex"
+path.s3tc="res://.import/NILATS.png-28166107087053b939773f19999061ab.s3tc.stex"
+path.etc="res://.import/NILATS.png-28166107087053b939773f19999061ab.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/dialogs/NILATS.png"
-dest_files=[ "res://.import/NILATS.png-28166107087053b939773f19999061ab.stex" ]
+dest_files=[ "res://.import/NILATS.png-28166107087053b939773f19999061ab.s3tc.stex", "res://.import/NILATS.png-28166107087053b939773f19999061ab.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

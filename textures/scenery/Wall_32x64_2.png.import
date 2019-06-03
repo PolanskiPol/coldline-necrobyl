@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wall_32x64_2.png-814f08502e9d1ce2718e455a358852cf.stex"
+path.s3tc="res://.import/Wall_32x64_2.png-814f08502e9d1ce2718e455a358852cf.s3tc.stex"
+path.etc="res://.import/Wall_32x64_2.png-814f08502e9d1ce2718e455a358852cf.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/scenery/Wall_32x64_2.png"
-dest_files=[ "res://.import/Wall_32x64_2.png-814f08502e9d1ce2718e455a358852cf.stex" ]
+dest_files=[ "res://.import/Wall_32x64_2.png-814f08502e9d1ce2718e455a358852cf.s3tc.stex", "res://.import/Wall_32x64_2.png-814f08502e9d1ce2718e455a358852cf.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.2
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

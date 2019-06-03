@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/woodFloor3.jpg-0284625a9a3728050951f82ffa6ea84f.stex"
+path.s3tc="res://.import/woodFloor3.jpg-0284625a9a3728050951f82ffa6ea84f.s3tc.stex"
+path.etc="res://.import/woodFloor3.jpg-0284625a9a3728050951f82ffa6ea84f.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/scenery/woodFloor3.jpg"
-dest_files=[ "res://.import/woodFloor3.jpg-0284625a9a3728050951f82ffa6ea84f.stex" ]
+dest_files=[ "res://.import/woodFloor3.jpg-0284625a9a3728050951f82ffa6ea84f.s3tc.stex", "res://.import/woodFloor3.jpg-0284625a9a3728050951f82ffa6ea84f.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.2
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

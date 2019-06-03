@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprJanitorWalk_strip8.png-29e441005893a79909b0faa224e8e865.stex"
+path.s3tc="res://.import/sprJanitorWalk_strip8.png-29e441005893a79909b0faa224e8e865.s3tc.stex"
+path.etc="res://.import/sprJanitorWalk_strip8.png-29e441005893a79909b0faa224e8e865.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/enemies/sprJanitorWalk_strip8.png"
-dest_files=[ "res://.import/sprJanitorWalk_strip8.png-29e441005893a79909b0faa224e8e865.stex" ]
+dest_files=[ "res://.import/sprJanitorWalk_strip8.png-29e441005893a79909b0faa224e8e865.s3tc.stex", "res://.import/sprJanitorWalk_strip8.png-29e441005893a79909b0faa224e8e865.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

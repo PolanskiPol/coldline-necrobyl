@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/carpet.jpg-4e4cd1123517f3ac497131c4f626d9b9.stex"
+path.s3tc="res://.import/carpet.jpg-4e4cd1123517f3ac497131c4f626d9b9.s3tc.stex"
+path.etc="res://.import/carpet.jpg-4e4cd1123517f3ac497131c4f626d9b9.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/scenery/carpet.jpg"
-dest_files=[ "res://.import/carpet.jpg-4e4cd1123517f3ac497131c4f626d9b9.stex" ]
+dest_files=[ "res://.import/carpet.jpg-4e4cd1123517f3ac497131c4f626d9b9.s3tc.stex", "res://.import/carpet.jpg-4e4cd1123517f3ac497131c4f626d9b9.etc.stex" ]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.2
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

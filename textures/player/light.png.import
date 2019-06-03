@@ -15,7 +15,7 @@ dest_files=[ "res://.import/light.png-31509ec9d5c4ebfc564204658d147a60.stex" ]
 [params]
 
 compress/mode=0
-compress/lossy_quality=0.7
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
