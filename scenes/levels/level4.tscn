@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/levels/levelMaker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/maker/levelMaker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://audio/music/4-Mission.ogg" type="AudioStream" id=2]
 [ext_resource path="res://scenes/tilesets/treeTiles.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/props/tintChanger.tscn" type="PackedScene" id=4]
@@ -159,7 +159,6 @@ position = Vector2( -769.319, 352.36 )
 
 [node name="player" parent="." index="7"]
 position = Vector2( 599.89, 808.925 )
-
 
 [editable path="lightModifiers/tintChanger"]
 

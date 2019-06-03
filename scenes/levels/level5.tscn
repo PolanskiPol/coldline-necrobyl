@@ -342,6 +342,5 @@ position = Vector2( -1015.01, 1308.48 )
 
 [node name="player" parent="." instance=ExtResource( 19 )]
 position = Vector2( 1.29968, 35.7717 )
-
 [connection signal="body_entered" from="lightModifiers/tintChanger" to="lightModifiers/tintChanger" method="_on_tintChanger_entered"]
 [connection signal="body_exited" from="lightModifiers/tintChanger" to="lightModifiers/tintChanger" method="_on_tintChanger_exited"]

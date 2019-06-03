@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/levels/intermissionMaker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/maker/intermissionMaker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://audio/music/3-Intermission-Hard.ogg" type="AudioStream" id=2]
 [ext_resource path="res://scenes/ui/dialogs/maker/dialog1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://textures/dialogs/tvSprite.png" type="Texture" id=4]
@@ -9,6 +9,7 @@
 [ext_resource path="res://textures/dialogs/NILATS.png" type="Texture" id=7]
 [ext_resource path="res://textures/dialogs/dimitri.png" type="Texture" id=8]
 [ext_resource path="res://scenes/effects/NILATS.tscn" type="PackedScene" id=9]
+
 
 [node name="level2" instance=ExtResource( 1 )]
 
