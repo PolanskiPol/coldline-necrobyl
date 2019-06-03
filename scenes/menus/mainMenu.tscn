@@ -185,8 +185,8 @@ margin_bottom = 120.0
 min_value = -60.0
 max_value = 0.0
 step = 6.0
+ticks_on_borders = true
 script = ExtResource( 17 )
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/play" to="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/play" method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/continue" to="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/continue" method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
