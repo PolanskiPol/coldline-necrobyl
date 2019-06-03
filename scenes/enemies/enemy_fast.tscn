@@ -3,11 +3,12 @@
 [ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/enemies/sprBoss2WalkCleaver_strip8.png" type="Texture" id=2]
 
-[node name="enemy_fast" index="0" instance=ExtResource( 1 )]
-health = 50
-speed = 7.0
-attackDamage = 10
-timeBetweenAttacks = 0.4
+[node name="enemy_fast" instance=ExtResource( 1 )]
+position = Vector2( 0.735046, 0 )
+health = 40.0
+speed = 6.0
+attackDamage = 2.0
+timeBetweenAttacks = 0.1
 
 [node name="Timer" parent="." index="1"]
 wait_time = 0.7
@@ -15,4 +16,3 @@ wait_time = 0.7
 [node name="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
 frame = 0
-

@@ -1,10 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scripts/enemyBoss1.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemies/enemyBoss1.gd" type="Script" id=1]
 [ext_resource path="res://textures/enemies/boss1.png" type="Texture" id=2]
 [ext_resource path="res://scripts/animations.gd" type="Script" id=3]
 [ext_resource path="res://scenes/effects/bright.tscn" type="PackedScene" id=4]
 [ext_resource path="res://audio/fx/zombie1.wav" type="AudioStream" id=5]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"

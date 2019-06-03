@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scripts/enemyGeneralController.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemies/enemyGeneralController.gd" type="Script" id=1]
 [ext_resource path="res://textures/enemies/sprAssassinWalk_strip8.png" type="Texture" id=2]
 [ext_resource path="res://scripts/animations.gd" type="Script" id=3]
 [ext_resource path="res://scenes/effects/bright.tscn" type="PackedScene" id=4]
@@ -47,11 +47,15 @@ height = 288.113
 radius = 20.483
 
 [node name="enemy_normal" type="KinematicBody2D"]
+z_index = 1
 collision_layer = 2
 collision_mask = 645
 script = ExtResource( 1 )
-speed = 4.5
-timeBetweenAttacks = 1.2
+health = 100.0
+speed = 4.0
+attackDamage = 25.0
+timeBetweenAttacks = 1.0
+melee = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 1 )
@@ -101,7 +105,6 @@ volume_db = 8.0
 pitch_scale = 0.64
 autoplay = true
 max_distance = 250.0
-
 [connection signal="body_entered" from="npcVision" to="." method="_on_vision_entered"]
 [connection signal="body_exited" from="npcVision" to="." method="_on_vision_exited"]
 [connection signal="body_entered" from="npcAttack" to="." method="_on_attack_entered"]
