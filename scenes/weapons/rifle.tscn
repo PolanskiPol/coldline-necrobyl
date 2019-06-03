@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/weapons/weaponMaker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/fx/rifle.wav" type="AudioStream" id=2]
+[ext_resource path="res://textures/topdownweapons/machinegun.png" type="Texture" id=3]
+
+[node name="weapon" instance=ExtResource( 1 )]
+weaponName = "Ametralladora"
+damage = 35
+mag = 32
+timeBetweenShots = 0.12
+accuracyAngle = 0.06
+usesAmmo = true
+automatic = true
+sound = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.08, 0.06 )
+texture = ExtResource( 3 )

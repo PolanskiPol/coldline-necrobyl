@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/weapons/weaponMaker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/fx/shotgun.wav" type="AudioStream" id=2]
+[ext_resource path="res://textures/topdownweapons/shotgun.png" type="Texture" id=3]
+
+[node name="weapon" instance=ExtResource( 1 )]
+weaponName = "Escopeta"
+damage = 45
+bulletsPerShot = 12
+mag = 6
+timeBetweenShots = 0.6
+accuracyAngle = 0.35
+usesAmmo = true
+sound = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.053, 0.066 )
+texture = ExtResource( 3 )

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/weapons/weaponMaker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/fx/pistol.wav" type="AudioStream" id=2]
+[ext_resource path="res://textures/topdownweapons/pistol.png" type="Texture" id=3]
+
+[node name="weapon" instance=ExtResource( 1 )]
+weaponName = "Pistola"
+damage = 50
+timeBetweenShots = 0.3
+accuracyAngle = 0.05
+sound = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )

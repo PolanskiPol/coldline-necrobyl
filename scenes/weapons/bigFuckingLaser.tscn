@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/weapons/weaponMaker.tscn" type="PackedScene" id=1]
+
+[node name="weapon" instance=ExtResource( 1 )]
+weaponName = "Big Fucking Laser"
+damage = 5
+mag = 300
+timeBetweenShots = 0.001
+usesAmmo = true
+automatic = true
