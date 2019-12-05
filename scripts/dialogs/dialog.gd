@@ -39,6 +39,10 @@ func _physics_process(delta):
 func _on_pressed():
 	advanceDialog()
 
+# Cuando pulsemos el boton de saltar intermission, empezar nivel
+func _on_pressedSkip():
+	skipLevel()
+
 # funcion para cambiar el texto del dialogo
 func advanceDialog():
 	# Si aun hay dialogos, pasará al siguiente.
@@ -56,3 +60,16 @@ func rotateCharacter():
 	
 	rotater += rotationSpeed*rotationDirection
 	character.set_rotation(rotater)
+	
+func nextLevelTransition():
+	var transition = load("res://scenes/effects/transition.tscn").instance()
+	transition.intro = false
+	get_parent().get_node("UI").add_child(transition)
+	
+func skipLevel():
+	gameController.health = 100
+	gameController.canShoot = true
+	nextLevelTransition()
+	$Timer.start()
+	yield($Timer, "timeout")
+	get_tree().change_scene("res://scenes/levels/level" + str(gameController.sceneToGoNumber) + ".tscn")

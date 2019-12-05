@@ -19,8 +19,8 @@ func _physics_process(delta):
 	look_at(get_global_mouse_position())
 	cameraZoom()
 
-func _input(event):
-	goToNextLevel(event)
+#func _input(event):
+#	goToNextLevel(event)
 
 # mueve al jugador con WASD
 func movePlayer():
@@ -55,12 +55,12 @@ func nextLevelTransition():
 	var transition = load("res://scenes/effects/transition.tscn").instance()
 	transition.intro = false
 	get_parent().get_node("UI").add_child(transition)
-
-func goToNextLevel(event):
-	if(event.is_action_pressed("event_r")):
-		gameController.health = 100
-		gameController.canShoot = true
-		nextLevelTransition()
-		$Timer.start()
-		yield($Timer, "timeout")
-		get_tree().change_scene("res://scenes/levels/level" + str(gameController.sceneToGoNumber) + ".tscn")
+	
+#func goToNextLevel(event):
+#	if(event.is_action_pressed("event_r")):
+#		gameController.health = 100
+#		gameController.canShoot = true
+#		nextLevelTransition()
+#		$Timer.start()
+#		yield($Timer, "timeout")
+#		get_tree().change_scene("res://scenes/levels/level" + str(gameController.sceneToGoNumber) + ".tscn")

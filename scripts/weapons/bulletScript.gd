@@ -47,8 +47,11 @@ func particles(coll):
 	# cambiar color a rojo si colisiona con un enemigo
 	if(coll.collider.collision_layer == 2):
 		$hitParticles.color = Color(255, 0, 0)
+		$hitParticles.amount = 15
+		$hitParticles.rotation_degrees += 180
 
 	$hitParticles.emitting = true
+	$stopParticles.start(0)
 
 # esperar "wait" para eliminar la bala
 func waitAndRemoveBullet(wait):
@@ -67,3 +70,10 @@ func waitAndRemoveBullet(wait):
 		yield($particlesTimer, "timeout")
 		get_parent().remove_child(self)
 		
+
+func _on_stopParticles_timeout():
+	$hitParticles.emitting = false
+
+
+func _on_Area2D_body_entered(body):
+	pass # Replace with function body.

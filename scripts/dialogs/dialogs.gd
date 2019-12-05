@@ -17,5 +17,7 @@ func _on_hide():
 	if(currentDialog != totalDialogs):
 		currentDialog += 1
 		get_node("dialog" + str(currentDialog)).visible = true
+		
+
 	
 	

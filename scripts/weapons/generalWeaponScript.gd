@@ -21,10 +21,12 @@ func _physics_process(delta):
 	# "action_just_pressed" para semiautomatico. quitar el "just_" para automatico
 	if(Input.is_action_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot and automatic):
 		shoot()
-		
-func _input(event):
-	if(event.is_action_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot and !automatic):
+	elif(Input.is_action_just_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot and !automatic):
 		shoot()
+#
+#func _input(event):
+#	if(event.is_action_pressed("event_leftclick") and $Timer.time_left <= 0 and gameController.canShoot and !automatic):
+#		shoot()
 
 #func addBulletToScene(bulletInstance):
 #	if(bulletInstance.name == "bullet"):
@@ -62,5 +64,5 @@ func waitBetweenShots(wait):
 	$Timer.start()
 	yield($Timer, "timeout")
 	$Timer.wait_time = wait
-	if(!gameController.zoomedOut):
+	if(!gameController.zoomedOut and gameController.health > 0):
 		gameController.canShoot = true

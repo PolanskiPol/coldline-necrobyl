@@ -1,9 +1,13 @@
 extends KinematicBody2D
 
+signal moving
+
 export var speed = 4.0
 export var animationSpeed = 200
+
 var lastPosition
 var dead
+var lastMousePosition
 
 func _ready():
 	dead = false
@@ -17,7 +21,7 @@ func _physics_process(delta):
 		# dependiendo del Input (tecla), movemos el jugador con un Vector2(x, y) distinto
 		movePlayer()
 		# get_global_mouse_position() devuelve la posicion del raton en la pantalla
-		look_at(get_global_mouse_position())
+		setPlayerRotation()
 		playerDie()
 		cameraZoom()
 		removeWeaponWhenMagEmpty()
@@ -26,6 +30,11 @@ func _physics_process(delta):
 func _input(event):
 	restartLevel(event)
 	goToNextLevel(event)
+
+func setPlayerRotation():
+	if(lastMousePosition != get_global_mouse_position()):
+		look_at(get_global_mouse_position())
+	lastMousePosition = get_global_mouse_position()
 
 # funcion para hacer los cambios de armas del jugador
 func addPlayerWeapon(weaponPath):
@@ -57,6 +66,7 @@ func movePlayer():
 	
 	if(Input.is_action_pressed("event_s")):
 		motion.y = 1
+		emit_signal("moving")
 	elif(Input.is_action_pressed("event_w")):
 		motion.y = -1
 	if(Input.is_action_pressed("event_a")):
@@ -70,20 +80,29 @@ func movePlayer():
 
 # acercar la camara. al hacer zoom, no puedes disparar
 func cameraZoom():
-	if(Input.is_action_just_pressed("event_shift")):
-		$Camera2D.zoom.x = 0.6
-		$Camera2D.zoom.y = 0.6
-		gameController.zoomedOut = true
-		gameController.canShoot = false
+#	if(Input.is_action_just_pressed("event_shift")):
+#		$Camera2D.zoom.x = 0.6
+#		$Camera2D.zoom.y = 0.6
+#		gameController.zoomedOut = true
+#		gameController.canShoot = false
+#	elif(Input.is_action_just_released("event_shift")):
+#		$Camera2D.zoom.x = 0.5
+#		$Camera2D.zoom.y = 0.5
+#		gameController.zoomedOut = false
+#		gameController.canShoot = true
+	if(Input.is_action_pressed("event_shift")):
+		var fixedMousePosition = get_viewport().size/2 - get_viewport().get_mouse_position()
+		$Camera2D.offset.x = -fixedMousePosition.x/2.75
+		$Camera2D.offset.y = -fixedMousePosition.y/2.75*16/9
 	elif(Input.is_action_just_released("event_shift")):
-		$Camera2D.zoom.x = 0.5
-		$Camera2D.zoom.y = 0.5
-		gameController.zoomedOut = false
-		gameController.canShoot = true
+		$Camera2D.offset = Vector2(0, 0)
+#		$Tween.stop_all()
+#		$Tween.start()
+#		$Tween.interpolate_property($Camera2D, "offset", $Camera2D.offset, Vector2(0, 0), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 
 # cuando la vida del jugador es menor que 0, cambiamos la escena a "gameOver.tscn"
 func playerDie():
-	if(gameController.health < 0):
+	if(gameController.health <= 0):
 		gameController.canShoot = false
 		dead = true
 		
