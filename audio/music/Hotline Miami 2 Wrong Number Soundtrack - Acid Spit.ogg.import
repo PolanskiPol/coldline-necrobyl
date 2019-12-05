@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hotline Miami 2 Wrong Number Soundtrack - Acid Spit.ogg-aa7ccd08702d0a6cb4949f49647f568d.oggstr"
+
+[deps]
+
+source_file="res://audio/music/Hotline Miami 2 Wrong Number Soundtrack - Acid Spit.ogg"
+dest_files=[ "res://.import/Hotline Miami 2 Wrong Number Soundtrack - Acid Spit.ogg-aa7ccd08702d0a6cb4949f49647f568d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
