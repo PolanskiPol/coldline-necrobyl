@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://textures/player/light.png" type="Texture" id=2]
-[ext_resource path="res://textures/player/luz1.png" type="Texture" id=3]
-[ext_resource path="res://textures/player/sprPSneakUnarmed_strip4.png" type="Texture" id=4]
-[ext_resource path="res://scripts/animations.gd" type="Script" id=5]
+[ext_resource path="res://audio/fx/flashlight.wav" type="AudioStream" id=2]
+[ext_resource path="res://textures/player/light.png" type="Texture" id=3]
+[ext_resource path="res://textures/player/luz1.png" type="Texture" id=4]
+[ext_resource path="res://textures/player/sprPSneakUnarmed_strip4.png" type="Texture" id=5]
+[ext_resource path="res://scripts/animations.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
 tracks/0/type = "value"
@@ -48,7 +49,7 @@ code = "shader_type canvas_item;
 
 
 void vertex() {
-// Salida:0
+// Output:0
 
 }
 
@@ -62,13 +63,13 @@ void fragment() {
 		n_out2p1 = _tex_read.a;
 	}
 
-// Salida:0
+// Output:0
 	NORMALMAP = n_out2p0;
 
 }
 
 void light() {
-// Salida:0
+// Output:0
 
 }
 "
@@ -86,6 +87,11 @@ shader = SubResource( 5 )
 collision_mask = 639
 script = ExtResource( 1 )
 speed = 5.0
+
+[node name="flashlightSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = 1.24
+attenuation = 1.10957
 
 [node name="shootWeapon" type="AudioStreamPlayer2D" parent="."]
 
@@ -112,17 +118,19 @@ position = Vector2( -1, 0 )
 shape = SubResource( 3 )
 
 [node name="playerBright" type="Light2D" parent="."]
+visible = false
 scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 mode = 2
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 10.0
 
 [node name="flashlight" type="Light2D" parent="."]
+visible = false
 position = Vector2( -0.0696087, -0.107033 )
 rotation = 1.5708
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, -135.935 )
 mode = 2
 shadow_enabled = true
@@ -132,8 +140,10 @@ shadow_filter_smooth = 10.0
 [node name="spriteJugador" type="Sprite" parent="."]
 material = SubResource( 6 )
 position = Vector2( -0.101952, 0.101955 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 hframes = 4
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
