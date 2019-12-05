@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$ViewportContainer/Viewport.world_2d = get_tree().get_root().world_2d
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	pass
+#	$ViewportContainer/Viewport/Camera2D.position = get_parent().get_parent().get_node(\"player\").position
+#	$TextureRect.texture = get_viewport().
+#	.get_texture()
+"
+
+[node name="minimap" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1042.0
+margin_bottom = -509.0
+script = SubResource( 1 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 300, 300 )
+own_world = true
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera2D" type="Camera2D" parent="ViewportContainer/Viewport"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_left = 439.0
+margin_top = 682.0
+margin_right = 841.0
+margin_bottom = 908.0
+expand = true
+stretch_mode = 5
