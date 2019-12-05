@@ -17,7 +17,6 @@ bg_color = Color( 0.415686, 0.415686, 0.415686, 1 )
 bg_color = Color( 0.227451, 0.227451, 0.227451, 1 )
 
 [node name="dialog1" type="MarginContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -121,12 +120,11 @@ margin_right = 998.0
 margin_bottom = 128.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer"]
-margin_left = 407.0
-margin_right = 591.0
+margin_left = 372.0
+margin_right = 625.0
 margin_bottom = 14.0
 
 [node name="continue" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = -100.0
 margin_right = 71.0
 margin_bottom = 14.0
 size_flags_horizontal = 4
@@ -138,9 +136,15 @@ custom_styles/normal = ExtResource( 8 )
 custom_fonts/font = ExtResource( 9 )
 text = "SIGUIENTE"
 
-[node name="skip" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Container" type="Container" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 75.0
-margin_right = 284.0
+margin_right = 140.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 65, 0 )
+
+[node name="skip" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 144.0
+margin_right = 253.0
 margin_bottom = 14.0
 size_flags_horizontal = 4
 custom_styles/hover = ExtResource( 4 )
@@ -151,4 +155,4 @@ custom_styles/normal = ExtResource( 8 )
 custom_fonts/font = ExtResource( 9 )
 text = "EMPEZAR MISION"
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer/continue" to="." method="_on_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer/skip" to="." method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer/skip" to="." method="_on_pressedSkip"]
