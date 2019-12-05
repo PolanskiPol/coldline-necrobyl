@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/enemies/enemy_maker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/enemies/sprJanitorWalk_strip8.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.30177
+height = 9.84904
+
+[node name="enemy_TEST" instance=ExtResource( 1 )]
+editor/display_folded = true
+health = 120
+speed = 5.3
+attackDamage = 30
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = true
+position = Vector2( -1, 0 )
+
+[node name="Sprite" parent="." index="4"]
+texture = ExtResource( 2 )
+
+[node name="npcAttack" parent="." index="8"]
+position = Vector2( 3, 0 )
+
+[node name="CollisionShape2D" parent="npcAttack" index="0"]
+position = Vector2( 2, 0 )
+shape = SubResource( 1 )

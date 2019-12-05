@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/enemies/enemyGeneralController.gd" type="Script" id=1]
-[ext_resource path="res://textures/enemies/sprAssassinWalk_strip8.png" type="Texture" id=2]
+[ext_resource path="res://textures/enemies/sprWorkerWalk_strip8.png" type="Texture" id=2]
 [ext_resource path="res://scripts/animations.gd" type="Script" id=3]
-[ext_resource path="res://scenes/effects/bright.tscn" type="PackedScene" id=4]
+[ext_resource path="res://textures/player/light.png" type="Texture" id=4]
 [ext_resource path="res://audio/fx/zombie1.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
@@ -38,23 +38,24 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=3]
+radius = 23.1019
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 184.428
-height = 288.113
+radius = 222.317
+height = 442.747
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 20.483
+radius = 30.6653
 
-[node name="enemy_normal" type="KinematicBody2D"]
+[node name="enemy_fat" type="KinematicBody2D"]
 z_index = 1
 collision_layer = 2
 collision_mask = 645
 script = ExtResource( 1 )
-health = 100.0
-speed = 4.0
-attackDamage = 25.0
-timeBetweenAttacks = 1.0
+health = 700.0
+speed = 2.5
+attackDamage = 50.0
+timeBetweenAttacks = 1.25
 melee = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -68,17 +69,20 @@ position = Vector2( -0.833916, 0 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 hframes = 8
 frame = 7
 script = ExtResource( 3 )
 
-[node name="bright" parent="." instance=ExtResource( 4 )]
-color = Color( 0, 1, 0, 1 )
+[node name="bright" type="Light2D" parent="."]
+position = Vector2( 0, -0.135273 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+color = Color( 0, 1, 0.0156863, 1 )
+shadow_enabled = true
 
 [node name="npcVision" type="Area2D" parent="."]
-editor/display_folded = true
-visible = false
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcVision"]
@@ -94,10 +98,10 @@ collision_layer = 64
 shape = SubResource( 5 )
 
 [node name="wallBetween" type="RayCast2D" parent="."]
-enabled = true
 cast_to = Vector2( 0, 0 )
 collision_mask = 16
 collide_with_areas = true
+collide_with_bodies = false
 
 [node name="zombiesound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
