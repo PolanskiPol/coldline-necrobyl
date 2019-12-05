@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/weapons/bulletScript.gd" type="Script" id=1]
 [ext_resource path="res://textures/topdownweapons/bullet.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1.46168, 4.74808 )
 
 [node name="bullet" type="KinematicBody2D"]
@@ -17,13 +17,13 @@ scale = Vector2( 0.018, 0.018 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="hitParticles" type="CPUParticles2D" parent="."]
 position = Vector2( 0.101597, -4.13161 )
 rotation = 1.5708
 emitting = false
-amount = 200
+amount = 5
 lifetime = 0.75
 speed_scale = 2.5
 spread = 24.57
@@ -38,4 +38,8 @@ scale_amount_random = 1.0
 color = Color( 0.658824, 0.658824, 0.658824, 1 )
 
 [node name="particlesTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="stopParticles" type="Timer" parent="."]
 wait_time = 0.15
+[connection signal="timeout" from="stopParticles" to="." method="_on_stopParticles_timeout"]
