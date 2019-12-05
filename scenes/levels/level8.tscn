@@ -30,9 +30,8 @@ rect_min_size = Vector2( 1280, 0 )
 
 [node name="Label" type="Label" parent="CenterContainer"]
 margin_left = 150.0
-margin_top = 58.0
 margin_right = 1129.0
-margin_bottom = 10495.0
+margin_bottom = 10437.0
 theme = SubResource( 1 )
 text = "un juego de dimitri 3.5 games
 
@@ -275,4 +274,3 @@ texture = ExtResource( 11 )
 position = Vector2( 635.765, 9450.16 )
 scale = Vector2( 3.72619, 3.63292 )
 texture = ExtResource( 12 )
-

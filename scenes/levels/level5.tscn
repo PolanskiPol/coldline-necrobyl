@@ -11,14 +11,15 @@
 [ext_resource path="res://scenes/tilesets/houseTiles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/tilesets/decoCasa.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/tintChanger.gd" type="Script" id=11]
-[ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/enemies/enemy_fat.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/enemies/enemy_shoot.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/enemies/OLD_ENEMIES/enemy_normal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/enemies/OLD_ENEMIES/enemy_fat.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/enemies/OLD_ENEMIES/enemy_shoot.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/props/machinegunPickup.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=19]
+
 
 [node name="levelMaker" type="Node2D"]
 script = ExtResource( 1 )

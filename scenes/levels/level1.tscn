@@ -4,12 +4,13 @@
 [ext_resource path="res://audio/music/2-Mission.ogg" type="AudioStream" id=2]
 [ext_resource path="res://scenes/tilesets/treeTiles.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/props/tintChanger.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/enemies/enemy_normal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/enemies/enemy_fast.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/enemies/enemy_shoot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/enemies/OLD_ENEMIES/enemy_normal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/enemies/OLD_ENEMIES/enemy_fast.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/enemies/OLD_ENEMIES/enemy_shoot.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/props/shootgunPickup.tscn" type="PackedScene" id=10]
+
 
 [node name="level1" instance=ExtResource( 1 )]
 

@@ -14,6 +14,12 @@
 stream = ExtResource( 2 )
 volume_db = -12.0
 
+[node name="interUI" parent="UI" index="1"]
+editor/display_folded = true
+
+[node name="dialogs" parent="UI" index="3"]
+editor/display_folded = true
+
 [node name="dialog1" parent="UI/dialogs" index="0" instance=ExtResource( 3 )]
 characterToDisplay = ExtResource( 4 )
 dialogs = [ "TV: BOLETIN INFORMATIVO TIVOSICO.", "TV: TUPIN Y PRUMT AHORA SON AMIGUIS DE LA MUERTE." ]
@@ -29,6 +35,9 @@ dialogs = [ "PRUMT: SI SI, JAJA.", "PRUMT: Y NO ES POR EL DINERO.", "PRUMT: CODO
 [node name="dialog4" parent="UI/dialogs" index="3" instance=ExtResource( 3 )]
 characterToDisplay = ExtResource( 7 )
 dialogs = [ "DIMITRI: NOOOOOOOOOO!", "DIMITRI: ESTUPIDO TUPIN.", "DIMITRI: HAS DESTRUIDO LOS IDEALES DE LOS ESTADOS TIVOSICOS.", "DIMITRI: AHORA TENDRE QUE ARREGLARLO YO TODO.", "DIMITRI: NECESITO BOMBAS NUCLEARES.", "DIMITRI: IRE A LA CENTRAL NUCLEAR ABANDONADA DE NECROBYL A CONSEGUIRLAS.", "DIMITRI: HAY MUCHO MATERIAL NUCLEAR CHUNGO DESDE QUE LA REVENTE AQUELLA VEZ.", "DIMITRI: QUE BUENO FUE ESO." ]
+
+[node name="props" parent="." index="5"]
+editor/display_folded = true
 [connection signal="hide" from="UI/dialogs/dialog1" to="UI/dialogs" method="_on_hide"]
 [connection signal="hide" from="UI/dialogs/dialog2" to="UI/dialogs" method="_on_hide"]
 [connection signal="hide" from="UI/dialogs/dialog3" to="UI/dialogs" method="_on_hide"]

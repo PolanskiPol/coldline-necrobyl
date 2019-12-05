@@ -4,12 +4,13 @@
 [ext_resource path="res://scenes/ui/bossUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://audio/music/5-Mission-01.ogg" type="AudioStream" id=3]
 [ext_resource path="res://scenes/props/tintChanger.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/enemies/enemy_boss1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/enemies/OLD_ENEMIES/enemy_boss1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/props/redLights.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/props/machinegunPickup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/props/healthPickup.tscn" type="PackedScene" id=8]
 
-[node name="levelMaker" index="0" instance=ExtResource( 1 )]
+
+[node name="levelMaker" instance=ExtResource( 1 )]
 
 [node name="bossUI" parent="UI" index="2" instance=ExtResource( 2 )]
 
