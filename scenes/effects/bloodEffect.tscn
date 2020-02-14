@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Sprite
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	randomize()
+	texture = load(\"res://textures/gore/blood\" + str(randi()%8+1) + \".png\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="bloodEffect" type="Sprite"]
+scale = Vector2( 1.25, 1.25 )
+script = SubResource( 1 )
