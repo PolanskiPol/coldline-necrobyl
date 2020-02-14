@@ -10,11 +10,8 @@ var dead
 var lastMousePosition
 
 func _ready():
-	dead = false
-	lastPosition = position
-	addPlayerWeapon("res://scenes/weapons/pistol.tscn")
+	setup()
 	
-
 func _physics_process(delta):
 	if(!dead):
 		# detectamos los Input en cada frame, asi el jugador responde mas rapido
@@ -40,25 +37,27 @@ func setPlayerRotation():
 func addPlayerWeapon(weaponPath):
 	removePreviousWeapon()
 	var instancedWeapon = load(weaponPath).instance()
-	add_child(instancedWeapon)
+	$weaponSlot.add_child(instancedWeapon)
 	instancedWeapon.position = Vector2(5, 8)
 	gameController.canShoot = true
 	
 func addPistol():
 	var instancedWeapon = load("res://scenes/weapons/pistol.tscn").instance()
-	add_child(instancedWeapon)
+	$weaponSlot.add_child(instancedWeapon)
 	instancedWeapon.position = Vector2(5, 8)
 	gameController.canShoot = true
 	
 func removePreviousWeapon():
-	if(has_node("weapon")):
-		remove_child($weapon)
-
+	for i in $weaponSlot.get_children():
+		if(i.name == "shootWeapon" or i.name == "bulletInstancePosition"):
+			pass
+		else:
+			$weaponSlot.remove_child(i)
+		
 func removeWeaponWhenMagEmpty():
 	if(gameController.bullets == 0):
-		remove_child($weapon)
+		removePreviousWeapon()
 		addPlayerWeapon("res://scenes/weapons/pistol.tscn")
-		gameController.canShoot = true
 
 # mueve al jugador con WASD
 func movePlayer():
@@ -66,7 +65,6 @@ func movePlayer():
 	
 	if(Input.is_action_pressed("event_s")):
 		motion.y = 1
-		emit_signal("moving")
 	elif(Input.is_action_pressed("event_w")):
 		motion.y = -1
 	if(Input.is_action_pressed("event_a")):
@@ -80,25 +78,12 @@ func movePlayer():
 
 # acercar la camara. al hacer zoom, no puedes disparar
 func cameraZoom():
-#	if(Input.is_action_just_pressed("event_shift")):
-#		$Camera2D.zoom.x = 0.6
-#		$Camera2D.zoom.y = 0.6
-#		gameController.zoomedOut = true
-#		gameController.canShoot = false
-#	elif(Input.is_action_just_released("event_shift")):
-#		$Camera2D.zoom.x = 0.5
-#		$Camera2D.zoom.y = 0.5
-#		gameController.zoomedOut = false
-#		gameController.canShoot = true
 	if(Input.is_action_pressed("event_shift")):
 		var fixedMousePosition = get_viewport().size/2 - get_viewport().get_mouse_position()
 		$Camera2D.offset.x = -fixedMousePosition.x/2.75
 		$Camera2D.offset.y = -fixedMousePosition.y/2.75*16/9
 	elif(Input.is_action_just_released("event_shift")):
 		$Camera2D.offset = Vector2(0, 0)
-#		$Tween.stop_all()
-#		$Tween.start()
-#		$Tween.interpolate_property($Camera2D, "offset", $Camera2D.offset, Vector2(0, 0), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 
 # cuando la vida del jugador es menor que 0, cambiamos la escena a "gameOver.tscn"
 func playerDie():
@@ -109,21 +94,23 @@ func playerDie():
 func lastChance():
 	if(gameController.health == 0):
 		gameController.health = 1
-		
+
+func setup():
+	lastPosition = position
+	addPlayerWeapon("res://scenes/weapons/pistol.tscn")
+	gameController.health = 100
+	gameController.canShoot = true
+	get_parent().get_node("tint").visible = false
+	dead = false
+	
 # reempezar nivel
 func restartLevel(event):
 	if(gameController.health < 0 and event.is_action_pressed("event_r")):
-		gameController.health = 100
-		gameController.canShoot = true
-		get_parent().get_node("tint").visible = false
-		get_tree().reload_current_scene()
+#		gameController.health = 100
+#		gameController.canShoot = true
+#		get_parent().get_node("tint").visible = false
+		transition.reloadScene()
 		
-#La siguiente función vale para poner un difuminado en negro.
-func nextLevelTransition():
-	var transition = load("res://scenes/effects/transition.tscn").instance()
-	transition.intro = false
-	get_parent().get_node("UI").add_child(transition)
-
 # pasar al siguiente nivel
 func goToNextLevel(event):
 	if(gameController.health >= 0 and event.is_action_pressed("event_r") and gameController.enemies <= 0):
@@ -132,8 +119,15 @@ func goToNextLevel(event):
 		gameController.sceneToGoNumber += 1
 		save.saveGame()
 		gameController.secondLevelMusicWhenRestarted = 0
-		nextLevelTransition()
 # El Timer es para que haga bien el difuminado y que despues cambie de nivel
-		$Timer.start()
-		yield($Timer, "timeout")
-		get_tree().change_scene("res://scenes/levels/intermission" + str(gameController.sceneToGoNumber) + ".tscn")
+		transition.changeScene("res://scenes/levels/intermission" + str(gameController.sceneToGoNumber) + ".tscn")
+
+#func _on_entityEnabler_body_entered(body):
+#	print(body.name)
+#	body.set_physics_process(true)
+##	body.set_process(true)
+#
+#
+#func _on_entityEnabler_body_exited(body):
+#	body.set_physics_process(false)
+##	body.set_process(false)

@@ -17,5 +17,5 @@ func animate():
 	if(lastPosition != get_parent().position):
 		get_parent().get_node("AnimationPlayer").play("walking")
 	else:
-		get_parent().get_node("AnimationPlayer").play("idle")
+		frame = 0
 	lastPosition = get_parent().position

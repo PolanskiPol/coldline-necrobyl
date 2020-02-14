@@ -1,8 +1,11 @@
 extends KinematicBody2D
 
+signal arrivedToLastPlayerPosition
+
 const PATH_DIRECTIONS = [Vector2(1, 0), Vector2(0, -1), Vector2(-1, 0), Vector2(0, 1)]
 const PATH_ROTATIONS = [0, 270, 180, 90]
 
+export var followPlayerWhenDissapears = true
 export (int, 0, 1500, 1) var health = 100.0
 export (float, 0, 10, 0.1) var speed = 0.0
 export (int, 0, 100, 1) var attackDamage = 0.0
@@ -16,6 +19,7 @@ var dead
 var canAttack
 var canDealDamage
 var isSeeingPlayer
+var isSeeingLastPlayerPosition
 var lastPlayerPosition
 var player
 var pathDirection
@@ -23,10 +27,13 @@ var currentPath
 var canMove
 var pathDelayDB
 var facingPlayer
+var speedModifier
+var path
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	path = PoolVector2Array()
 	facingPlayer = false
 	pathDelayDB = false
 	canMove = true
@@ -42,10 +49,12 @@ func _ready():
 	lastPlayerPosition = player.position
 #	set_physics_process(false)
 	speed *= 50
+	speedModifier = 1
+	
+	print($pathfinding.get_simple_path(position, Vector2(0, 0), true))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-#	moveToPlayer()
 	move()
 	raycastToPlayer()
 	attack()
@@ -68,7 +77,7 @@ func raycastToPlayer():
 	var intLastPlayerPosition = Vector2(int(lastPlayerPosition.x/2), int(lastPlayerPosition.y/2))
 	var playerPosition = get_parent().get_parent().get_node("player").position
 	var space_state = get_world_2d().get_direct_space_state()
-	var result = space_state.intersect_ray(Vector2(position.x, position.y), Vector2(playerPosition.x, playerPosition.y), [self, get_parent().get_parent().get_node("tilesets").get_node("generalTilemap")]) 
+	var result = space_state.intersect_ray(Vector2(position.x, position.y), Vector2(playerPosition.x, playerPosition.y), [self, get_parent().get_parent().get_node("tilesets/pseudo3DLayer0/tiles")]) 
 	
 	if(result.size()):
 		if(result.collider.name == "player" and gameController.health > 0 and facingPlayer):
@@ -82,7 +91,6 @@ func raycastToPlayer():
 			pathDelay()
 			isSeeingPlayer = false
 			
-
 # moverse en direccion al jugador
 func moveToPlayer():
 	var positionToMove
@@ -91,15 +99,22 @@ func moveToPlayer():
 	if(followTarget and !dead and isSeeingPlayer and position != lastPlayerPosition and !followTarget.dead):
 		$wallBetween.cast_to = (followTarget.position - position).normalized()
 		rotation = (followTarget.position - position).angle()
-		move_and_slide((followTarget.position - position).normalized()*speed)
+		move_and_slide((followTarget.position - position).normalized()*speed*speedModifier)
 		lastPlayerPosition = player.position
+		
+	elif(!dead and !isSeeingPlayer and position != lastPlayerPosition):
+		$wallBetween.cast_to = (followTarget.position - position).normalized()
+		
 
 # cuando el zombie llega a 0 de vida, no desaparece. en su lugar, instanciamos...
 # ... una textura de sangre, paramos el sonido, y le "congelamos" en el sitio
 func dieWhen0Health():
 	if(health <= 0 and !dead):
-		var instancedBlood = selectRandomBlood().instance()
-		add_child(instancedBlood)
+		var instancedBlood = load("res://scenes/effects/bloodEffect.tscn").instance()
+		instancedBlood.position = position
+		print(get_parent().name)
+#		CENSORED for Don Bosco
+#		get_parent().get_parent().get_node("props").add_child(instancedBlood)
 		$Sprite.visible = false
 		remove_child($CollisionShape2D)
 		remove_child($zombiesound)
@@ -121,33 +136,8 @@ func randomZombieSound():
 		sound = load("res://audio/fx/zombie1.wav")
 	else:
 		sound = load("res://audio/fx/zombie2.wav")
-	
-	# return de sound, que es la textura elegida
+	# return de sound, que es el sonido cargado
 	return sound
-
-# lo mismo que "randomZombieSound()", pero con la sangre cuando muere el zombie
-
-func selectRandomBlood():
-	randomize()
-	var blood
-	var randomBlood = randi()%3
-	if(randomBlood == 1):
-		blood = load("res://scenes/effects/bloodEffect1_.tscn")
-	elif(randomBlood == 2):
-		blood = load("res://scenes/effects/bloodEffect2_.tscn")
-	else:
-		blood = load("res://scenes/effects/bloodEffect3_.tscn")
-	
-	# return de blood, que es la textura elegida
-	return blood
-
-func putBloodOnFloor():
-	randomize()
-	var puts = randi()%6
-	if(puts == 2):
-		var bloodInstance = selectRandomBlood().instance()
-		bloodInstance.position = position
-		get_parent().add_child(bloodInstance)
 
 # esta funcion la utiliza la escena "bullet.tscn" para hacer daño con la colision
 func damage(dmg):
@@ -213,17 +203,6 @@ func isFacingPlayer():
 
 func _on_pathDelay_timeout():
 	canMove = true
-
-func _on_npcActivation_body_entered(body):
-	if(body.name == "player" and !dead):
-#		followTarget = body
-		set_physics_process(true)
-
-
-func _on_npcActivation_body_exited(body):
-	if(body == followTarget and !dead):
-#		followTarget = null
-		set_physics_process(false)
 	
 # cuando el jugador entra en el rango de ataque, se vuelve el "followTarget"
 func _on_vision_entered(body):
@@ -238,9 +217,13 @@ func _on_vision_exited(body):
 # cuando el jugador entra en el rango de ataque, se vuelve el "attackTarget"
 func _on_attack_entered(body):
 	if(body.name == "player"):
+		$attackDelay.start(0)
+		yield($attackDelay, "timeout")
+		$attackDelay.wait_time = 0.05
 		attackTarget = body
 
 # cuando el jugador sale del rango de ataque ya no es el "attackTarget"
 func _on_attack_exited(body):
 	if body == attackTarget:
 		attackTarget = null
+		

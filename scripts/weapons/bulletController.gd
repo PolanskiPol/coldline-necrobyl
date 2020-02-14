@@ -7,7 +7,7 @@ var bulletToInstance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	numberOfBullets = get_parent().get_node("player/weapon").bulletsPerShot
+	numberOfBullets = gameController.bulletsPerShot
 	timeCounter = 0
 	addBullets()
 

@@ -19,4 +19,4 @@ func _on_fullscreen_pressed():
 	else:
 		OS.window_fullscreen = false
 		
-	configSave.saveConfig(OS.window_fullscreen, get_parent().get_node("soundSlider").value)
+#	configSave.saveConfig(OS.window_fullscreen, get_parent().get_node("soundSlider").value)

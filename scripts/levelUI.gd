@@ -25,7 +25,7 @@ func _process(delta):
 	health.value = gameController.health
 	weapon.text = "ARMA: " + str(gameController.weaponName)
 	ammoText()
-	enemiesText()
+#	enemiesText()
 	restartText()
 
 # mostrar numero de balas

@@ -5,6 +5,9 @@ extends Node
 # ...mas de los anteriores, se cambia aqui
 
 var bullets = 0
+var bulletsPerShot = 0
+var accuracyAngle = 0
+var damage = 0
 var health = 100
 var weaponPath = ""
 var weaponName = ""
@@ -14,5 +17,10 @@ var currentLevelComplete = false
 var enemies = 0
 var secondLevelMusicWhenRestarted = 0.0
 var sceneToGoNumber = 1
+
+# config
 var volume = 0
 var fullscreen = false
+var quality = ""
+var vsync = true
+var fps = 60

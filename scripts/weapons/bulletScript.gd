@@ -12,9 +12,9 @@ func _ready():
 	setupBulletDirection()
 
 func setupBullet():
-	accuracyAngle = get_parent().get_parent().get_node("player/weapon").accuracyAngle
-	playerPosition = get_parent().get_parent().get_node("player/bulletInstancePosition").global_position
-	damage = get_parent().get_parent().get_node("player/weapon").damage
+	playerPosition = get_node("/root/level/player").global_position
+	accuracyAngle = gameController.accuracyAngle
+	damage = gameController.damage
 	position = playerPosition
 	look_at(get_global_mouse_position())
 	rotation_degrees += 90

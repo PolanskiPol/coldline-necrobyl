@@ -15,4 +15,4 @@ func _ready():
 # lo guarda en "configSave"
 func _on_HSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
-	configSave.saveConfig(OS.window_fullscreen, value)
+#	configSave.saveConfig(OS.window_fullscreen, value)

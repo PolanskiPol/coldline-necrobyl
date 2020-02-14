@@ -21,7 +21,7 @@ func loadGame():
 #	gameController.sceneToGoNumber = saveFile.get_value(section, key, value)
 	var saveFile = File.new()
 	if(not saveFile.file_exists("user://coldline.save")):
-        return # No savefile found
+		return # No savefile found
 		
 	saveFile.open("user://coldline.save", File.READ)
 	

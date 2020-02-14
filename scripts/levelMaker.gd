@@ -7,21 +7,30 @@ export(Color) var tint = Color(0.13, 0.13, 0.13)
 export var startEnabled = false
 
 func _ready():
-	setupLevelMusic()
-	gameController.enemies = $enemies.get_child_count()
+#	setupLevelMusic()
+#	gameController.enemies = $enemies.get_child_count()
+	transition.play(transition.TRANSITION_IN)
 	setupTint()
 	
+func _input(event):
+	if(event.is_action_pressed("ui_accept")):
+		enterActionMusic()
+	elif(event.is_action_pressed("devkey")):
+		enterExploreMusic()
+	
 func _process(delta):
-	gameController.secondLevelMusicWhenRestarted = $levelMusic.get_playback_position()
+	gameController.secondLevelMusicWhenRestarted = $levelMusicAction.get_playback_position()
 
-func setupLevelMusic():
-	if(gameController.secondLevelMusicWhenRestarted == 0.0):
-		$levelMusic.seek(startLevelMusicAt)
-	else:
-		$levelMusic.seek(gameController.secondLevelMusicWhenRestarted)
+# TODO: remake this function with the new music structure (2 tracks)
+#func setupLevelMusic():
+#	if(gameController.secondLevelMusicWhenRestarted == 0.0):
+#		$levelMusic.seek(startLevelMusicAt)
+#	else:
+#		$levelMusic.seek(gameController.secondLevelMusicWhenRestarted)
 
 # prepara el "tint" que oscurece la escena al entrar en lugares cerrados
 func setupTint():
+	$tint.visible = true
 	$tint.color = tint
 	if(startEnabled):
 		$tint.color = tint
@@ -32,3 +41,16 @@ func setupTint():
 func completeLevel():
 	if(gameController.enemies <= 0):
 		gameController.currentLevelComplete = true
+		
+func changeExploreMusicTo(newTrack):
+	$levelMusicExplore.stream = newTrack
+	
+func changeActionMusicTo(newTrack):
+	$levelMusicExplore.stream = newTrack
+	
+func enterActionMusic():
+	$musicAnimations.play("actionToExplore")
+	
+func enterExploreMusic():
+	$musicAnimations.play("exploreToAction")
+	
