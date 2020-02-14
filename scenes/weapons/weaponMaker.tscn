@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/weapons/generalWeaponScript.gd" type="Script" id=1]
+[ext_resource path="res://textures/topdownweapons/arm_WHITE_TO_MODULATE.png" type="Texture" id=2]
+[ext_resource path="res://textures/topdownweapons/hand_WHITE_TO_MODULATE.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 9.0
 
 [node name="weapon" type="Node2D"]
 script = ExtResource( 1 )
@@ -9,5 +14,37 @@ script = ExtResource( 1 )
 rotation = 1.5708
 scale = Vector2( 0.035, 0.035 )
 
+[node name="arm1" type="Sprite" parent="Sprite"]
+rotation = -1.5708
+texture = ExtResource( 2 )
+
+[node name="arm2" type="Sprite" parent="Sprite"]
+rotation = -1.5708
+texture = ExtResource( 2 )
+
+[node name="hand1" type="Sprite" parent="Sprite"]
+rotation = -1.5708
+texture = ExtResource( 3 )
+
+[node name="hand2" type="Sprite" parent="Sprite"]
+rotation = -1.5708
+texture = ExtResource( 3 )
+
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="meleeRange" type="Area2D" parent="."]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="meleeRange"]
+position = Vector2( 32, 0 )
+shape = SubResource( 1 )
+
+[node name="meleeTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="enemySlowTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[connection signal="timeout" from="meleeTimer" to="." method="_on_meleeTimer_timeout"]
+[connection signal="timeout" from="enemySlowTimer" to="." method="_on_enemySlowTimer_timeout"]
