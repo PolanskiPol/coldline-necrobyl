@@ -9,6 +9,8 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="Animation" id=2]
+length = 0.6
+step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -16,10 +18,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 2, 4, 6 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -37,17 +39,19 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=4]
-blend_mode = 1
-
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 786.309, 1349.88 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 664.435, 356.578 )
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=6]
 radius = 6.16254
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array(  )
+}
 
 [node name="enemy_" type="KinematicBody2D"]
 z_index = 1
@@ -57,6 +61,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+angleOfVision = 160
 melee = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -69,13 +74,14 @@ anims/walking = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="attackDelay" type="Timer" parent="."]
+wait_time = 0.05
+
 [node name="pathDelay" type="Timer" parent="."]
 wait_time = 3.0
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 4 )
 hframes = 8
-frame = 7
 script = ExtResource( 2 )
 
 [node name="bright" parent="." instance=ExtResource( 3 )]
@@ -88,7 +94,7 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcActivation"]
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="npcVision" type="Area2D" parent="."]
 editor/display_folded = true
@@ -96,7 +102,7 @@ visible = false
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcVision"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="npcAttack" type="Area2D" parent="."]
 editor/display_folded = true
@@ -104,7 +110,7 @@ visible = false
 collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcAttack"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="wallBetween" type="RayCast2D" parent="."]
 visible = false
@@ -150,9 +156,21 @@ enabled = true
 cast_to = Vector2( 10, 0 )
 collision_mask = 4
 collide_with_areas = true
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+visible = false
+rect = Rect2( -300, -300, 600, 600 )
+process_parent = true
+physics_process_parent = true
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_mode = -1082130432
+
+[node name="pathFollow" type="Path2D" parent="."]
+curve = SubResource( 7 )
+
+[node name="pathfinding" type="Navigation2D" parent="."]
 [connection signal="timeout" from="pathDelay" to="." method="_on_pathDelay_timeout"]
-[connection signal="body_entered" from="npcActivation" to="." method="_on_npcActivation_body_entered"]
-[connection signal="body_exited" from="npcActivation" to="." method="_on_npcActivation_body_exited"]
 [connection signal="body_entered" from="npcVision" to="." method="_on_vision_entered"]
 [connection signal="body_exited" from="npcVision" to="." method="_on_vision_exited"]
 [connection signal="body_entered" from="npcAttack" to="." method="_on_attack_entered"]
