@@ -15,10 +15,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="coldlineNecrobyl"
-run/main_scene="res://scenes/levels/test/testLevel.tscn"
+config/name="coldline_necrobyl"
+run/main_scene="res://scenes/menus/introduction.tscn"
 boot_splash/image="res://textures/misc/banner.png"
-boot_splash/bg_color=Color( 1, 1, 1, 0 )
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://textures/ui/pngicon.png"
 
 [autoload]
@@ -27,6 +27,7 @@ gameController="*res://scripts/gameController.gd"
 weaponController="*res://scripts/weaponController.gd"
 save="*res://scripts/save.gd"
 configSave="*res://scripts/configSave.gd"
+transition="*res://scenes/ui/transition.tscn"
 
 [debug]
 
@@ -92,6 +93,11 @@ event_shift={
 event_r={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+devkey={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":92,"unicode":0,"echo":false,"script":null)
  ]
 }
 
