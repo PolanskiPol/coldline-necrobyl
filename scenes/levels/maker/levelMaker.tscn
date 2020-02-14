@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/levelMaker.gd" type="Script" id=1]
 [ext_resource path="res://scenes/effects/tint.tscn" type="PackedScene" id=2]
@@ -6,6 +6,86 @@
 [ext_resource path="res://scenes/effects/transition.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/tilesets/generalTilemap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/ui/oldTVScreen.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "actionToExplore"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("levelMusicAction:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -64.0, -64.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("levelMusicExplore:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -64.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "exploreToAction"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("levelMusicExplore:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -64.0, -64.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("levelMusicAction:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -64.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+
+var scalation
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	scalation = 1
+	for i in range(1, configSave.pseudo3DLayers):
+		scalation += 0.11/configSave.pseudo3DLayers
+		var newLayer = $pseudo3DLayer0.duplicate()
+		newLayer.name = \"pseudo3DLayer\" + str(i)
+		newLayer.follow_viewport_scale = scalation
+		add_child(newLayer)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [node name="levelMaker" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,23 +99,36 @@ visible = false
 
 [node name="transition" parent="UI" instance=ExtResource( 4 )]
 
-[node name="levelMusic" type="AudioStreamPlayer" parent="."]
+[node name="oldTVScreen" parent="UI" instance=ExtResource( 7 )]
+
+[node name="musicAnimations" type="AnimationPlayer" parent="."]
+playback_speed = 0.1
+anims/actionToExplore = SubResource( 1 )
+anims/exploreToAction = SubResource( 2 )
+
+[node name="levelMusicAction" type="AudioStreamPlayer" parent="."]
+volume_db = -64.0
 autoplay = true
 
-[node name="tilesets" type="Node2D" parent="."]
-editor/display_folded = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="generalTilemap" parent="tilesets" instance=ExtResource( 5 )]
-
-[node name="lightModifiers" type="Node2D" parent="."]
+[node name="levelMusicExplore" type="AudioStreamPlayer" parent="."]
+autoplay = true
 
 [node name="enemies" type="Node2D" parent="."]
+
+[node name="tilesets" type="Node2D" parent="."]
+script = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="2DLayer" parent="tilesets" instance=ExtResource( 5 )]
+
+[node name="pseudo3DLayer0" type="CanvasLayer" parent="tilesets"]
+follow_viewport_enable = true
+
+[node name="tiles" parent="tilesets/pseudo3DLayer0" instance=ExtResource( 5 )]
+
+[node name="lightModifiers" type="Node2D" parent="."]
 
 [node name="props" type="Node2D" parent="."]
 __meta__ = {
