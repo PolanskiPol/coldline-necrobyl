@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/weapons/weaponMaker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/fx/meleeSwing.wav" type="AudioStream" id=2]
+[ext_resource path="res://textures/topdownweapons/bigKnife.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.0
+height = 16.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9.0148, 3.26335e-005 ), Vector2( 14, -11 ), Vector2( 9, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0002, 38.3413, 90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("meleeRange/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9, 0 ), Vector2( 14, -11 ), Vector2( 9, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("meleeRange/CollisionShape2D:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, 38.905, 90.0 ]
+}
+
+[node name="meleeTest" instance=ExtResource( 1 )]
+editor/display_folded = true
+weaponName = "melee"
+damage = 200
+timeBetweenShots = 0.2
+melee = true
+sound = ExtResource( 2 )
+soundVolume = 10.0
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 9.0148, 3.26335e-005 )
+scale = Vector2( 0.65, 0.65 )
+z_index = -5
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="arm1" parent="Sprite" index="0"]
+visible = false
+
+[node name="arm2" parent="Sprite" index="1"]
+modulate = Color( 0, 0.054902, 0.298039, 1 )
+position = Vector2( -0.00534517, 19.2553 )
+rotation = -3.13927
+scale = Vector2( 0.869625, 0.670517 )
+
+[node name="hand1" parent="Sprite" index="2"]
+modulate = Color( 0.913725, 0.772549, 0.505882, 1 )
+position = Vector2( 5.05447e-005, 14.0385 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="hand2" parent="Sprite" index="3"]
+visible = false
+
+[node name="meleeRange" parent="." index="2"]
+editor/display_folded = false
+
+[node name="CollisionShape2D" parent="meleeRange" index="0"]
+position = Vector2( 9, 0 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="5"]
+playback_speed = 1.5
+anims/attack = SubResource( 2 )
+[connection signal="body_entered" from="meleeRange" to="." method="_on_meleeRange_body_entered"]

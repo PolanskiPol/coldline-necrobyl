@@ -9,6 +9,5 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
-
 [connection signal="body_entered" from="." to="." method="_on_tintChanger_entered"]
 [connection signal="body_exited" from="." to="." method="_on_tintChanger_exited"]

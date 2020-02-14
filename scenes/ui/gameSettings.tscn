@@ -1,0 +1,222 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var vsync
+var fullscreen
+var fps
+var quality
+var volume
+var pseudo3DLayers
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+#	configSave.loadConfig()
+	setPointers()
+	updateGUI()
+	
+func setPointers():
+	vsync = $VBoxContainer/graphics/graphics/vsync
+	fullscreen = $VBoxContainer/graphics/graphics/fullscreen
+	fps = $VBoxContainer/graphics/graphics/fps
+#	quality = $VBoxContainer/graphics/graphics/quality
+	quality = \"low\"
+	volume = $VBoxContainer/volume/volume
+	pseudo3DLayers = $VBoxContainer/graphics/graphics/pseudo3DLayers
+	
+func updateGUI():
+	vsync.pressed = OS.vsync_enabled
+	fullscreen.pressed = OS.window_fullscreen
+	fps.value = Engine.target_fps
+	fps.get_node(\"Label\").text = str(fps.value)
+	pseudo3DLayers.value = configSave.pseudo3DLayers
+	pseudo3DLayers.get_node(\"Label\").text = str(configSave.pseudo3DLayers)
+	volume.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index(\"Master\"))
+	pseudo3DLayers.value = configSave.pseudo3DLayers
+
+func save():
+	configSave.saveConfig(fullscreen.pressed, quality, volume.value, vsync.pressed, fps.value, pseudo3DLayers.value)
+
+func _on_vsync_toggled(button_pressed):
+	OS.vsync_enabled = vsync.pressed
+	save()
+
+func _on_fullscreen_toggled(button_pressed):
+	OS.window_fullscreen = fullscreen.pressed
+	save()
+	
+func _on_fps_value_changed(value):
+	Engine.target_fps = value
+	fps.get_node(\"Label\").text = str(value)
+	save()
+
+func _on_volume_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), value)
+	save()
+
+func _on_return_pressed():
+	get_tree().change_scene(\"res://scenes/menus/mainMenu.tscn\")
+
+func _on_pseudo3DLayers_value_changed(value):
+	configSave.pseudo3DLayers = value
+	pseudo3DLayers.get_node(\"Label\").text = str(value)
+	save()
+"
+
+[node name="gameSettings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="graphics" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 126.0
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/graphics"]
+margin_right = 1280.0
+margin_bottom = 4.0
+
+[node name="graphicalSettings" type="Label" parent="VBoxContainer/graphics"]
+margin_top = 8.0
+margin_right = 1280.0
+margin_bottom = 22.0
+text = "Graphical settings"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/graphics"]
+margin_top = 26.0
+margin_right = 1280.0
+margin_bottom = 30.0
+
+[node name="graphics" type="VBoxContainer" parent="VBoxContainer/graphics"]
+margin_top = 34.0
+margin_right = 1280.0
+margin_bottom = 126.0
+
+[node name="vsync" type="CheckBox" parent="VBoxContainer/graphics/graphics"]
+margin_right = 1280.0
+margin_bottom = 24.0
+text = "VSync"
+
+[node name="fullscreen" type="CheckBox" parent="VBoxContainer/graphics/graphics"]
+margin_top = 28.0
+margin_right = 1280.0
+margin_bottom = 52.0
+text = "Full screen"
+
+[node name="fps" type="HSlider" parent="VBoxContainer/graphics/graphics"]
+margin_top = 56.0
+margin_right = 1280.0
+margin_bottom = 72.0
+hint_tooltip = "FPS
+
+Caps the maximum Frames Per Second the game can get
+
+Set it to 0 for unlimited FPS
+"
+min_value = 30.0
+max_value = 121.0
+value = 30.0
+
+[node name="Label" type="Label" parent="VBoxContainer/graphics/graphics/fps"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -7.0
+margin_bottom = 7.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pseudo3DLayers" type="HSlider" parent="VBoxContainer/graphics/graphics"]
+margin_top = 76.0
+margin_right = 1280.0
+margin_bottom = 92.0
+hint_tooltip = "Pseudo3DLayers
+
+Adds a 3D effect to the walls
+
+Less layers = faster
+More layers = slower"
+max_value = 20.0
+value = 10.0
+
+[node name="Label" type="Label" parent="VBoxContainer/graphics/graphics/pseudo3DLayers"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -6.0
+margin_bottom = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="volume" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 130.0
+margin_right = 1280.0
+margin_bottom = 180.0
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer/volume"]
+margin_right = 1280.0
+margin_bottom = 4.0
+
+[node name="volume2" type="Label" parent="VBoxContainer/volume"]
+margin_top = 8.0
+margin_right = 1280.0
+margin_bottom = 22.0
+text = "Volume"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/volume"]
+margin_top = 26.0
+margin_right = 1280.0
+margin_bottom = 30.0
+
+[node name="volume" type="HSlider" parent="VBoxContainer/volume"]
+margin_top = 34.0
+margin_right = 1280.0
+margin_bottom = 50.0
+min_value = -1.0
+max_value = 1.0
+step = 0.2
+
+[node name="return" type="Button" parent="VBoxContainer"]
+margin_top = 184.0
+margin_right = 1280.0
+margin_bottom = 204.0
+text = "Return"
+
+[node name="version" type="RichTextLabel" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -656.0
+margin_top = -80.0
+margin_right = -492.0
+margin_bottom = -60.0
+rect_scale = Vector2( 4, 4 )
+bbcode_enabled = true
+bbcode_text = "ALPHA BUILD 0.2.5.7"
+text = "ALPHA BUILD 0.2.5.7"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="VBoxContainer/graphics/graphics/vsync" to="." method="_on_vsync_toggled"]
+[connection signal="toggled" from="VBoxContainer/graphics/graphics/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="VBoxContainer/graphics/graphics/fps" to="." method="_on_fps_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/graphics/graphics/pseudo3DLayers" to="." method="_on_pseudo3dLayers_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/graphics/graphics/pseudo3DLayers" to="." method="_on_pseudo3DLayers_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/volume/volume" to="." method="_on_volume_value_changed"]
+[connection signal="pressed" from="VBoxContainer/return" to="." method="_on_return_pressed"]

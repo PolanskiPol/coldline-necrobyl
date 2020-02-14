@@ -1,15 +1,21 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://audio/fx/flashlight.wav" type="AudioStream" id=2]
-[ext_resource path="res://textures/player/light.png" type="Texture" id=3]
+[ext_resource path="res://textures/player/light.png" type="Texture" id=2]
+[ext_resource path="res://audio/fx/flashlight.wav" type="AudioStream" id=3]
 [ext_resource path="res://textures/player/luz1.png" type="Texture" id=4]
-[ext_resource path="res://textures/player/sprPSneakUnarmed_strip4.png" type="Texture" id=5]
+[ext_resource path="res://textures/player/dimitri_walk_001.png" type="Texture" id=5]
 [ext_resource path="res://scripts/animations.gd" type="Script" id=6]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.16869
+height = 12.5763
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("spriteJugador:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -21,7 +27,8 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
+resource_name = "walking"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("spriteJugador:frame")
@@ -33,12 +40,8 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 0, 3 ]
+"values": [ 0, 1, 0, 5 ]
 }
-
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 6.16869
-height = 12.5763
 
 [sub_resource type="VisualShaderNodeTexture" id=4]
 source = 3
@@ -84,23 +87,32 @@ nodes/fragment/connections = PoolIntArray( 2, 0, 0, 3 )
 shader = SubResource( 5 )
 
 [node name="player" type="KinematicBody2D"]
+z_index = 5
 collision_mask = 639
 script = ExtResource( 1 )
 speed = 5.0
 
-[node name="flashlightSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 2 )
-volume_db = 1.24
-attenuation = 1.10957
+[node name="weaponSlot" type="Node2D" parent="."]
 
-[node name="shootWeapon" type="AudioStreamPlayer2D" parent="."]
-
-[node name="bulletInstancePosition" type="Position2D" parent="."]
+[node name="bulletInstancePosition" type="Position2D" parent="weaponSlot"]
 position = Vector2( 18, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 1 )
-anims/walking = SubResource( 2 )
+[node name="shootWeapon" type="AudioStreamPlayer2D" parent="weaponSlot"]
+
+[node name="playerBright" type="Light2D" parent="."]
+visible = false
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+texture_scale = 3.06
+mode = 2
+range_height = -100.0
+shadow_filter = 2
+shadow_filter_smooth = 10.0
+
+[node name="flashlightSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 1.24
+attenuation = 1.10957
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -115,16 +127,7 @@ editor_draw_drag_margin = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 0 )
-shape = SubResource( 3 )
-
-[node name="playerBright" type="Light2D" parent="."]
-visible = false
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 3 )
-mode = 2
-shadow_enabled = true
-shadow_filter = 2
-shadow_filter_smooth = 10.0
+shape = SubResource( 1 )
 
 [node name="flashlight" type="Light2D" parent="."]
 visible = false
@@ -137,13 +140,20 @@ shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 10.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.9
+anims/idle = SubResource( 2 )
+anims/walking = SubResource( 3 )
+
 [node name="spriteJugador" type="Sprite" parent="."]
 material = SubResource( 6 )
-position = Vector2( -0.101952, 0.101955 )
+position = Vector2( -1.05818, 0.101955 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 5 )
-hframes = 4
+hframes = 8
 script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+[connection signal="moving" from="." to="spriteJugador" method="_on_player_moving"]

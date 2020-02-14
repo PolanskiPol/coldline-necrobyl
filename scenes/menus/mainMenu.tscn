@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://themes/buttonDisabled.tres" type="StyleBox" id=1]
 [ext_resource path="res://themes/buttonFocus.tres" type="StyleBox" id=2]
@@ -9,14 +9,11 @@
 [ext_resource path="res://scripts/mainMenu.gd" type="Script" id=7]
 [ext_resource path="res://textures/ui/back.jpg" type="Texture" id=8]
 [ext_resource path="res://themes/fontKremlin_96.tres" type="DynamicFont" id=9]
-[ext_resource path="res://scripts/rotate.gd" type="Script" id=10]
-[ext_resource path="res://scripts/UIPlay.gd" type="Script" id=11]
-[ext_resource path="res://scripts/UIContinue.gd" type="Script" id=12]
-[ext_resource path="res://scripts/fullscreen.gd" type="Script" id=13]
-[ext_resource path="res://scenes/ui/exitButton.tscn" type="PackedScene" id=14]
-[ext_resource path="res://audio/music/7-Intermission-Long.ogg" type="AudioStream" id=15]
-[ext_resource path="res://scripts/fullscreenController.gd" type="Script" id=16]
-[ext_resource path="res://scripts/audioController.gd" type="Script" id=17]
+[ext_resource path="res://scripts/UIPlay.gd" type="Script" id=10]
+[ext_resource path="res://scripts/UIContinue.gd" type="Script" id=11]
+[ext_resource path="res://scripts/fullscreen.gd" type="Script" id=12]
+[ext_resource path="res://scenes/ui/exitButton.tscn" type="PackedScene" id=13]
+[ext_resource path="res://audio/music/7-Intermission-Long.ogg" type="AudioStream" id=14]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 6 )
@@ -32,11 +29,48 @@ Button/styles/hover = ExtResource( 3 )
 Button/styles/normal = ExtResource( 4 )
 Button/styles/pressed = ExtResource( 5 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "move"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/CenterContainer/Label:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1.31951, 1.31951 ),
+"update": 0,
+"values": [ 6.0, -6.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("title:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
 [node name="ui" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 1 )
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="AnimationPlayer" parent="."]
+autoplay = "move"
+playback_speed = 0.2
+anims/move = SubResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -46,6 +80,9 @@ margin_bottom = 360.0
 rect_scale = Vector2( 0.67, 0.67 )
 texture = ExtResource( 8 )
 stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -56,7 +93,6 @@ custom_constants/margin_left = 100
 custom_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-editor/display_folded = true
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 1180.0
@@ -69,17 +105,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
+modulate = Color( 0.129412, 0.713726, 0.286275, 1 )
 margin_right = 1080.0
 margin_bottom = 328.0
 rect_min_size = Vector2( 1080, 328 )
+rect_rotation = 6.0
 rect_pivot_offset = Vector2( 540, 164 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 9 )
-text = "Coldline necrobyl"
+text = "COLDLINE NECROBYL"
 align = 1
 valign = 1
-script = ExtResource( 10 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 332.0
@@ -91,7 +128,6 @@ custom_constants/margin_right = 825
 custom_constants/margin_left = 75
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
-editor/display_folded = true
 margin_left = 75.0
 margin_right = 255.0
 margin_bottom = 328.0
@@ -104,8 +140,8 @@ margin_right = 180.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
-text = "JUGAR"
-script = ExtResource( 11 )
+text = "play"
+script = ExtResource( 10 )
 
 [node name="continue" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 48.0
@@ -113,8 +149,8 @@ margin_right = 180.0
 margin_bottom = 76.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
-text = "CONTINUAR"
-script = ExtResource( 12 )
+text = "load"
+script = ExtResource( 11 )
 
 [node name="settings" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 96.0
@@ -122,73 +158,21 @@ margin_right = 180.0
 margin_bottom = 124.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
-text = "AJUSTES"
-script = ExtResource( 13 )
+text = "SETTINGS"
+script = ExtResource( 12 )
 
-[node name="exit" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource( 14 )]
+[node name="exit" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource( 13 )]
 margin_top = 144.0
 margin_bottom = 172.0
+text = "EXIT"
 
 [node name="Timer" type="Timer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 
 [node name="menuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 15 )
+stream = ExtResource( 14 )
 volume_db = -12.0
 autoplay = true
-
-[node name="options" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 500.0
-margin_top = 300.0
-margin_right = -500.0
-margin_bottom = -100.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="options"]
-margin_right = 282.0
-margin_bottom = 320.0
-
-[node name="pantalla" type="Label" parent="options/VBoxContainer"]
-margin_right = 282.0
-margin_bottom = 28.0
-text = "PANTALLA"
-
-[node name="HSeparator" type="HSeparator" parent="options/VBoxContainer"]
-margin_top = 32.0
-margin_right = 282.0
-margin_bottom = 32.0
-custom_constants/separation = 0
-
-[node name="fullscreen" type="Button" parent="options/VBoxContainer"]
-margin_top = 36.0
-margin_right = 282.0
-margin_bottom = 64.0
-text = "PANTALLA COMPLETA"
-script = ExtResource( 16 )
-
-[node name="HSeparator2" type="HSeparator" parent="options/VBoxContainer"]
-margin_top = 68.0
-margin_right = 282.0
-margin_bottom = 68.0
-custom_constants/separation = 0
-
-[node name="sonido" type="Label" parent="options/VBoxContainer"]
-margin_top = 72.0
-margin_right = 282.0
-margin_bottom = 100.0
-text = "SONIDO"
-
-[node name="soundSlider" type="HSlider" parent="options/VBoxContainer"]
-margin_top = 104.0
-margin_right = 282.0
-margin_bottom = 120.0
-min_value = -60.0
-max_value = 0.0
-step = 6.0
-ticks_on_borders = true
-script = ExtResource( 17 )
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/play" to="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/play" method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/continue" to="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/continue" method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="options/VBoxContainer/fullscreen" to="options/VBoxContainer/fullscreen" method="_on_fullscreen_pressed"]
-[connection signal="value_changed" from="options/VBoxContainer/soundSlider" to="options/VBoxContainer/soundSlider" method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/settings" to="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/settings" method="_on_settings_pressed"]
