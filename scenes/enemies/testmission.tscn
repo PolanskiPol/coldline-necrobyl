@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/enemies/enemy_test.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/enemies/enemyGeneralController.gd" type="Script" id=2]
+
+[node name="enemies" type="Node2D"]
+
+[node name="enemy_TEST" type="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 1072, 817 )
+z_index = 1
+collision_layer = 2
+collision_mask = 647
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+health = 120
+speed = 4.9
+attackDamage = 75
+angleOfVision = 160
+melee = true
+
+[node name="enemy_TEST2" type="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 1168, 817 )
+z_index = 1
+collision_layer = 2
+collision_mask = 647
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+health = 120
+speed = 4.9
+attackDamage = 75
+angleOfVision = 160
+melee = true
