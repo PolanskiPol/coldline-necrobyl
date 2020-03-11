@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pumpshotgun.wav-5460409c63fc54e7c26f5116e14bc72c.sample"
+
+[deps]
+
+source_file="res://audio/fx/pumpshotgun.wav"
+dest_files=[ "res://.import/pumpshotgun.wav-5460409c63fc54e7c26f5116e14bc72c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
