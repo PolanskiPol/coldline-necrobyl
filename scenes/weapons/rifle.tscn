@@ -1,19 +1,72 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/weapons/weaponMaker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://audio/fx/rifle.wav" type="AudioStream" id=2]
-[ext_resource path="res://textures/topdownweapons/machinegun.png" type="Texture" id=3]
+[ext_resource path="res://textures/topdownweapons/rifle.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprites:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -0.722 ), Vector2( -1.588, -0.722 ), Vector2( 0, -0.722 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprites/flash:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
 
 [node name="weapon" instance=ExtResource( 1 )]
-weaponName = "Ametralladora"
-damage = 35
+weaponName = "RIFLE"
+damage = 40
 mag = 32
 timeBetweenShots = 0.12
-accuracyAngle = 0.06
+accuracyAngle = 0.03
 usesAmmo = true
 automatic = true
 sound = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
-scale = Vector2( 0.08, 0.06 )
+[node name="arm1" parent="sprites" index="0"]
+position = Vector2( 4.27138, -9.20309 )
+rotation = -1.27594
+
+[node name="arm2" parent="sprites" index="1"]
+position = Vector2( -2.20591, -1.24436 )
+rotation = 0.947273
+scale = Vector2( 0.5, 0.433359 )
+
+[node name="hand1" parent="sprites" index="2"]
+rotation = -0.850335
+
+[node name="hand2" parent="sprites" index="3"]
+position = Vector2( 1.1878, -4.24213 )
+rotation = -0.746295
+
+[node name="weapon" parent="sprites" index="4"]
+position = Vector2( 3.16746, -4.86431 )
+rotation = 1.4163
+scale = Vector2( 0.068, 0.084 )
 texture = ExtResource( 3 )
+
+[node name="flash" parent="sprites" index="5"]
+position = Vector2( 19.9663, -6.5046 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/attack = SubResource( 1 )

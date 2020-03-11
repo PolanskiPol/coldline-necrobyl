@@ -1,19 +1,144 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/weapons/weaponMaker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://audio/fx/shotgun.wav" type="AudioStream" id=2]
 [ext_resource path="res://textures/topdownweapons/shotgun.png" type="Texture" id=3]
+[ext_resource path="res://textures/topdownweapons/bulletv2.png" type="Texture" id=4]
+[ext_resource path="res://audio/fx/pumpshotgun.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprites:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -0.722 ), Vector2( -2.073, -0.722 ), Vector2( 0, -0.722 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprites/arm1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4.04513, -7.95873 ), Vector2( 1.21783, -7.45979 ), Vector2( 4.04513, -7.95873 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprites/hand1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 11.911, -5.99406 ), Vector2( 9.08367, -5.49512 ), Vector2( 11.911, -5.99406 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprites/bulletv2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3.83912, -5.21398 ), Vector2( 3.38176, -5.13083 ), Vector2( -1.31656, -20.9305 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("sprites/bulletv2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("pump:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("sprites/flash:energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
 
 [node name="weapon" instance=ExtResource( 1 )]
-weaponName = "Escopeta"
+weaponName = "ESCOPETA"
 damage = 45
 bulletsPerShot = 12
 mag = 6
-timeBetweenShots = 0.6
+timeBetweenShots = 0.7
 accuracyAngle = 0.35
 usesAmmo = true
 sound = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
-scale = Vector2( 0.053, 0.066 )
+[node name="pump" type="AudioStreamPlayer2D" parent="." index="0"]
+position = Vector2( -43.808, -9.02481 )
+stream = ExtResource( 5 )
+
+[node name="arm1" parent="sprites" index="0"]
+rotation = -1.38547
+scale = Vector2( 0.501061, 0.730222 )
+
+[node name="arm2" parent="sprites" index="1"]
+position = Vector2( -1.30092, -1.86654 )
+rotation = 0.887025
+scale = Vector2( 0.5, 0.499624 )
+
+[node name="hand1" parent="sprites" index="2"]
+rotation = -1.28114
+
+[node name="hand2" parent="sprites" index="3"]
+position = Vector2( 1.47061, -3.8462 )
+rotation = 1.00619
+
+[node name="bulletv2" type="Sprite" parent="sprites" index="4"]
+position = Vector2( 3.83912, -5.21398 )
+rotation = -1.72347
+scale = Vector2( 0.140264, 0.0554785 )
+texture = ExtResource( 4 )
+
+[node name="weapon" parent="sprites" index="5"]
+position = Vector2( 2.86856, -4.33204 )
+rotation = 1.36334
+scale = Vector2( 0.089, 0.086 )
 texture = ExtResource( 3 )
+
+[node name="flash" parent="sprites" index="6"]
+position = Vector2( 26.0184, -7.07022 )
+
+[node name="AnimationPlayer" parent="." index="5"]
+anims/attack = SubResource( 1 )

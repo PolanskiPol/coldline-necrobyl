@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/weapons/weaponMaker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/fx/punch.wav" type="AudioStream" id=2]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 10.9295
+height = 22.3787
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprites/arm1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.07149, -2.76878 ), Vector2( 5.18238, -3.95658 ), Vector2( 2.07149, -2.76878 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprites/arm1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.229796 ), Vector2( 0.5, 0.884535 ), Vector2( 0.5, 0.229796 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprites/hand1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4.8205, -3.72803 ), Vector2( 11.5513, -6.32987 ), Vector2( 4.8205, -3.72803 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("meleeRange/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[node name="weapon" instance=ExtResource( 1 )]
+weaponName = "MANOS"
+damage = 75
+timeBetweenShots = 0.25
+automatic = true
+melee = true
+sound = ExtResource( 2 )
+
+[node name="sprites" parent="." index="0"]
+position = Vector2( -2.804, 1.278 )
+
+[node name="arm1" parent="sprites" index="0"]
+position = Vector2( 2.07149, -2.76878 )
+rotation = 1.23922
+scale = Vector2( 0.5, 0.229796 )
+
+[node name="arm2" parent="sprites" index="1"]
+position = Vector2( 2.11107, -16.9545 )
+rotation = 1.78783
+scale = Vector2( 0.5, 0.23759 )
+
+[node name="hand1" parent="sprites" index="2"]
+position = Vector2( 4.8205, -3.72803 )
+rotation = -0.26671
+
+[node name="hand2" parent="sprites" index="3"]
+position = Vector2( 4.98684, -16.0448 )
+rotation = 0.339823
+
+[node name="meleeRange" parent="." index="2"]
+position = Vector2( -19.9685, -9.10421 )
+
+[node name="CollisionShape2D" parent="meleeRange" index="0"]
+rotation = 1.5708
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/attack = SubResource( 1 )
+[connection signal="body_entered" from="meleeRange" to="." method="_on_meleeRange_body_entered"]
