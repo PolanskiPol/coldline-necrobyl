@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://themes/fontKremlin_96.tres" type="DynamicFont" id=1]
 [ext_resource path="res://themes/fontKremlin_48.tres" type="DynamicFont" id=2]
 [ext_resource path="res://textures/premiodonbosco/serveimage.png" type="Texture" id=3]
 [ext_resource path="res://audio/music/Tense Cinematic Instrumental Ambient Music  Free Music by Argsound.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/fx/Undertale Sound Effect - Intro.wav" type="AudioStream" id=5]
-[ext_resource path="res://textures/premiodonbosco/biohazard-background-1080p-86492.jpg" type="Texture" id=6]
+[ext_resource path="res://scenes/ui/coldlineTitle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://themes/fontKremlin_24.tres" type="DynamicFont" id=7]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -29,6 +30,10 @@ func _ready():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	transition.changeScene(\"res://scenes/menus/mainMenu.tscn\")
+
+
+func _on_skip_button_down():
 	transition.changeScene(\"res://scenes/menus/mainMenu.tscn\")
 "
 
@@ -190,23 +195,31 @@ margin_top = -54.0
 margin_right = 525.0
 margin_bottom = 54.0
 custom_fonts/font = ExtResource( 1 )
-text = "COLDLINE NECROBYL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="coldline"]
-position = Vector2( 525, 26 )
-scale = Vector2( 2.42105, 2.42105 )
-z_index = -3
-texture = ExtResource( 6 )
+[node name="coldlineTitle" parent="coldline" instance=ExtResource( 6 )]
 
 [node name="drum" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = 1.0
+volume_db = 4.0
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -1.0
+volume_db = -10.0
 autoplay = true
+
+[node name="skip" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 672.0
+margin_right = 96.0
+margin_bottom = 706.0
+custom_fonts/font = ExtResource( 7 )
+text = "SALTAR INTRODUCCION"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="button_down" from="skip" to="." method="_on_skip_button_down"]
