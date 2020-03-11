@@ -4,7 +4,7 @@
 [ext_resource path="res://textures/misc/noise.jpg" type="Texture" id=2]
 [ext_resource path="res://scenes/ui/oldTVScreen.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "bar"
 length = 2.0
 loop = true
@@ -21,8 +21,7 @@ tracks/0/keys = {
 "values": [ Vector2( -288, -63 ), Vector2( -288, 700 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "noise"
+[sub_resource type="Animation" id=2]
 length = 16.0
 loop = true
 step = 1.0
@@ -108,8 +107,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 15.0
-anims/bar = SubResource( 2 )
-anims/noise = SubResource( 1 )
+anims/bar = SubResource( 1 )
+anims/noise = SubResource( 2 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 playback_speed = 7.0

@@ -9,6 +9,7 @@ var fps
 var quality
 var volume
 var pseudo3DLayers
+var advancedEnemyLights
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +25,7 @@ func setPointers():
 	quality = \"low\"
 	volume = $VBoxContainer/volume/volume
 	pseudo3DLayers = $VBoxContainer/graphics/graphics/pseudo3DLayers
+	advancedEnemyLights = $VBoxContainer/graphics/graphics/lights
 	
 func updateGUI():
 	vsync.pressed = OS.vsync_enabled
@@ -34,9 +36,12 @@ func updateGUI():
 	pseudo3DLayers.get_node(\"Label\").text = str(configSave.pseudo3DLayers)
 	volume.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index(\"Master\"))
 	pseudo3DLayers.value = configSave.pseudo3DLayers
+	advancedEnemyLights.pressed = configSave.advancedEnemyLights
 
 func save():
-	configSave.saveConfig(fullscreen.pressed, quality, volume.value, vsync.pressed, fps.value, pseudo3DLayers.value)
+	configSave.saveConfig(fullscreen.pressed, quality, volume.value, vsync.pressed, fps.value, pseudo3DLayers.value, advancedEnemyLights.pressed)
+	print(advancedEnemyLights.pressed)
+	print(configSave.advancedEnemyLights)
 
 func _on_vsync_toggled(button_pressed):
 	OS.vsync_enabled = vsync.pressed
@@ -56,11 +61,15 @@ func _on_volume_value_changed(value):
 	save()
 
 func _on_return_pressed():
-	get_tree().change_scene(\"res://scenes/menus/mainMenu.tscn\")
+	visible = false
 
 func _on_pseudo3DLayers_value_changed(value):
 	configSave.pseudo3DLayers = value
 	pseudo3DLayers.get_node(\"Label\").text = str(value)
+	save()
+
+func _on_lights_toggled(button_pressed):
+	configSave.advancedEnemyLights = advancedEnemyLights.pressed
 	save()
 "
 
@@ -72,13 +81,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="graphics" type="VBoxContainer" parent="VBoxContainer"]
 margin_right = 1280.0
-margin_bottom = 126.0
+margin_bottom = 154.0
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer/graphics"]
 margin_right = 1280.0
@@ -98,7 +114,7 @@ margin_bottom = 30.0
 [node name="graphics" type="VBoxContainer" parent="VBoxContainer/graphics"]
 margin_top = 34.0
 margin_right = 1280.0
-margin_bottom = 126.0
+margin_bottom = 154.0
 
 [node name="vsync" type="CheckBox" parent="VBoxContainer/graphics/graphics"]
 margin_right = 1280.0
@@ -109,12 +125,18 @@ text = "VSync"
 margin_top = 28.0
 margin_right = 1280.0
 margin_bottom = 52.0
-text = "Full screen"
+text = "Pantalla completa"
 
-[node name="fps" type="HSlider" parent="VBoxContainer/graphics/graphics"]
+[node name="lights" type="CheckBox" parent="VBoxContainer/graphics/graphics"]
 margin_top = 56.0
 margin_right = 1280.0
-margin_bottom = 72.0
+margin_bottom = 80.0
+text = "Enemigos con iluminación avanzada"
+
+[node name="fps" type="HSlider" parent="VBoxContainer/graphics/graphics"]
+margin_top = 84.0
+margin_right = 1280.0
+margin_bottom = 100.0
 hint_tooltip = "FPS
 
 Caps the maximum Frames Per Second the game can get
@@ -138,9 +160,9 @@ __meta__ = {
 }
 
 [node name="pseudo3DLayers" type="HSlider" parent="VBoxContainer/graphics/graphics"]
-margin_top = 76.0
+margin_top = 104.0
 margin_right = 1280.0
-margin_bottom = 92.0
+margin_bottom = 120.0
 hint_tooltip = "Pseudo3DLayers
 
 Adds a 3D effect to the walls
@@ -163,9 +185,9 @@ __meta__ = {
 }
 
 [node name="volume" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 130.0
+margin_top = 158.0
 margin_right = 1280.0
-margin_bottom = 180.0
+margin_bottom = 208.0
 
 [node name="HSeparator4" type="HSeparator" parent="VBoxContainer/volume"]
 margin_right = 1280.0
@@ -191,9 +213,9 @@ max_value = 1.0
 step = 0.2
 
 [node name="return" type="Button" parent="VBoxContainer"]
-margin_top = 184.0
+margin_top = 212.0
 margin_right = 1280.0
-margin_bottom = 204.0
+margin_bottom = 232.0
 text = "Return"
 
 [node name="version" type="RichTextLabel" parent="."]
@@ -201,10 +223,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -656.0
-margin_top = -80.0
-margin_right = -492.0
-margin_bottom = -60.0
+margin_left = -704.0
+margin_top = -64.0
+margin_right = -528.0
+margin_bottom = -48.0
 rect_scale = Vector2( 4, 4 )
 bbcode_enabled = true
 bbcode_text = "ALPHA BUILD 0.2.5.7"
@@ -215,6 +237,7 @@ __meta__ = {
 }
 [connection signal="toggled" from="VBoxContainer/graphics/graphics/vsync" to="." method="_on_vsync_toggled"]
 [connection signal="toggled" from="VBoxContainer/graphics/graphics/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="VBoxContainer/graphics/graphics/lights" to="." method="_on_lights_toggled"]
 [connection signal="value_changed" from="VBoxContainer/graphics/graphics/fps" to="." method="_on_fps_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/graphics/graphics/pseudo3DLayers" to="." method="_on_pseudo3dLayers_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/graphics/graphics/pseudo3DLayers" to="." method="_on_pseudo3DLayers_value_changed"]

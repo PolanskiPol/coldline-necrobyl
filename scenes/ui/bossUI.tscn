@@ -19,6 +19,9 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 640, 360 )
 theme = SubResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="playerUI" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -27,6 +30,9 @@ margin_left = 350.0
 margin_top = 125.0
 margin_right = -350.0
 margin_bottom = -560.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="health" type="ProgressBar" parent="playerUI"]
 margin_right = 580.0
@@ -39,4 +45,3 @@ step = 1.0
 value = 100.0
 rounded = true
 percent_visible = false
-

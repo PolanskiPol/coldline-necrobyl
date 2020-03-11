@@ -85,7 +85,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-editor/display_folded = true
 margin_right = 998.0
 margin_bottom = 110.0
 size_flags_horizontal = 3
@@ -120,8 +119,8 @@ margin_right = 998.0
 margin_bottom = 128.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer"]
-margin_left = 372.0
-margin_right = 625.0
+margin_left = 429.0
+margin_right = 569.0
 margin_bottom = 14.0
 
 [node name="continue" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
@@ -143,6 +142,7 @@ margin_bottom = 14.0
 rect_min_size = Vector2( 65, 0 )
 
 [node name="skip" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+visible = false
 margin_left = 144.0
 margin_right = 253.0
 margin_bottom = 14.0
