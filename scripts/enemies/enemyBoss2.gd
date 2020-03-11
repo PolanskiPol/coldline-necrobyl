@@ -136,7 +136,6 @@ func attack():
 		get_parent().add_child(bullet)
 		bullet.selfEnemyPosition = position
 		bullet.speed = 24
-		print("ENEMYBULLET")
 
 # esperar entre ataques
 func waitBetweenAttacks(wait):

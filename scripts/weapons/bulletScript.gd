@@ -38,6 +38,8 @@ func _physics_process(delta):
 	var collision = move_and_collide(direction*speed)
 	if(collision and collision.collider.collision_layer == 2):
 		collision.collider.damage(damage)
+	if(collision and collision.collider.collision_layer == 8192):
+		collision.collider.damage(damage)
 	if(collision):
 		particles(collision)
 		waitAndRemoveBullet(0.15)

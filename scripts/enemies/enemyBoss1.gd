@@ -40,10 +40,8 @@ func _physics_process(delta):
 func doCharge():
 	if(charging):
 		speed = chargeSpeed
-#		print("charge")
 	else:
 		speed = normalSpeed
-#		print("no charge")
 
 func specialAttack(charge, reload, delta):
 	if(!charging):
@@ -153,7 +151,6 @@ func attack():
 	if(canAttack and attackTarget and !dead and isSeeingPlayer):
 		waitBetweenAttacks(timeBetweenAttacks)
 		gameController.health -= attackDamage
-		print(gameController.health)
 
 # esperar entre ataques
 func waitBetweenAttacks(wait):

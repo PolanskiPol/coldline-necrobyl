@@ -15,12 +15,10 @@ func _ready():
 func transitionIntro():
 	$Tween.interpolate_property($Panel, "modulate:a", 1, 0, 1, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
-	print("INTRO")
 
 func transitionOutro():
 	$Tween.interpolate_property($Panel, "modulate:a", 0, 1, 1, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
-	print("NOINTRO")
 	
 func removeOnEnd():
 	$Timer.start()

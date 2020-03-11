@@ -7,4 +7,5 @@ extends Control
 # cargar pantalla completa
 func _ready():
 	transition.play(transition.TRANSITION_IN)
-	$title.play("move")
+#	$title.play("move")
+#	$buttons.play("buttons")

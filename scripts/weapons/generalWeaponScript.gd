@@ -41,19 +41,14 @@ func _physics_process(delta):
 func attack():
 	if(!melee):
 		shoot()
-	else:
-		meleeAttack()
 	get_parent().get_node("shootWeapon").stream = sound
 	get_parent().get_node("shootWeapon").volume_db = soundVolume
 	get_parent().get_node("shootWeapon").play()
 	$AnimationPlayer.play("attack")
 	waitBetweenShots(timeBetweenShots)
 	
-
-func meleeAttack():
-	$meleeRange/CollisionShape2D.disabled = false
-	$meleeTimer.start(0)
-	
+func refill():
+	gameController.bullets = mag
 
 # funcion para disparar
 func shoot():
@@ -85,11 +80,6 @@ func waitBetweenShots(wait):
 	$Timer.wait_time = wait
 	if(!gameController.zoomedOut and gameController.health > 0):
 		gameController.canShoot = true
-
-func _on_meleeTimer_timeout():
-	$meleeRange/CollisionShape2D.disabled = true
-	$meleeTimer.wait_time = 0.10
-
 
 func _on_meleeRange_body_entered(body):
 	if(body.collision_layer == 2):

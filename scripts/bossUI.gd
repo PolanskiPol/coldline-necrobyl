@@ -10,10 +10,10 @@ func _ready():
 	health = $playerUI/health
 #	ProgressBar tiene un minimo,un maximo y un actual
 	health.min_value = 0
-	health.max_value = get_parent().get_parent().get_node("enemies/boss").health
+	health.max_value = get_owner().get_node("enemies/boss").health
 
 # actualizar el value actual de la vida
 func _process(delta):
 	health.value = get_parent().get_parent().get_node("enemies/boss").health
-	print(get_parent().get_parent().get_node("enemies/boss").health)
-
+	if(health.value <= 50):
+		set_process(false)

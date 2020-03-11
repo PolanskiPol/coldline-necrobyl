@@ -14,5 +14,4 @@ func _ready():
 func _on_healthPickup_body_entered(body):
 	if(body.name == "player"):
 		body.addPlayerWeapon(weaponToPick.get_path())
-		print(weaponToPick.get_path())
 		get_parent().remove_child(self)

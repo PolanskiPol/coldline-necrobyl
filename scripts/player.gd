@@ -2,12 +2,18 @@ extends KinematicBody2D
 
 signal moving
 
+const MOVE_MODE_KM = 0
+const MOVE_MODE_GAMEPAD = 1
+
 export var speed = 4.0
 export var animationSpeed = 200
 
 var lastPosition
 var dead
 var lastMousePosition
+var cameraRotation
+var inputMode
+var lookAtGamepad
 
 func _ready():
 	setup()
@@ -22,16 +28,31 @@ func _physics_process(delta):
 		playerDie()
 		cameraZoom()
 		removeWeaponWhenMagEmpty()
-		lastChance()
-
+		
 func _input(event):
 	restartLevel(event)
 	goToNextLevel(event)
+	setInputMode()
+	devKey(event, true)
+	
+func devKey(event, active):
+	if(event.is_action_pressed("devkey") and active):
+		gameController.health = 100
+
+func setInputMode():
+	if(Input.is_action_just_pressed("event_wasd")):
+		inputMode = MOVE_MODE_KM
+	elif(Input.is_action_pressed("event_camera_down")):
+		inputMode = MOVE_MODE_GAMEPAD
 
 func setPlayerRotation():
 	if(lastMousePosition != get_global_mouse_position()):
 		look_at(get_global_mouse_position())
 	lastMousePosition = get_global_mouse_position()
+#func cameraRotation(maxRotation):
+#	if(Input.is_action_pressed("moveKeys")):
+#		print($Camera2D.global_rotation)
+##		$Camera2D.set_rot
 
 # funcion para hacer los cambios de armas del jugador
 func addPlayerWeapon(weaponPath):
@@ -40,13 +61,7 @@ func addPlayerWeapon(weaponPath):
 	$weaponSlot.add_child(instancedWeapon)
 	instancedWeapon.position = Vector2(5, 8)
 	gameController.canShoot = true
-	
-func addPistol():
-	var instancedWeapon = load("res://scenes/weapons/pistol.tscn").instance()
-	$weaponSlot.add_child(instancedWeapon)
-	instancedWeapon.position = Vector2(5, 8)
-	gameController.canShoot = true
-	
+
 func removePreviousWeapon():
 	for i in $weaponSlot.get_children():
 		if(i.name == "shootWeapon" or i.name == "bulletInstancePosition"):
@@ -57,20 +72,20 @@ func removePreviousWeapon():
 func removeWeaponWhenMagEmpty():
 	if(gameController.bullets == 0):
 		removePreviousWeapon()
-		addPlayerWeapon("res://scenes/weapons/pistol.tscn")
+		addPlayerWeapon("res://scenes/weapons/fists.tscn")
 
 # mueve al jugador con WASD
 func movePlayer():
 	var motion = Vector2(0, 0)
 	
 	if(Input.is_action_pressed("event_s")):
-		motion.y = 1
+		motion.y = Input.get_action_strength("event_s")
 	elif(Input.is_action_pressed("event_w")):
-		motion.y = -1
+		motion.y = -Input.get_action_strength("event_w")
 	if(Input.is_action_pressed("event_a")):
-		motion.x = -1
+		motion.x = -Input.get_action_strength("event_a")
 	elif(Input.is_action_pressed("event_d")):
-		motion.x = 1
+		motion.x = Input.get_action_strength("event_d")
 	
 	motion = motion.normalized() # con esto el jugador se mueve a la velocidad correcta en diagonales
 	motion *= speed * 50
@@ -90,44 +105,35 @@ func playerDie():
 	if(gameController.health <= 0):
 		gameController.canShoot = false
 		dead = true
-		
-func lastChance():
-	if(gameController.health == 0):
-		gameController.health = 1
 
 func setup():
+	lookAtGamepad = Vector2()
 	lastPosition = position
-	addPlayerWeapon("res://scenes/weapons/pistol.tscn")
+	addPlayerWeapon("res://scenes/weapons/fists.tscn")
 	gameController.health = 100
 	gameController.canShoot = true
 	get_parent().get_node("tint").visible = false
 	dead = false
+	cameraRotation = 0
+	inputMode = MOVE_MODE_KM
 	
 # reempezar nivel
 func restartLevel(event):
-	if(gameController.health < 0 and event.is_action_pressed("event_r")):
-#		gameController.health = 100
-#		gameController.canShoot = true
-#		get_parent().get_node("tint").visible = false
+	if(dead and event.is_action_pressed("event_r")):
 		transition.reloadScene()
 		
 # pasar al siguiente nivel
 func goToNextLevel(event):
-	if(gameController.health >= 0 and event.is_action_pressed("event_r") and gameController.enemies <= 0):
-		gameController.health = 100
-		gameController.canShoot = true
+	if(!dead and event.is_action_pressed("event_r") and gameController.enemies <= 0 and get_owner().name != "intermission"):
+		setup()
 		gameController.sceneToGoNumber += 1
 		save.saveGame()
 		gameController.secondLevelMusicWhenRestarted = 0
-# El Timer es para que haga bien el difuminado y que despues cambie de nivel
-		transition.changeScene("res://scenes/levels/intermission" + str(gameController.sceneToGoNumber) + ".tscn")
-
-#func _on_entityEnabler_body_entered(body):
-#	print(body.name)
-#	body.set_physics_process(true)
-##	body.set_process(true)
-#
-#
-#func _on_entityEnabler_body_exited(body):
-#	body.set_physics_process(false)
-##	body.set_process(false)
+		print("res://scenes/levels/final/intermission" + str(gameController.sceneToGoNumber) + ".tscn")
+		transition.changeScene("res://scenes/levels/final/intermission" + str(gameController.sceneToGoNumber) + ".tscn")
+	elif(event.is_action_pressed("event_r") and get_owner().name == "intermission"):
+		setup()
+		save.saveGame()
+		gameController.secondLevelMusicWhenRestarted = 0
+		print("res://scenes/levels/final/level" + str(gameController.sceneToGoNumber) + ".tscn")
+		transition.changeScene("res://scenes/levels/final/level" + str(gameController.sceneToGoNumber) + ".tscn")

@@ -13,7 +13,7 @@ func _ready():
 #	pass
 
 func _on_play_pressed():
-	transition.changeScene("res://scenes/levels/test/testLevel.tscn")
+	transition.changeScene("res://scenes/levels/final/intermission1.tscn")
 
 #func _on_play_pressed():
 #	gameController.sceneToGoNumber = 1

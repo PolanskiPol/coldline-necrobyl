@@ -25,7 +25,7 @@ func _process(delta):
 	health.value = gameController.health
 	weapon.text = "ARMA: " + str(gameController.weaponName)
 	ammoText()
-#	enemiesText()
+	enemiesText()
 	restartText()
 
 # mostrar numero de balas
@@ -39,14 +39,16 @@ func ammoText():
 func pause():
 	if(!pause.visible):
 		pause.visible = true
+#		get_owner().get_node("UI/oldTVScreen").visible = false
 		get_tree().paused = true
 	else:
 		pause.visible = false
+#		get_owner().get_node("UI/oldTVScreen").visible = true
 		get_tree().paused = false
 
 # mostrar texto cuando mueres
 func restartText():
-	if(gameController.health < 0):
+	if(gameController.health <= 0):
 		$restart.visible = true
 
 # mostrar numero de enemigos vivos
@@ -56,3 +58,6 @@ func enemiesText():
 	else:
 		enemies.text = "NIVEL COMPLETADO"
 		$nextLevel.visible = true
+
+
+

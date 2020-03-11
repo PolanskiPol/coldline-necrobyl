@@ -18,16 +18,16 @@ func saveGame():
 	saveFile.close()
 	
 func loadGame():
-#	gameController.sceneToGoNumber = saveFile.get_value(section, key, value)
-	var saveFile = File.new()
-	if(not saveFile.file_exists("user://coldline.save")):
-		return # No savefile found
-		
-	saveFile.open("user://coldline.save", File.READ)
-	
-	var currentLine = parse_json(saveFile.get_line())
-	print(currentLine["sceneToGoNumber"])
-	# Firstly, we need to create the object and add it to the tree and set its position.
-	gameController.sceneToGoNumber = currentLine["sceneToGoNumber"]
-	
-	saveFile.close()
+	pass
+##	gameController.sceneToGoNumber = saveFile.get_value(section, key, value)
+#	var saveFile = File.new()
+#	if(not saveFile.file_exists("user://coldline.save")):
+#		return # No savefile found
+#
+#	saveFile.open("user://coldline.save", File.READ)
+#
+#	var currentLine = parse_json(saveFile.get_line())
+#	# Firstly, we need to create the object and add it to the tree and set its position.
+#	gameController.sceneToGoNumber = currentLine["sceneToGoNumber"]
+#
+#	saveFile.close()
