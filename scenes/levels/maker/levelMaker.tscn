@@ -1,15 +1,36 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/levelMaker.gd" type="Script" id=1]
 [ext_resource path="res://scenes/effects/tint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/levelUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/effects/transition.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/tilesets/generalTilemap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/props/tilesets.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ui/oldTVScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/tilesets/labStuff.tscn" type="PackedScene" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "actionToExplore"
+[sub_resource type="GDScript" id=1]
+script/source = "extends CanvasLayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	for i in range(0, get_child_count()):
+		get_child(i).visible = true
+		pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="Animation" id=2]
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("levelMusicAction:volume_db")
@@ -36,8 +57,7 @@ tracks/1/keys = {
 "values": [ -64.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "exploreToAction"
+[sub_resource type="Animation" id=3]
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("levelMusicExplore:volume_db")
@@ -64,29 +84,6 @@ tracks/1/keys = {
 "values": [ -64.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="GDScript" id=3]
-script/source = "extends Node2D
-
-
-var scalation
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	scalation = 1
-	for i in range(1, configSave.pseudo3DLayers):
-		scalation += 0.11/configSave.pseudo3DLayers
-		var newLayer = $pseudo3DLayer0.duplicate()
-		newLayer.name = \"pseudo3DLayer\" + str(i)
-		newLayer.follow_viewport_scale = scalation
-		add_child(newLayer)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
-
 [node name="levelMaker" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -94,39 +91,37 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="UI" type="CanvasLayer" parent="."]
-
-[node name="levelUI" parent="UI" instance=ExtResource( 3 )]
-
-[node name="transition" parent="UI" instance=ExtResource( 4 )]
+script = SubResource( 1 )
 
 [node name="oldTVScreen" parent="UI" instance=ExtResource( 7 )]
+visible = false
+
+[node name="transition" parent="UI" instance=ExtResource( 4 )]
+visible = false
+
+[node name="levelUI" parent="UI" instance=ExtResource( 3 )]
+visible = false
 
 [node name="musicAnimations" type="AnimationPlayer" parent="."]
 playback_speed = 0.1
-anims/actionToExplore = SubResource( 1 )
-anims/exploreToAction = SubResource( 2 )
+anims/actionToExplore = SubResource( 2 )
+anims/exploreToAction = SubResource( 3 )
 
 [node name="levelMusicAction" type="AudioStreamPlayer" parent="."]
-volume_db = -64.0
+volume_db = -10.0
 autoplay = true
 
 [node name="levelMusicExplore" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
 autoplay = true
 
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="tilesets" type="Node2D" parent="."]
-script = SubResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="tilesets" parent="." instance=ExtResource( 5 )]
 
-[node name="2DLayer" parent="tilesets" instance=ExtResource( 5 )]
+[node name="labStuff" parent="tilesets" instance=ExtResource( 8 )]
 
-[node name="pseudo3DLayer0" type="CanvasLayer" parent="tilesets"]
-follow_viewport_enable = true
-
-[node name="tiles" parent="tilesets/pseudo3DLayer0" instance=ExtResource( 5 )]
+[node name="deco" type="Node2D" parent="tilesets"]
 
 [node name="lightModifiers" type="Node2D" parent="."]
 
@@ -136,3 +131,5 @@ __meta__ = {
 }
 
 [node name="player" parent="." instance=ExtResource( 6 )]
+
+[editable path="tilesets"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/enemies/enemy_maker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/enemies/finals/shootzombie_walk_002.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 231.091, 117.219 )
+
+[node name="enemy_shoot_1_" instance=ExtResource( 1 )]
+health = 80
+speed = 3.5
+timeBetweenAttacks = 1.25
+melee = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="hands" parent="." index="2"]
+visible = false
+
+[node name="Sprite" parent="." index="8"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="npcAttack" parent="." index="11"]
+visible = false
+
+[node name="CollisionShape2D" parent="npcAttack" index="0"]
+shape = SubResource( 2 )
+
+[node name="front" parent="pathRaycasts" index="2"]
+cast_to = Vector2( 30, 0 )
+
+[node name="singleFront" parent="pathRaycasts" index="3"]
+cast_to = Vector2( 15, 0 )

@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/enemies/enemyGeneralController.gd" type="Script" id=1]
-[ext_resource path="res://scripts/animations.gd" type="Script" id=2]
 [ext_resource path="res://scenes/effects/bright.tscn" type="PackedScene" id=3]
 [ext_resource path="res://audio/fx/zombie1.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/fx/slash.wav" type="AudioStream" id=5]
+[ext_resource path="res://textures/topdownweapons/hand_WHITE_TO_MODULATE.png" type="Texture" id=6]
+[ext_resource path="res://textures/topdownweapons/arm_WHITE_TO_MODULATE.png" type="Texture" id=7]
 
-[sub_resource type="CircleShape2D" id=1]
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.6
 step = 0.2
 tracks/0/type = "value"
@@ -22,6 +21,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 2, 4, 6 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "melee"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("hands:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 4.77444, 0.170515 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -39,21 +54,106 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 786.309, 1349.88 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 664.435, 356.578 )
-
-[sub_resource type="CircleShape2D" id=6]
-radius = 6.16254
-
-[sub_resource type="Curve2D" id=7]
-_data = {
-"points": PoolVector2Array(  )
+[sub_resource type="Animation" id=4]
+resource_name = "melee"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("hands:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 6.061, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hands/leftArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4.37748, -8.22175 ), Vector2( 4.28301, -5.6711 ), Vector2( 4.28301, -8.12728 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hands/leftHand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10.4231, -8.03607 ), Vector2( 10.2341, -5.20202 ), Vector2( 10.0452, -8.13054 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hands/rightArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4.13092, 8.10169 ), Vector2( 4.13092, 5.83444 ), Vector2( 4.31986, 9.14084 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("hands/rightHand:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10.1005, 7.57762 ), Vector2( 10.1005, 5.57762 ), Vector2( 10.1005, 8.57762 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("npcDamage:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("slashsound:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 786.309, 1349.88 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1200, 720 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 5.09902
+
 [node name="enemy_" type="KinematicBody2D"]
+modulate = Color( 0.666667, 1, 0.662745, 1 )
 z_index = 1
 collision_layer = 2
 collision_mask = 647
@@ -64,59 +164,88 @@ __meta__ = {
 angleOfVision = 160
 melee = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 1 )
+[node name="bright" parent="." instance=ExtResource( 3 )]
+color = Color( 0, 1, 0, 1 )
+shadow_enabled = false
+
+[node name="hands" type="Node2D" parent="."]
+
+[node name="leftArm" type="Sprite" parent="hands"]
+position = Vector2( 4.35859, -8.20286 )
+rotation = 1.61929
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 7 )
+
+[node name="leftHand" type="Sprite" parent="hands"]
+modulate = Color( 0.560784, 1, 0.317647, 1 )
+position = Vector2( 10.3475, -8.05496 )
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 6 )
+
+[node name="rightArm" type="Sprite" parent="hands"]
+position = Vector2( 4.16871, 8.30952 )
+rotation = 1.48411
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 7 )
+
+[node name="rightHand" type="Sprite" parent="hands"]
+modulate = Color( 0.560784, 1, 0.317647, 1 )
+position = Vector2( 10.1005, 7.77762 )
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 2 )
+anims/idle = SubResource( 1 )
+anims/melee = SubResource( 2 )
 anims/walking = SubResource( 3 )
+
+[node name="attack" type="AnimationPlayer" parent="."]
+anims/melee = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="attackDelay" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.75
 
 [node name="pathDelay" type="Timer" parent="."]
 wait_time = 3.0
 
 [node name="Sprite" type="Sprite" parent="."]
 hframes = 8
-script = ExtResource( 2 )
-
-[node name="bright" parent="." instance=ExtResource( 3 )]
-visible = false
-color = Color( 0, 1, 0, 1 )
 
 [node name="npcActivation" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcActivation"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="npcVision" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcVision"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="npcAttack" type="Area2D" parent="."]
-editor/display_folded = true
-visible = false
+position = Vector2( 24, 0 )
 collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcAttack"]
-shape = SubResource( 6 )
+position = Vector2( -4, 0 )
+shape = SubResource( 7 )
+
+[node name="npcDamage" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npcDamage"]
+shape = SubResource( 7 )
 
 [node name="wallBetween" type="RayCast2D" parent="."]
 visible = false
 enabled = true
 cast_to = Vector2( 0, 0 )
-collision_mask = 16
+collision_mask = 4
 collide_with_areas = true
 
 [node name="zombiesound" type="AudioStreamPlayer2D" parent="."]
@@ -131,7 +260,6 @@ stream = ExtResource( 5 )
 volume_db = 8.12
 
 [node name="pathRaycasts" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="left" type="RayCast2D" parent="pathRaycasts"]
 enabled = true
@@ -157,21 +285,20 @@ cast_to = Vector2( 10, 0 )
 collision_mask = 4
 collide_with_areas = true
 
+[node name="outerBorder" type="RayCast2D" parent="pathRaycasts"]
+enabled = true
+cast_to = Vector2( -22.5, 22.5 )
+collision_mask = 4
+collide_with_areas = true
+
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 visible = false
-rect = Rect2( -300, -300, 600, 600 )
+rect = Rect2( -150, -150, 300, 300 )
 process_parent = true
 physics_process_parent = true
-
-[node name="Line2D" type="Line2D" parent="."]
-texture_mode = -1082130432
-
-[node name="pathFollow" type="Path2D" parent="."]
-curve = SubResource( 7 )
-
-[node name="pathfinding" type="Navigation2D" parent="."]
 [connection signal="timeout" from="pathDelay" to="." method="_on_pathDelay_timeout"]
 [connection signal="body_entered" from="npcVision" to="." method="_on_vision_entered"]
 [connection signal="body_exited" from="npcVision" to="." method="_on_vision_exited"]
 [connection signal="body_entered" from="npcAttack" to="." method="_on_attack_entered"]
 [connection signal="body_exited" from="npcAttack" to="." method="_on_attack_exited"]
+[connection signal="body_entered" from="npcDamage" to="." method="_on_damage_entered"]

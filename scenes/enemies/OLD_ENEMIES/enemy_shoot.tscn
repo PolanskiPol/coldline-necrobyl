@@ -52,9 +52,7 @@ z_index = 1
 collision_layer = 2
 collision_mask = 645
 script = ExtResource( 1 )
-health = 250.0
 speed = 3.0
-attackDamage = 20.0
 timeBetweenAttacks = 0.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

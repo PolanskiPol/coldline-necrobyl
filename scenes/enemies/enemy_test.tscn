@@ -16,6 +16,7 @@ _data = {
 health = 120
 speed = 4.9
 attackDamage = 75
+melee = false
 
 [node name="CollisionShape2D" parent="." index="0"]
 visible = true

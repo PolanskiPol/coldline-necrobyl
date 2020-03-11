@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/levels/maker/intermissionMaker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/music/3-Intermission-Hard.ogg" type="AudioStream" id=2]
+[ext_resource path="res://scenes/ui/dialogs/maker/dialog1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/dialogs/tvSprite.png" type="Texture" id=4]
+[ext_resource path="res://textures/dialogs/tupin.png" type="Texture" id=5]
+[ext_resource path="res://textures/dialogs/PRUMT.png" type="Texture" id=6]
+[ext_resource path="res://textures/dialogs/NILATS.png" type="Texture" id=7]
+[ext_resource path="res://textures/dialogs/dimitri.png" type="Texture" id=8]
+[ext_resource path="res://scenes/effects/NILATS.tscn" type="PackedScene" id=9]
+
+
+[node name="level2" instance=ExtResource( 1 )]
+
+[node name="levelMusic" parent="." index="0"]
+stream = ExtResource( 2 )
+volume_db = -12.0
+
+[node name="dialog1" parent="UI/dialogs" index="0" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 4 )
+dialogs = [ "TV: ULTIMAS NOTICIAS", "TV: TUPIN Y PRUMT TIENEN UN MENSAJE PARA EL PSICOPATA QUE ESTA ENTRANDO EN LA CENTRAL ABANDONADA DE NECROBYL" ]
+
+[node name="dialog2" parent="UI/dialogs" index="1" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 5 )
+dialogs = [ "TUPIN: DIMITRI, CA--ON.", "TUPIN: DEJA DE J---R MIS CENTRALES NUCLEARES.", "TUPIN: A LA PROXIMA ME ENCARGARE YO PERSONALMENTE.", "TUPIN: Y LUEVO CONVERTIRE AL CAPITALISMO LOS ESTADOS TIVOSICOS." ]
+
+[node name="dialog3" parent="UI/dialogs" index="2" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 6 )
+dialogs = [ "PRUMT: ESO ESO!", "PRUMT: COMO LOS ESTADOS NOSEPARADOS." ]
+
+[node name="dialog4" parent="UI/dialogs" index="3" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 5 )
+dialogs = [ "TUPIN: MUAJAJAJAJA." ]
+
+[node name="dialog5" parent="UI/dialogs" index="4" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 6 )
+dialogs = [ "PRUMT: MUAJAJAJAJA." ]
+
+[node name="dialog6" parent="UI/dialogs" index="5" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 7 )
+dialogs = [ "NILATS: TU ERES LA ULTIMA ESPERANZA DE LOS ESTADOS TIVOSICOS.", "NILATS: NO ME FALLES O TE ENVIO A UN GULAG." ]
+
+[node name="dialog7" parent="UI/dialogs" index="6" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 8 )
+dialogs = [ "DIMITRI: NO ME HE ENTERADO DE NADA, PERO ALLI VOY.", "DIMITRI: CREO QUE ME VOY A QUEDAR SIN AMIGOS, PERO NO ME ARREPIENTO DE NADA." ]
+
+[node name="dialog8" parent="UI/dialogs" index="7" instance=ExtResource( 3 )]
+characterToDisplay = ExtResource( 7 )
+dialogs = [ "NILATS: MALDITO SURRIO DEMENTE Y BORRACHO.", "NILATS: ESE ES MI CHICO.", "NILATS: ESTOY ORGULLOSO DE QUE SEAS UN SURRIO ESTANDAR." ]
+
+[node name="lightModifiers" parent="." index="3"]
+editor/display_folded = false
+
+[node name="tintChanger" parent="lightModifiers" index="0"]
+editor/display_folded = true
+
+[node name="NILATS" parent="props" index="21" instance=ExtResource( 9 )]
+
+[connection signal="hide" from="UI/dialogs/dialog1" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog2" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog3" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog4" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog5" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog6" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog7" to="UI/dialogs" method="_on_hide"]
+[connection signal="hide" from="UI/dialogs/dialog8" to="UI/dialogs" method="_on_hide"]
