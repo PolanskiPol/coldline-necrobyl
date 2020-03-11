@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+export(PackedScene) var spawn
+export(NodePath) var path
+export var time = 20
+export(bool) var startWithInstance = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	spawn()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func spawn():
+	var enemy = spawn.instance()
+	get_node(path).add_child(enemy)
+	enemy.position = position
+	yield(get_tree().create_timer(time), \"timeout\")
+	spawn()
+"
+
+[node name="spawner" type="Node2D"]
+script = SubResource( 1 )

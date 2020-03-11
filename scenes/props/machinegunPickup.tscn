@@ -1,26 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/weapons/weaponPickup.gd" type="Script" id=1]
-[ext_resource path="res://scenes/weapons/rifle.tscn" type="PackedScene" id=2]
-[ext_resource path="res://textures/topdownweapons/machinegun.png" type="Texture" id=3]
-[ext_resource path="res://scenes/effects/bright.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/props/pickupTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/topdownweapons/autoIcon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/weapons/rifle.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 19.5287
+[node name="machinegunPickup" instance=ExtResource( 1 )]
+weaponToPick = ExtResource( 3 )
 
-[node name="machinegunPickup" type="Area2D"]
-script = ExtResource( 1 )
-weaponToPick = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.968627, 1, 0, 1 )
-position = Vector2( 0, 4 )
-scale = Vector2( 0.25, 0.15 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
-[node name="bright" parent="." instance=ExtResource( 4 )]
-color = Color( 1, 0.827451, 0, 1 )
-[connection signal="body_entered" from="." to="." method="_on_healthPickup_body_entered"]
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0.238155, 2.21384 )
+rotation = -0.455531
+scale = Vector2( -0.011, 0.012 )
+texture = ExtResource( 2 )
