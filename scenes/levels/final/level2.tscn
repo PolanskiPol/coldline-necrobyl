@@ -51,9 +51,11 @@ complexWallFollow = true
 
 [node name="enemy_common12" parent="enemies" index="9" instance=ExtResource( 4 )]
 position = Vector2( 1552, 272 )
+rotation = 1.57079
 
 [node name="enemy_common13" parent="enemies" index="10" instance=ExtResource( 4 )]
-position = Vector2( 1136, 272 )
+position = Vector2( 1488, 432 )
+rotation = 1.57079
 
 [node name="enemy_common23" parent="enemies" index="11" instance=ExtResource( 4 )]
 position = Vector2( 1072, 624 )
